@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PatronNick</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<main class="app">
+
+    <div id="topBar" class="top-bar">
+        <button id="btnInicio">
+            ← Inicio
+        </button>
+    </div>
+
+    <section class="hero">
+
+        <h1 class="logo">PatronNick</h1>
+
+        <p class="subtitle">
+            Generador de nombres para Free Fire, Fortnite, Roblox y más.
+        </p>
+
+    </section>
+
+    <section class="generator">
+
+        <input
+            type="text"
+            id="inputNombre"
+            placeholder="Escribe tu nombre...">
+
+        <button id="btnGenerar">
+            Generar
+        </button>
+
+        <div id="resultados"></div>
+
+    </section>
+
+    <h2 class="categorias">Categorías</h2>
+
+    <section class="games">
+
+        <button class="game-card" id="freefireBtn">
+            🔥
+            <span>Free Fire</span>
+        </button>
+
+        <button class="game-card">
+            🎮
+            <span>Fortnite</span>
+        </button>
+
+        <button class="game-card">
+            🟩
+            <span>Roblox</span>
+        </button>
+
+        <button class="game-card">
+            ⛏️
+            <span>Minecraft</span>
+        </button>
+
+    </section>
+
+    <div id="contenido" style="display:none;width:100%;max-width:820px;">
+
+        <button id="volverInicio" class="back-btn">
+            ← Volver
+        </button>
+
+        <div class="pantallaJuego">
+
+            <h2 class="tituloJuego">🔥 Free Fire</h2>
+
+            <div class="menu-juego">
+
+                <div class="modo-card">
+                    <h3>👻 Invisible</h3>
+                    <p>Crea nombres invisibles.</p>
+                    <button id="btnInvisible">Entrar</button>
+                </div>
+
+                <div class="modo-card">
+                    <h3>❤️ Parejas</h3>
+                    <p>Nombres para dúos.</p>
+                    <button id="btnParejas">Entrar</button>
+                </div>
+
+                <div class="modo-card">
+                    <h3>👑 Pro Player</h3>
+                    <p>Nombres competitivos.</p>
+                    <button id="btnPro">Entrar</button>
+                </div>
+
+                <div class="modo-card">
+                    <h3>☠️ Oscuro</h3>
+                    <p>Estilo dark.</p>
+                    <button id="btnOscuro">Entrar</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script src="js/fonts.js"></script>
+<script src="js/generator.js"></script>
+<script src="js/categorias.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
