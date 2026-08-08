@@ -107,8 +107,14 @@ body::before{
     gap:16px;
 }
 
-#abrirFavoritos{
-    width:100%;
+#abrirFavoritos {
+    width: auto;
+    align-self: flex-end;
+
+    padding: 10px 16px;
+    border-radius: 30px;
+
+    font-size: 15px;
 }
 
 #contadorFavoritos{
@@ -173,7 +179,7 @@ body::before{
 }
 
 .resultado-fuente{
-    font-size:15px;
+    padding-right: 100px;
     font-weight:bold;
     margin-bottom:10px;
 }
@@ -566,4 +572,46 @@ body::before{
 
 .deleteFav:active{
     transform:translateY(0) scale(.98);
+}
+
+.cantidad-nombres {
+    display: block;
+    margin-bottom: 14px;
+    color: #38bdf8;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Favorito pequeño en la esquina */
+.resultado {
+    position: relative;
+}
+
+.btnFavorito {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    width: auto;
+    flex: none;
+
+    padding: 7px 12px;
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid #f59e0b;
+    color: #fbbf24;
+
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btnFavorito:hover {
+    background: rgba(245, 158, 11, 0.3);
+    border-color: #fbbf24;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(245, 158, 11, .35);
 }
