@@ -142,6 +142,8 @@ async function obtenerEstadisticas(nombre) {
   const client = obtenerClienteSupabase();
 
   if (!client) {
+    console.error("Supabase no está disponible.");
+
     return {
       copias: 0,
       favoritos: 0
@@ -180,7 +182,7 @@ async function obtenerEstadisticas(nombre) {
 async function registrarCopia(nombre) {
   const client = obtenerClienteSupabase();
 
-  if (!client) return;
+  if (!client) return false;
 
   const { error } = await client.rpc(
     "incrementar_copias",
@@ -194,7 +196,11 @@ async function registrarCopia(nombre) {
       "Error registrando copia:",
       error
     );
+
+    return false;
   }
+
+  return true;
 }
 
 
@@ -205,7 +211,10 @@ async function registrarCopia(nombre) {
 async function registrarFavorito(nombre) {
   const client = obtenerClienteSupabase();
 
-  if (!client) return;
+  if (!client) {
+    console.error("Supabase no está disponible.");
+    return false;
+  }
 
   const { error } = await client.rpc(
     "incrementar_favoritos",
@@ -219,7 +228,11 @@ async function registrarFavorito(nombre) {
       "Error registrando favorito:",
       error
     );
+
+    return false;
   }
+
+  return true;
 }
 
 
@@ -230,7 +243,10 @@ async function registrarFavorito(nombre) {
 async function decrementarFavorito(nombre) {
   const client = obtenerClienteSupabase();
 
-  if (!client) return;
+  if (!client) {
+    console.error("Supabase no está disponible.");
+    return false;
+  }
 
   const { error } = await client.rpc(
     "decrementar_favoritos",
@@ -244,7 +260,11 @@ async function decrementarFavorito(nombre) {
       "Error restando favorito:",
       error
     );
+
+    return false;
   }
+
+  return true;
 }
 
 
@@ -308,7 +328,6 @@ async function renderCategoria(
   tituloCategoria,
   nombres
 ) {
-
   topBar.classList.remove("show");
 
   ocultarPanelFavoritos();
@@ -413,9 +432,10 @@ async function renderCategoria(
             await navigator.clipboard
               .writeText(nombre);
 
-            await registrarCopia(
-              nombre
-            );
+            const correcto =
+              await registrarCopia(nombre);
+
+            if (!correcto) return;
 
             boton.textContent =
               "✅ Copiado";
@@ -461,51 +481,83 @@ async function renderCategoria(
         "click",
         async () => {
 
-          // -------------------------------
-          // QUITAR
-          // -------------------------------
+          // Evitar doble clic mientras se procesa
+          if (boton.dataset.procesando === "true") {
+            return;
+          }
 
-          if (esFavorito(nombre)) {
+          boton.dataset.procesando = "true";
 
-            // Primero quitar del navegador
-            eliminarFavorito(nombre);
+          try {
 
-            // Después restar en Supabase
-            await decrementarFavorito(
+            // =================================
+            // QUITAR FAVORITO
+            // =================================
+
+            if (esFavorito(nombre)) {
+
+              const correcto =
+                await decrementarFavorito(nombre);
+
+              // SOLO eliminar localmente
+              // si Supabase respondió correctamente
+              if (correcto) {
+
+                eliminarFavorito(nombre);
+
+                boton.textContent =
+                  "⭐ Favorito";
+              }
+
+            }
+
+            // =================================
+            // AGREGAR FAVORITO
+            // =================================
+
+            else {
+
+              const correcto =
+                await registrarFavorito(nombre);
+
+              // SOLO guardar localmente
+              // si Supabase respondió correctamente
+              if (correcto) {
+
+                agregarFavorito(nombre);
+
+                boton.textContent =
+                  "❤️ Guardado";
+              }
+
+            }
+
+            // =================================
+            // ACTUALIZAR CONTADOR LOCAL
+            // =================================
+
+            actualizarContadorFavoritos();
+
+            // =================================
+            // VOLVER A CONSULTAR SUPABASE
+            // =================================
+
+            await actualizarEstadisticaNombre(
               nombre
             );
 
-            boton.textContent =
-              "⭐ Favorito";
+          } catch (error) {
 
-          }
-
-          // -------------------------------
-          // AGREGAR
-          // -------------------------------
-
-          else {
-
-            // Primero guardar localmente
-            agregarFavorito(nombre);
-
-            // Después sumar en Supabase
-            await registrarFavorito(
-              nombre
+            console.error(
+              "Error procesando favorito:",
+              error
             );
 
-            boton.textContent =
-              "❤️ Guardado";
+          } finally {
+
+            boton.dataset.procesando = "false";
 
           }
-
-          // Actualizar contador local
-          actualizarContadorFavoritos();
-
-          // Actualizar número de Supabase
-          await actualizarEstadisticaNombre(
-            nombre
-          );
 
         }
       );
@@ -567,7 +619,6 @@ function renderFavoritos() {
 
   topBar.classList.add("show");
 
-
   document.getElementById(
     "hero"
   ).style.display = "none";
@@ -584,7 +635,6 @@ function renderFavoritos() {
     "categorias"
   ).style.display = "none";
 
-
   document.getElementById(
     "contenido"
   ).style.display = "none";
@@ -596,7 +646,6 @@ function renderFavoritos() {
   document.getElementById(
     "resultados"
   ).innerHTML = "";
-
 
   mostrarZonaFavoritos();
 
@@ -709,19 +758,25 @@ function renderFavoritos() {
           const nombre =
             boton.dataset.text;
 
-          // Quitar localmente
-          eliminarFavorito(
-            nombre
-          );
+          // Primero Supabase
+          const correcto =
+            await decrementarFavorito(
+              nombre
+            );
 
-          // Quitar globalmente
-          await decrementarFavorito(
-            nombre
-          );
+          // Solo quitar localmente
+          // si Supabase funcionó
+          if (correcto) {
 
-          actualizarContadorFavoritos();
+            eliminarFavorito(
+              nombre
+            );
 
-          renderFavoritos();
+            actualizarContadorFavoritos();
+
+            renderFavoritos();
+
+          }
 
         }
       );
