@@ -10,8 +10,8 @@ body{
     min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
-    padding:30px;
+    align-items:flex-start;
+    padding:28px 16px;
     background:
     radial-gradient(circle at top,#2563eb 0%,#0f172a 40%,#020617 100%);
 }
@@ -33,15 +33,19 @@ body::before{
     display:flex;
     flex-direction:column;
     align-items:center;
+    gap:18px;
+    position:relative;
+    z-index:1;
 }
 
 .hero{
+    width:100%;
     text-align:center;
-    margin-bottom:35px;
+    padding-top:8px;
 }
 
 .logo{
-    font-size:4rem;
+    font-size:clamp(2.8rem,8vw,4rem);
     font-weight:900;
     text-shadow:0 0 18px #38bdf8;
     margin-bottom:10px;
@@ -49,11 +53,78 @@ body::before{
 
 .subtitle{
     color:#cbd5e1;
+    line-height:1.5;
+}
+
+.top-bar{
+    width:100%;
+    display:none;
+    justify-content:flex-start;
+}
+
+.top-bar.show{
+    display:flex;
+}
+
+.top-btn,
+#btnInicio,
+.btn-top,
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    background:rgba(20,30,48,.8);
+    border:2px solid #35527b;
+    color:#fff;
+
+    padding:12px 22px;
+    border-radius:14px;
+
+    font-size:17px;
+    font-weight:700;
+
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 0 15px rgba(56,189,248,.15);
+}
+
+.top-btn:hover,
+#btnInicio:hover,
+.btn-top:hover,
+.back-btn:hover{
+    border-color:#00d9ff;
+    box-shadow:0 0 18px #00d9ff66;
+    transform:translateY(-2px);
+}
+
+.favorites-zone{
+    width:100%;
+    max-width:820px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+#abrirFavoritos{
+    width:100%;
+}
+
+#contadorFavoritos{
+    margin-left:6px;
+    font-size:14px;
+    opacity:.92;
+}
+
+.favorites-panel{
+    width:100%;
+    display:none;
 }
 
 .generator{
     width:100%;
-    margin-bottom:45px;
+    max-width:820px;
 }
 
 #inputNombre{
@@ -85,7 +156,8 @@ body::before{
 }
 
 #resultados{
-    margin-top:25px;
+    width:100%;
+    margin-top:22px;
     display:grid;
     gap:12px;
 }
@@ -93,19 +165,81 @@ body::before{
 .resultado{
     background:#162033;
     border:1px solid #27486f;
-    border-radius:14px;
-    padding:15px;
+    border-radius:16px;
+    padding:16px;
+    opacity:0;
+    transform:translateY(12px) scale(.98);
+    animation:aparecer .25s ease forwards;
+}
+
+.resultado-fuente{
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.resultado-texto{
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:14px;
+    word-break:break-word;
+    white-space:pre-wrap;
+}
+
+.acciones-card,
+.itemActions{
+    display:flex;
+    gap:10px;
+}
+
+.btnFavorito,
+.btnCopiar,
+.copyFav,
+.deleteFav{
+    flex:1;
+    padding:10px 14px;
+    border:none;
+    border-radius:12px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btnFavorito{
+    background:#f59e0b;
+}
+
+.btnCopiar,
+.copyFav{
+    background:#00b4ff;
+}
+
+.deleteFav{
+    background:#ef4444;
+}
+
+.btnFavorito:hover,
+.btnCopiar:hover,
+.copyFav:hover,
+.deleteFav:hover{
+    transform:translateY(-1px) scale(1.02);
+    box-shadow:0 0 15px rgba(56,189,248,.25);
 }
 
 .categorias{
-    margin-bottom:20px;
+    width:100%;
+    max-width:820px;
     font-size:28px;
     font-weight:bold;
     text-shadow:0 0 12px #38bdf8;
+    margin-top:6px;
+    text-align:center;
 }
 
 .games{
     width:100%;
+    max-width:820px;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
@@ -126,7 +260,8 @@ body::before{
     backdrop-filter:blur(12px);
 }
 
-.game-card:hover{
+.game-card:hover,
+.modo-card:hover{
     transform:translateY(-6px);
     border-color:#00e5ff;
     box-shadow:0 0 25px #00e5ff55;
@@ -142,289 +277,83 @@ body::before{
     font-weight:bold;
 }
 
-@media(max-width:700px){
-
-.games{
-grid-template-columns:1fr;
-}
-
-.logo{
-font-size:3rem;
-}
-
-}
-
-.top-bar{
+#contenido{
     width:100%;
-    display:none;
-    margin-bottom:25px;
+    max-width:820px;
 }
-
-.top-bar.show{
-    display:flex;
-}
-
-#btnInicio{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    padding:12px 22px;
-
-    background:rgba(15,23,42,.75);
-
-    border:2px solid #38bdf8;
-    border-radius:14px;
-
-    color:white;
-    font-size:18px;
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    box-shadow:0 0 15px rgba(56,189,248,.25);
-}
-
-#btnInicio:hover{
-    background:#38bdf8;
-    color:#0f172a;
-
-    transform:translateY(-2px);
-
-    box-shadow:0 0 25px rgba(56,189,248,.55);
-}
-
-.resultado{
-    opacity:0;
-    transform:translateY(15px) scale(.96);
-    animation:aparecer .25s ease forwards;
-}
-
-@keyframes aparecer{
-
-    to{
-
-        opacity:1;
-        transform:translateY(0) scale(1);
-
-    }
-
-}
-
-.back-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    background:rgba(20,30,48,.8);
-    border:2px solid #35527b;
-    color:#fff;
-
-    padding:12px 22px;
-
-    border-radius:14px;
-
-    font-size:17px;
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.back-btn:hover{
-
-    border-color:#00d9ff;
-
-    box-shadow:0 0 18px #00d9ff66;
-
-    transform:translateY(-2px);
-
-}
-
-.tituloJuego{
-
-    font-size:34px;
-    text-align:center;
-    margin:30px 0;
-
-    text-shadow:0 0 15px #38bdf8;
-
-}
-
-.menu-juego{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:20px;
-
-}
-
-.modo-card{
-
-    background:rgba(20,30,48,.75);
-
-    border:2px solid #35527b;
-
-    border-radius:20px;
-
-    padding:25px;
-
-    text-align:center;
-
-    transition:.25s;
-
-}
-
-.modo-card:hover{
-
-    transform:translateY(-6px);
-
-    border-color:#00e5ff;
-
-    box-shadow:0 0 25px #00e5ff55;
-
-}
-
-.modo-card h3{
-
-    font-size:25px;
-
-    margin-bottom:12px;
-
-}
-
-.modo-card p{
-
-    color:#cbd5e1;
-
-    margin-bottom:20px;
-
-}
-
-.modo-card button{
-
-    width:100%;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:linear-gradient(90deg,#00b4ff,#2563eb);
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-.modo-card button:hover{
-
-    transform:scale(1.03);
-
-    box-shadow:0 0 18px #38bdf8;
-
-}
-
-.seccionInvisible{
-    margin-top:20px;
-    text-align:center;
-    padding:20px;
-    border-radius:20px;
-    background:rgba(20,30,48,.75);
-    border:2px solid #35527b;
-}
-
-.listaInvisible{
-    margin-top:25px;
-}
-
-.listaInvisible h2{
-    text-align:center;
-    font-size:34px;
-    margin-bottom:25px;
-    text-shadow:0 0 15px #38bdf8;
-}
-
-.itemInvisible{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    width:100%;
-
-    background:rgba(20,30,48,.75);
-    border:2px solid #35527b;
-    border-radius:18px;
-
-    padding:18px 22px;
-    margin-bottom:14px;
-
-    transition:.25s;
-}
-
-.itemInvisible:hover{
-    border-color:#00e5ff;
-    box-shadow:0 0 18px #00e5ff55;
-}
-
-.itemInvisible span{
-    font-size:22px;
-    font-weight:700;
-}
-
-.copyInvisible{
-    padding:10px 18px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(90deg,#00d4ff,#2563eb);
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.copyInvisible:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 15px #38bdf8;
-}
-
-/* ===== PANTALLAS DE CATEGORÍAS ===== */
 
 .pantallaJuego{
     width:100%;
 }
 
+.tituloJuego{
+    text-align:center;
+    font-size:clamp(28px,6vw,36px);
+    margin:24px 0 30px;
+    text-shadow:0 0 15px #38bdf8;
+}
+
+.menu-juego{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.modo-card{
+    background:rgba(20,30,48,.75);
+    border:2px solid #35527b;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    transition:.25s;
+}
+
+.modo-card h3{
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.modo-card p{
+    color:#cbd5e1;
+    margin-bottom:20px;
+    line-height:1.4;
+}
+
+.modo-card button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#00b4ff,#2563eb);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.modo-card button:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 18px #38bdf8;
+}
+
 .listaInvisible{
     display:grid;
-    gap:18px;
-    margin-top:30px;
+    gap:14px;
+    margin-top:20px;
 }
 
 .itemInvisible{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:12px;
 
-    padding:18px 22px;
-
-    background:rgba(20,30,48,.80);
-
+    background:rgba(20,30,48,.8);
     border:2px solid #35527b;
     border-radius:18px;
 
+    padding:18px 20px;
     transition:.25s;
 }
 
@@ -437,34 +366,204 @@ font-size:3rem;
 .itemInvisible span{
     font-size:22px;
     font-weight:700;
-    color:white;
+    white-space:pre;
+    word-break:break-word;
 }
 
-.copyInvisible{
-    padding:11px 18px;
+.favorites-empty{
+    color:#cbd5e1;
+    text-align:center;
+    margin:0;
+    padding:24px 0;
+}
 
-    border:none;
+@media (max-width:700px){
+    .games,
+    .menu-juego{
+        grid-template-columns:1fr;
+    }
+
+    .itemInvisible{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .itemActions{
+        width:100%;
+    }
+
+    .itemActions > button{
+        flex:1;
+    }
+}
+
+@keyframes aparecer{
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* Efecto hover para botones Copiar */
+.btnCopiar:hover,
+.copyFav:hover {
+    transform: translateY(-2px) scale(1.03);
+    background: #009fe3;
+    box-shadow: 0 0 18px #38bdf8;
+}
+
+.copyInvisible {
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.copyInvisible:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 18px #38bdf8;
+    background: #009fe3 !important;
+}
+
+/* ================================
+   BOTONES DE ACCIONES - PREMIUM
+================================ */
+
+.btnFavorito,
+.btnCopiar,
+.favCategoria,
+.copyInvisible,
+.copyFav,
+.deleteFav{
+    flex:1;
+    min-height:44px;
+    padding:11px 16px;
+
+    border:1px solid rgba(255,255,255,.12);
     border-radius:12px;
 
-    background:linear-gradient(90deg,#00b4ff,#2563eb);
-
-    color:white;
-    font-size:15px;
+    color:#fff;
+    font-size:14px;
     font-weight:700;
 
     cursor:pointer;
 
-    transition:.25s;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+
+    position:relative;
+    overflow:hidden;
 }
 
-.copyInvisible:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 18px #38bdf8;
+/* FAVORITO */
+
+.btnFavorito,
+.favCategoria{
+    background:linear-gradient(
+        135deg,
+        #f59e0b,
+        #d97706
+    );
+
+    border-color:#fbbf24;
+    box-shadow:0 4px 12px rgba(245,158,11,.18);
 }
 
-.tituloJuego{
-    text-align:center;
-    font-size:36px;
-    margin:25px 0 35px;
-    text-shadow:0 0 15px #38bdf8;
+.btnFavorito:hover,
+.favCategoria:hover{
+    transform:translateY(-2px);
+    background:linear-gradient(
+        135deg,
+        #fbbf24,
+        #f59e0b
+    );
+
+    border-color:#fde68a;
+    box-shadow:
+        0 6px 20px rgba(245,158,11,.35),
+        0 0 10px rgba(245,158,11,.15);
+}
+
+.btnFavorito:active,
+.favCategoria:active{
+    transform:translateY(0) scale(.98);
+}
+
+
+/* COPIAR */
+
+.btnCopiar,
+.copyInvisible,
+.copyFav{
+    background:linear-gradient(
+        135deg,
+        #0ea5e9,
+        #2563eb
+    );
+
+    border-color:#38bdf8;
+    box-shadow:0 4px 12px rgba(14,165,233,.18);
+}
+
+.btnCopiar:hover,
+.copyInvisible:hover,
+.copyFav:hover{
+    transform:translateY(-2px);
+
+    background:linear-gradient(
+        135deg,
+        #38bdf8,
+        #2563eb
+    );
+
+    border-color:#7dd3fc;
+
+    box-shadow:
+        0 6px 20px rgba(14,165,233,.35),
+        0 0 10px rgba(56,189,248,.18);
+}
+
+.btnCopiar:active,
+.copyInvisible:active,
+.copyFav:active{
+    transform:translateY(0) scale(.98);
+}
+
+
+/* QUITAR FAVORITO */
+
+.deleteFav{
+    background:linear-gradient(
+        135deg,
+        #ef4444,
+        #b91c1c
+    );
+
+    border-color:#f87171;
+    box-shadow:0 4px 12px rgba(239,68,68,.15);
+}
+
+.deleteFav:hover{
+    transform:translateY(-2px);
+
+    background:linear-gradient(
+        135deg,
+        #f87171,
+        #dc2626
+    );
+
+    border-color:#fca5a5;
+
+    box-shadow:
+        0 6px 20px rgba(239,68,68,.3);
+}
+
+.deleteFav:active{
+    transform:translateY(0) scale(.98);
 }

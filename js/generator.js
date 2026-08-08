@@ -1,33 +1,41 @@
+function obtenerListaFuentes() {
+  if (Array.isArray(window.fuentes)) return window.fuentes;
+  if (Array.isArray(window.fonts)) return window.fonts;
+  return [];
+}
 
 function aplicarFuente(texto, mapa) {
-    let resultado = "";
+  let resultado = "";
 
-    for (const letra of texto) {
-        resultado += mapa[letra] || letra;
-    }
+  for (const letra of texto) {
+    resultado += mapa?.[letra] || letra;
+  }
 
-    return resultado;
+  return resultado;
 }
 
 function generarEstilos(nombre) {
-    const texto = String(nombre || "").trim();
-    if (!texto) return [];
+  const texto = String(nombre || "").trim();
+  if (!texto) return [];
 
-    const resultados = [];
-    const vistos = new Set();
+  const resultados = [];
+  const vistos = new Set();
 
-    for (const fuente of fuentes) {
-        const estilo = aplicarFuente(texto, fuente.abc);
+  for (const fuente of obtenerListaFuentes()) {
+    const mapa =
+      fuente.abc || fuente.mapa || fuente.letras || fuente.map || fuente;
 
-        if (estilo && !vistos.has(estilo)) {
-            vistos.add(estilo);
-            resultados.push({
-                fuente: fuente.nombre,
-                texto: estilo
-            });
-        }
-    }
+    const estilo = aplicarFuente(texto, mapa);
 
-    return resultados;
+    if (!estilo || vistos.has(estilo)) continue;
+
+    vistos.add(estilo);
+
+    resultados.push({
+      fuente: fuente.nombre || fuente.name || "Fuente",
+      texto: estilo,
+    });
+  }
+
+  return resultados;
 }
-

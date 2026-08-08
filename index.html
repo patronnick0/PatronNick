@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PatronNick</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -13,15 +14,22 @@
 
 <main class="app">
 
+    <!-- BARRA SUPERIOR -->
     <div id="topBar" class="top-bar">
-        <button id="btnInicio">
+
+        <button id="btnInicio" class="top-btn">
             ← Inicio
         </button>
+
     </div>
 
-    <section class="hero">
 
-        <h1 class="logo">PatronNick</h1>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+
+        <h1 class="logo">
+            PatronNick
+        </h1>
 
         <p class="subtitle">
             Generador de nombres para Free Fire, Fortnite, Roblox y más.
@@ -29,12 +37,37 @@
 
     </section>
 
-    <section class="generator">
+
+    <!-- FAVORITOS -->
+    <section id="zonaFavoritos" class="favorites-zone">
+
+        <button id="abrirFavoritos" class="btn-top">
+
+            ⭐Favoritos
+
+            <span id="contadorFavoritos">
+                (0)
+            </span>
+
+        </button>
+
+        <div
+            id="panelFavoritos"
+            class="favorites-panel"
+            style="display:none;">
+        </div>
+
+    </section>
+
+
+    <!-- GENERADOR -->
+    <section id="generator" class="generator">
 
         <input
             type="text"
             id="inputNombre"
-            placeholder="Escribe tu nombre...">
+            placeholder="Escribe tu nombre..."
+        >
 
         <button id="btnGenerar">
             Generar
@@ -44,79 +77,89 @@
 
     </section>
 
-    <h2 class="categorias">Categorías</h2>
 
-    <section class="games">
+    <!-- CATEGORÍAS -->
+    <h2 id="categorias" class="categorias">
+        Categorías
+    </h2>
 
-        <button class="game-card" id="freefireBtn">
+
+    <!-- JUEGOS -->
+    <section id="games" class="games">
+
+        <button
+            class="game-card"
+            id="freefireBtn">
+
             🔥
-            <span>Free Fire</span>
+
+            <span>
+                Free Fire
+            </span>
+
         </button>
 
+
         <button class="game-card">
+
             🎮
-            <span>Fortnite</span>
+
+            <span>
+                Fortnite
+            </span>
+
         </button>
 
+
         <button class="game-card">
+
             🟩
-            <span>Roblox</span>
+
+            <span>
+                Roblox
+            </span>
+
         </button>
 
+
         <button class="game-card">
+
             ⛏️
-            <span>Minecraft</span>
+
+            <span>
+                Minecraft
+            </span>
+
         </button>
 
     </section>
 
-    <div id="contenido" style="display:none;width:100%;max-width:820px;">
 
-        <button id="volverInicio" class="back-btn">
-            ← Volver
-        </button>
-
-        <div class="pantallaJuego">
-
-            <h2 class="tituloJuego">🔥 Free Fire</h2>
-
-            <div class="menu-juego">
-
-                <div class="modo-card">
-                    <h3>👻 Invisible</h3>
-                    <p>Crea nombres invisibles.</p>
-                    <button id="btnInvisible">Entrar</button>
-                </div>
-
-                <div class="modo-card">
-                    <h3>❤️ Parejas</h3>
-                    <p>Nombres para dúos.</p>
-                    <button id="btnParejas">Entrar</button>
-                </div>
-
-                <div class="modo-card">
-                    <h3>👑 Pro Player</h3>
-                    <p>Nombres competitivos.</p>
-                    <button id="btnPro">Entrar</button>
-                </div>
-
-                <div class="modo-card">
-                    <h3>☠️ Oscuro</h3>
-                    <p>Estilo dark.</p>
-                    <button id="btnOscuro">Entrar</button>
-                </div>
-
-            </div>
-
-        </div>
-
+    <!-- CONTENIDO DINÁMICO -->
+    <div
+        id="contenido"
+        style="display:none;width:100%;max-width:820px;">
     </div>
 
 </main>
 
+
+<!-- JAVASCRIPT -->
+
 <script src="js/fonts.js"></script>
+
 <script src="js/generator.js"></script>
+
 <script src="js/categorias.js"></script>
+
+<script src="js/favoritos.js"></script>
+
+<script src="js/cards.js"></script>
+
+<script src="js/ui.js"></script>
+
+<script src="js/freefire.js"></script>
+
 <script src="js/script.js"></script>
 
 </body>

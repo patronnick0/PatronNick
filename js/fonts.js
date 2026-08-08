@@ -1,4 +1,4 @@
-const fuentes = [
+window.fuentes = [
 
 {
     nombre: "Mathematical Bold",
