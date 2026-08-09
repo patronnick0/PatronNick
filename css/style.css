@@ -1984,3 +1984,30 @@ body::before{
     letter-spacing:.035em;
   }
 }
+
+/* =========================================================
+   FIX MÓVIL — FAVORITO DE CATEGORÍAS
+   Mantiene el botón compacto arriba a la derecha, igual que
+   las tarjetas del generador. No modifica animaciones ni JS.
+   ========================================================= */
+@media (max-width:460px){
+  #contenido .tarjetaCategoria{
+    grid-template-columns:minmax(0,1fr) auto !important;
+    grid-template-areas:
+      "name favorite"
+      "stats stats" !important;
+    align-items:center !important;
+    column-gap:10px !important;
+    row-gap:10px !important;
+  }
+
+  #contenido .favoriteInvisible{
+    justify-self:end !important;
+    align-self:start !important;
+    width:auto !important;
+    min-width:124px !important;
+    max-width:150px !important;
+    padding:8px 13px !important;
+    white-space:nowrap !important;
+  }
+}
