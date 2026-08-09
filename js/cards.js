@@ -34,7 +34,7 @@ function crearTarjetaResultado(item) {
   const botonCopiar = card.querySelector(".btnCopiar");
 
   // ⭐ FAVORITO
-  botonFavorito.addEventListener("click", () => {
+    botonFavorito.addEventListener("click", () => {
 
     if (esFavorito(item.texto)) {
 
@@ -46,10 +46,14 @@ function crearTarjetaResultado(item) {
       agregarFavorito(item.texto);
       botonFavorito.textContent = "❤️ Guardado";
 
-    }
+ }
 
     actualizarContadorFavoritos();
-  });
+
+    if (panelFavoritos.style.display === "block") {
+      renderFavoritos();
+    }
+    });
 
   // 📋 COPIAR
   renderCopiarTexto(botonCopiar, item.texto);

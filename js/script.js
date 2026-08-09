@@ -43,47 +43,56 @@ const colores = [
 
 function renderCopiarTexto(boton, texto) {
   boton.addEventListener("click", async () => {
-    await navigator.clipboard.writeText(texto);
-    boton.textContent = "✅ Copiado";
+    try {
+      await navigator.clipboard.writeText(texto);
 
-    setTimeout(() => {
-      boton.textContent = "📋 Copiar";
-    }, 1200);
+      boton.textContent = "✅ Copiado";
+
+      setTimeout(() => {
+        boton.textContent = "📋 Copiar";
+      }, 1200);
+    } catch (error) {
+      console.error("Error al copiar:", error);
+      boton.textContent = "❌ Error";
+
+      setTimeout(() => {
+        boton.textContent = "📋 Copiar";
+      }, 1200);
+    }
   });
 }
 
-function crearTarjetaResultado(item) {
-  const card = document.createElement("div");
-  const color = colores[Math.floor(Math.random() * colores.length)];
 
-  card.className = "resultado";
-  card.style.borderColor = color;
-  card.style.boxShadow = `0 0 15px ${color}55`;
+/* =========================================
+   CREAR TARJETA
+========================================= */
+
+function crearCard(item) {
+
+  const card = document.createElement("div");
+  card.className = "card";
 
   card.innerHTML = `
-        <div class="resultado-fuente" style="color:${color};">
-            👑 ${item.fuente}
-        </div>
+    <div class="textoResultado">
+      ${item.texto}
+    </div>
 
-        <div class="resultado-texto">
-            ${item.texto}
-        </div>
+    <div class="acciones">
+      <button class="btnFavorito">
+        ${esFavorito(item.texto) ? "❤️ Guardado" : "⭐ Favorito"}
+      </button>
 
-        <div class="acciones-card">
-            <button class="btnFavorito">
-                ${esFavorito(item.texto) ? "❤️ Guardado" : "⭐ Favorito"}
-            </button>
-
-            <button class="btnCopiar">
-                📋 Copiar
-            </button>
-        </div>
-    `;
+      <button class="btnCopiar">
+        📋 Copiar
+      </button>
+    </div>
+  `;
 
   const botonFavorito = card.querySelector(".btnFavorito");
   const botonCopiar = card.querySelector(".btnCopiar");
 
   botonFavorito.addEventListener("click", () => {
+
     if (esFavorito(item.texto)) {
       eliminarFavorito(item.texto);
       botonFavorito.textContent = "⭐ Favorito";
@@ -104,7 +113,13 @@ function crearTarjetaResultado(item) {
   return card;
 }
 
+
+/* =========================================
+   GENERAR
+========================================= */
+
 btnGenerar.addEventListener("click", () => {
+
   const nombre = inputNombre.value.trim();
 
   if (!nombre) {
@@ -115,15 +130,34 @@ btnGenerar.addEventListener("click", () => {
   mostrarResultados(nombre);
 });
 
+
+/* =========================================
+   ENTER PARA GENERAR
+========================================= */
+
 inputNombre.addEventListener("keydown", (e) => {
+
   if (e.key === "Enter") {
     btnGenerar.click();
   }
+
 });
 
+
+/* =========================================
+   NAVEGACIÓN
+========================================= */
+
 btnInicio.addEventListener("click", mostrarInicio);
+
 freefireBtn.addEventListener("click", mostrarFreeFire);
+
 abrirFavoritos.addEventListener("click", alternarFavoritos);
+
+
+/* =========================================
+   INICIO
+========================================= */
 
 mostrarInicio();
 actualizarContadorFavoritos();

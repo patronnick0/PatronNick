@@ -3,7 +3,8 @@ const categorias = {
     "ㅤㅤ",
     "    ",
     "ㅤㅤ ㅤㅤ ㅤㅤ",
-    "                 "
+    "                 ",
+    "              ",
   ],
 
   parejas: [
