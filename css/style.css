@@ -841,3 +841,1146 @@ body::before{
         font-size:17px !important;
     }
 }
+
+/* =========================================================
+   NUEVO DISEÑO DE MINI TARJETAS
+   ========================================================= */
+
+.resultado,
+#contenido .tarjetaCategoria {
+  width: min(100%, 640px) !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 92px !important;
+  padding: 16px 16px 14px 16px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-radius: 18px !important;
+  background: rgba(20,30,48,.82) !important;
+  cursor: pointer !important;
+}
+
+.resultado:hover,
+#contenido .tarjetaCategoria:hover {
+  transform: translateY(-2px) !important;
+}
+
+.resultado {
+  padding-top: 14px !important;
+  padding-bottom: 16px !important;
+}
+
+.resultado-fuente {
+  position: absolute !important;
+  top: 10px !important;
+  left: 14px !important;
+  right: 140px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+}
+
+.resultado-texto,
+#contenido .nombreCategoria {
+  position: absolute !important;
+  left: 16px !important;
+  right: 16px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  text-align: center !important;
+  font-size: clamp(22px, 4.5vw, 28px) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  z-index: 1 !important;
+}
+
+#contenido .nombreCategoria {
+  top: 50% !important;
+}
+
+.resultado .btnFavorito,
+#contenido .favoriteInvisible {
+  position: absolute !important;
+  top: 10px !important;
+  right: 12px !important;
+  width: auto !important;
+  min-width: 106px !important;
+  padding: 7px 10px !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  z-index: 3 !important;
+}
+
+.resultado-stats,
+#contenido .estadisticasNombre {
+  position: absolute !important;
+  left: 14px !important;
+  right: 14px !important;
+  bottom: 8px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  z-index: 2 !important;
+}
+
+.resultado-stats .copiasNombre,
+.resultado-stats .favoritosNombre,
+#contenido .copiasNombre,
+#contenido .favoritosNombre {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+.tarjetaCopiable {
+  user-select: none !important;
+}
+
+.copiadoOverlay {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  font-size: clamp(2rem, 7vw, 3.35rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  color: #e0f2fe !important;
+  text-shadow: 0 0 16px rgba(255,255,255,.9), 0 0 28px rgba(56,189,248,.95) !important;
+  background: radial-gradient(circle at center, rgba(56,189,248,.18), transparent 62%) !important;
+  opacity: 0 !important;
+  transform: scale(.82) !important;
+  pointer-events: none !important;
+  z-index: 4 !important;
+}
+
+.resultado.copiado .copiadoOverlay,
+#contenido .tarjetaCategoria.copiado .copiadoOverlay {
+  animation: copiadoEntrada 1.05s ease-out forwards !important;
+}
+
+.resultado.copiado,
+#contenido .tarjetaCategoria.copiado {
+  box-shadow: 0 0 22px rgba(56,189,248,.35) !important;
+}
+
+@keyframes copiadoEntrada {
+  0% {
+    opacity: 0;
+    transform: scale(.75);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
+
+@media (max-width:700px) {
+  .resultado,
+  #contenido .tarjetaCategoria {
+    width: 96% !important;
+    min-height: 86px !important;
+    padding: 14px 12px 12px 12px !important;
+  }
+
+  .resultado-fuente {
+    right: 116px !important;
+    font-size: 12px !important;
+  }
+
+  .resultado-texto,
+  #contenido .nombreCategoria {
+    font-size: clamp(18px, 5vw, 24px) !important;
+  }
+
+  .resultado .btnFavorito,
+  #contenido .favoriteInvisible {
+    min-width: 94px !important;
+    padding: 6px 9px !important;
+    font-size: 11px !important;
+  }
+
+  .resultado-stats,
+  #contenido .estadisticasNombre {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 7px !important;
+  }
+
+  .copiadoOverlay {
+    font-size: clamp(1.7rem, 9vw, 2.6rem) !important;
+    letter-spacing: .14em !important;
+  }
+}
+
+/* =========================================================
+   CORRECCIÓN FINAL DE LAYOUT — SIN SOLAPAMIENTOS
+   Mantiene el diseño original y reemplaza únicamente la
+   colocación absoluta conflictiva de las mini tarjetas.
+   ========================================================= */
+
+/* Separación consistente entre resultados */
+#resultados{
+  gap:12px !important;
+}
+
+/* ---------- Resultados del generador ---------- */
+#resultados .resultado{
+  width:min(100%,640px) !important;
+  min-height:0 !important;
+  padding:14px 16px !important;
+  margin:0 auto !important;
+  overflow:hidden !important;
+
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  grid-template-areas:
+    "source favorite"
+    "name name"
+    "stats stats" !important;
+  grid-template-rows:auto auto auto !important;
+  align-items:center !important;
+  column-gap:12px !important;
+  row-gap:10px !important;
+}
+
+#resultados .resultado-fuente{
+  grid-area:source !important;
+  position:static !important;
+  inset:auto !important;
+  min-width:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  white-space:nowrap !important;
+  line-height:1.3 !important;
+}
+
+#resultados .resultado .btnFavorito{
+  grid-area:favorite !important;
+  position:static !important;
+  inset:auto !important;
+  justify-self:end !important;
+  align-self:start !important;
+  width:auto !important;
+  min-width:106px !important;
+  max-width:100% !important;
+  margin:0 !important;
+  white-space:nowrap !important;
+}
+
+#resultados .resultado-texto{
+  grid-area:name !important;
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  width:100% !important;
+  min-width:0 !important;
+  min-height:44px !important;
+  padding:5px 2px !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  line-height:1.22 !important;
+  white-space:pre-wrap !important;
+  overflow-wrap:anywhere !important;
+  word-break:normal !important;
+}
+
+#resultados .resultado-stats{
+  grid-area:stats !important;
+  position:static !important;
+  inset:auto !important;
+  width:100% !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+}
+
+/* ---------- Tarjetas de categorías / Free Fire ---------- */
+#contenido .tarjetaCategoria{
+  width:min(100%,640px) !important;
+  min-height:0 !important;
+  padding:14px 16px !important;
+  margin:0 auto !important;
+  overflow:hidden !important;
+
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  grid-template-areas:
+    "name favorite"
+    "stats stats" !important;
+  grid-template-rows:auto auto !important;
+  align-items:center !important;
+  column-gap:12px !important;
+  row-gap:12px !important;
+}
+
+#contenido .nombreCategoria{
+  grid-area:name !important;
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  width:100% !important;
+  min-width:0 !important;
+  padding:4px 0 !important;
+  margin:0 !important;
+  text-align:left !important;
+  line-height:1.25 !important;
+  white-space:pre-wrap !important;
+  overflow-wrap:anywhere !important;
+  word-break:normal !important;
+}
+
+#contenido .favoriteInvisible{
+  grid-area:favorite !important;
+  position:static !important;
+  inset:auto !important;
+  justify-self:end !important;
+  align-self:start !important;
+  width:auto !important;
+  min-width:106px !important;
+  max-width:100% !important;
+  margin:0 !important;
+  white-space:nowrap !important;
+}
+
+#contenido .estadisticasNombre{
+  grid-area:stats !important;
+  position:static !important;
+  inset:auto !important;
+  width:100% !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+}
+
+/* El overlay de “copiado” sí debe seguir flotando sobre la tarjeta. */
+.resultado .copiadoOverlay,
+#contenido .tarjetaCategoria .copiadoOverlay{
+  position:absolute !important;
+  inset:0 !important;
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width:700px){
+  #resultados .resultado,
+  #contenido .tarjetaCategoria{
+    width:100% !important;
+    padding:12px !important;
+    column-gap:9px !important;
+    row-gap:9px !important;
+  }
+
+  #resultados .resultado-texto{
+    min-height:40px !important;
+    font-size:clamp(18px,5vw,23px) !important;
+  }
+
+  #contenido .nombreCategoria{
+    font-size:17px !important;
+  }
+
+  #resultados .resultado .btnFavorito,
+  #contenido .favoriteInvisible{
+    min-width:94px !important;
+    padding:6px 9px !important;
+    font-size:11px !important;
+  }
+}
+
+/* En pantallas muy estrechas, el favorito pasa a su propia fila. */
+@media (max-width:420px){
+  #resultados .resultado{
+    grid-template-columns:1fr !important;
+    grid-template-areas:
+      "source"
+      "name"
+      "favorite"
+      "stats" !important;
+  }
+
+  #contenido .tarjetaCategoria{
+    grid-template-columns:1fr !important;
+    grid-template-areas:
+      "name"
+      "favorite"
+      "stats" !important;
+  }
+
+  #resultados .resultado .btnFavorito,
+  #contenido .favoriteInvisible{
+    justify-self:stretch !important;
+    width:100% !important;
+  }
+}
+
+
+/* =========================================================
+   AJUSTE FINAL PEDIDO POR EL USUARIO
+   - Las mini tarjetas del generador quedan compactas como las de categorías.
+   - El botón favorito de categorías usa el mismo estilo “cool”.
+   - La tarjeta completa copia al tocarse y muestra una animación grande de COPIADO.
+   ========================================================= */
+
+#resultados{
+  gap: 12px !important;
+}
+
+#resultados .resultado,
+#contenido .tarjetaCategoria{
+  width:min(100%, 760px) !important;
+  margin:0 auto !important;
+  min-height:96px !important;
+  padding:14px 16px !important;
+  border-radius:18px !important;
+  border:2px solid var(--border-hover) !important;
+  background:linear-gradient(180deg, rgba(14,32,67,.92), rgba(10,28,60,.94)) !important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.06) inset, 0 10px 28px rgba(3,10,26,.24) !important;
+  overflow:hidden !important;
+  position:relative !important;
+  cursor:pointer !important;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease !important;
+}
+
+#resultados .resultado:hover,
+#contenido .tarjetaCategoria:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08) inset, 0 14px 28px rgba(4,14,36,.32), 0 0 18px rgba(56,189,248,.16) !important;
+}
+
+/* ---------- GENERADOR ---------- */
+#resultados .resultado{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  grid-template-rows:auto auto auto !important;
+  grid-template-areas:
+    "source favorite"
+    "name favorite"
+    "stats stats" !important;
+  align-items:center !important;
+  row-gap:10px !important;
+  column-gap:14px !important;
+}
+
+#resultados .resultado-fuente{
+  grid-area:source !important;
+  position:static !important;
+  inset:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  min-width:0 !important;
+  font-size:14px !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+#resultados .resultado-texto{
+  grid-area:name !important;
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  width:100% !important;
+  min-width:0 !important;
+  min-height:34px !important;
+  padding:0 !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  font-size:clamp(25px, 4.6vw, 34px) !important;
+  font-weight:900 !important;
+  line-height:1.05 !important;
+  white-space:pre-wrap !important;
+  overflow-wrap:anywhere !important;
+  word-break:break-word !important;
+  text-shadow:0 2px 8px rgba(0,0,0,.45) !important;
+}
+
+#resultados .resultado-stats,
+#contenido .estadisticasNombre{
+  position:static !important;
+  inset:auto !important;
+  margin:0 !important;
+  width:100% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+  color:#ecf4ff !important;
+}
+
+#resultados .resultado-stats .copiasNombre,
+#resultados .resultado-stats .favoritosNombre,
+#contenido .copiasNombre,
+#contenido .favoritosNombre{
+  font-size:13px !important;
+  font-weight:700 !important;
+  opacity:.97 !important;
+}
+
+/* ---------- CATEGORÍAS ---------- */
+#contenido .listaInvisible{
+  width:min(100%, 760px) !important;
+  margin:0 auto !important;
+  gap:12px !important;
+}
+
+#contenido .tarjetaCategoria{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  grid-template-rows:auto auto !important;
+  grid-template-areas:
+    "name favorite"
+    "stats stats" !important;
+  align-items:center !important;
+  row-gap:12px !important;
+  column-gap:14px !important;
+}
+
+#contenido .nombreCategoria{
+  grid-area:name !important;
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  text-align:left !important;
+  font-size:clamp(26px, 4.4vw, 34px) !important;
+  font-weight:900 !important;
+  line-height:1.05 !important;
+  white-space:pre-wrap !important;
+  overflow-wrap:anywhere !important;
+  word-break:break-word !important;
+  text-shadow:0 2px 8px rgba(0,0,0,.45) !important;
+}
+
+/* ---------- FAVORITOS “COOL” PARA AMBAS ---------- */
+#resultados .resultado .btnFavorito,
+#contenido .favoriteInvisible{
+  grid-area:favorite !important;
+  justify-self:end !important;
+  align-self:start !important;
+  position:static !important;
+  inset:auto !important;
+  width:auto !important;
+  min-width:128px !important;
+  max-width:100% !important;
+  padding:9px 14px !important;
+  border-radius:999px !important;
+  border:2px solid rgba(255,183,206,.92) !important;
+  background:linear-gradient(180deg, rgba(255,246,216,.92), rgba(255,231,166,.82)) !important;
+  color:#6d4600 !important;
+  font-size:14px !important;
+  font-weight:900 !important;
+  letter-spacing:.01em !important;
+  box-shadow:0 0 0 2px rgba(72,31,81,.18) inset, 0 6px 16px rgba(0,0,0,.16) !important;
+}
+
+#resultados .resultado .btnFavorito:hover,
+#contenido .favoriteInvisible:hover{
+  transform:translateY(-2px) scale(1.01) !important;
+  border-color:#ffd4e9 !important;
+  box-shadow:0 0 0 2px rgba(72,31,81,.2) inset, 0 10px 20px rgba(0,0,0,.2), 0 0 16px rgba(255,186,220,.24) !important;
+}
+
+#resultados .resultado .btnFavorito:active,
+#contenido .favoriteInvisible:active{
+  transform:translateY(0) scale(.985) !important;
+}
+
+/* ---------- Overlay de copiado ---------- */
+.tarjetaCopiable{
+  user-select:none !important;
+}
+
+.copiadoOverlay{
+  position:absolute !important;
+  inset:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  font-size:clamp(2.6rem, 8vw, 4.4rem) !important;
+  font-weight:1000 !important;
+  line-height:1 !important;
+  letter-spacing:.08em !important;
+  text-transform:uppercase !important;
+  color:#f8fdff !important;
+  text-shadow:0 0 14px rgba(255,255,255,.92), 0 0 26px rgba(56,189,248,.9), 0 2px 10px rgba(0,0,0,.45) !important;
+  background:radial-gradient(circle at center, rgba(56,189,248,.32) 0%, rgba(56,189,248,.18) 28%, rgba(56,189,248,0) 66%) !important;
+  opacity:0 !important;
+  transform:scale(.82) !important;
+  pointer-events:none !important;
+  z-index:9 !important;
+}
+
+.tarjetaCopiable.copiado{
+  animation:tarjetaCopiadaPulso .78s ease !important;
+}
+
+.tarjetaCopiable.copiado .copiadoOverlay{
+  animation:overlayCopiado .9s ease-in-out forwards !important;
+}
+
+@keyframes tarjetaCopiadaPulso{
+  0%{ transform:scale(1); }
+  34%{ transform:scale(1.015); }
+  100%{ transform:scale(1); }
+}
+
+@keyframes overlayCopiado{
+  0%{ opacity:0; transform:scale(.75); }
+  18%{ opacity:1; transform:scale(1.02); }
+  68%{ opacity:1; transform:scale(1); }
+  100%{ opacity:0; transform:scale(1.08); }
+}
+
+@media (max-width:700px){
+  #resultados .resultado,
+  #contenido .tarjetaCategoria{
+    width:100% !important;
+    min-height:88px !important;
+    padding:12px !important;
+    column-gap:10px !important;
+    row-gap:10px !important;
+  }
+
+  #resultados .resultado-texto,
+  #contenido .nombreCategoria{
+    font-size:clamp(20px, 6vw, 28px) !important;
+  }
+
+  #resultados .resultado .btnFavorito,
+  #contenido .favoriteInvisible{
+    min-width:112px !important;
+    padding:8px 12px !important;
+    font-size:12px !important;
+  }
+
+  .copiadoOverlay{
+    font-size:clamp(2rem, 10vw, 3.25rem) !important;
+    letter-spacing:.05em !important;
+  }
+}
+
+@media (max-width:460px){
+  #resultados .resultado,
+  #contenido .tarjetaCategoria{
+    grid-template-columns:1fr !important;
+  }
+
+  #resultados .resultado{
+    grid-template-areas:
+      "source"
+      "name"
+      "favorite"
+      "stats" !important;
+  }
+
+  #contenido .tarjetaCategoria{
+    grid-template-areas:
+      "name"
+      "favorite"
+      "stats" !important;
+  }
+
+  #resultados .resultado .btnFavorito,
+  #contenido .favoriteInvisible{
+    justify-self:stretch !important;
+    width:100% !important;
+  }
+}
+
+
+/* =========================================================
+   RETOQUE FINAL 2
+   - Tarjetas del generador más compactas, al estilo de categorías.
+   - Botón favorito más profesional, brillante y con efecto al tocar.
+   ========================================================= */
+
+/* GENERADOR más compacto */
+#resultados .resultado{
+  width:min(100%, 740px) !important;
+  min-height:78px !important;
+  padding:10px 14px !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  grid-template-areas:
+    "source favorite"
+    "name favorite"
+    "stats stats" !important;
+  row-gap:6px !important;
+  column-gap:12px !important;
+}
+
+#resultados .resultado-fuente{
+  font-size:12px !important;
+  line-height:1.1 !important;
+}
+
+#resultados .resultado-texto{
+  min-height:0 !important;
+  font-size:clamp(18px, 3vw, 24px) !important;
+  line-height:1 !important;
+  padding:0 !important;
+}
+
+#resultados .resultado-stats{
+  margin-top:1px !important;
+}
+
+#resultados .resultado-stats .copiasNombre,
+#resultados .resultado-stats .favoritosNombre{
+  font-size:12px !important;
+}
+
+/* Favorito premium */
+#resultados .resultado .btnFavorito,
+#contenido .favoriteInvisible{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+  min-width:138px !important;
+  padding:9px 16px !important;
+  border:1px solid rgba(255,255,255,.42) !important;
+  background:
+    linear-gradient(180deg, rgba(255,252,240,.98) 0%, rgba(255,233,156,.96) 55%, rgba(255,209,105,.92) 100%) !important;
+  color:#6c4300 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -2px 6px rgba(194,116,0,.18),
+    0 8px 18px rgba(8,14,30,.22),
+    0 0 0 2px rgba(255, 205, 95, .18) !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.65) !important;
+}
+
+#resultados .resultado .btnFavorito::before,
+#contenido .favoriteInvisible::before{
+  content:"";
+  position:absolute;
+  top:-55%;
+  left:-35%;
+  width:44%;
+  height:210%;
+  transform:rotate(24deg);
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.18) 38%, rgba(255,255,255,.88) 50%, rgba(255,255,255,.15) 62%, rgba(255,255,255,0) 100%);
+  opacity:.85;
+  z-index:-1;
+  transition:transform .55s ease, left .55s ease, opacity .25s ease;
+}
+
+#resultados .resultado .btnFavorito::after,
+#contenido .favoriteInvisible::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));
+  pointer-events:none;
+  z-index:-1;
+}
+
+#resultados .resultado .btnFavorito:hover,
+#contenido .favoriteInvisible:hover{
+  transform:translateY(-2px) scale(1.02) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -2px 6px rgba(194,116,0,.22),
+    0 12px 24px rgba(8,14,30,.24),
+    0 0 18px rgba(255,221,118,.45),
+    0 0 0 2px rgba(255, 206, 99, .22) !important;
+}
+
+#resultados .resultado .btnFavorito:hover::before,
+#contenido .favoriteInvisible:hover::before,
+#resultados .resultado .btnFavorito.fav-clicked::before,
+#contenido .favoriteInvisible.fav-clicked::before{
+  left:112%;
+}
+
+#resultados .resultado .btnFavorito:active,
+#contenido .favoriteInvisible:active{
+  transform:translateY(0) scale(.98) !important;
+}
+
+#resultados .resultado .btnFavorito.favorito-activo,
+#contenido .favoriteInvisible.favorito-activo{
+  color:#8a1f3d !important;
+  background:
+    linear-gradient(180deg, rgba(255,248,251,.98) 0%, rgba(255,219,232,.96) 52%, rgba(255,181,204,.92) 100%) !important;
+  border-color:rgba(255,225,236,.88) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -2px 7px rgba(179,48,105,.18),
+    0 10px 22px rgba(8,14,30,.22),
+    0 0 22px rgba(255,134,186,.36),
+    0 0 0 2px rgba(255,167,202,.18) !important;
+}
+
+#resultados .resultado .btnFavorito.fav-clicked,
+#contenido .favoriteInvisible.fav-clicked{
+  animation:favTapPulse .5s ease !important;
+}
+
+@keyframes favTapPulse{
+  0%{ transform:scale(1); }
+  35%{ transform:scale(1.08); }
+  70%{ transform:scale(.97); }
+  100%{ transform:scale(1); }
+}
+
+@media (max-width:700px){
+  #resultados .resultado{
+    min-height:74px !important;
+    padding:9px 11px !important;
+    row-gap:5px !important;
+  }
+
+  #resultados .resultado-texto{
+    font-size:clamp(17px, 4.6vw, 22px) !important;
+  }
+
+  #resultados .resultado .btnFavorito,
+  #contenido .favoriteInvisible{
+    min-width:124px !important;
+    padding:8px 13px !important;
+    font-size:12px !important;
+  }
+}
+
+
+/* =========================================================
+   HOTFIX COPIADO
+   - Evita que la tarjeta del generador se oculte al copiar.
+   - Mantiene la tarjeta siempre visible.
+   - Overlay "COPIADO" más profesional con entrada y salida.
+   ========================================================= */
+
+#resultados .resultado,
+#contenido .tarjetaCategoria,
+#resultados .resultado.copiado,
+#contenido .tarjetaCategoria.copiado{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+
+#resultados .resultado.copiado,
+#contenido .tarjetaCategoria.copiado{
+  animation:none !important;
+  transform:none !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08) inset,
+    0 0 0 2px rgba(85, 214, 255, .30),
+    0 14px 30px rgba(4,14,36,.30),
+    0 0 24px rgba(56,189,248,.22) !important;
+}
+
+#resultados .resultado .copiadoOverlay,
+#contenido .tarjetaCategoria .copiadoOverlay{
+  backdrop-filter: blur(1.4px);
+  background:
+    radial-gradient(circle at center, rgba(89, 214, 255, .34) 0%, rgba(89, 214, 255, .20) 24%, rgba(89, 214, 255, .08) 42%, rgba(89, 214, 255, 0) 68%),
+    linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.06) 45%, rgba(255,255,255,.12) 50%, rgba(255,255,255,.06) 55%, rgba(255,255,255,0) 100%) !important;
+  font-size:clamp(2.5rem, 8vw, 4.2rem) !important;
+  font-weight:1000 !important;
+  letter-spacing:.12em !important;
+  color:#ffffff !important;
+  text-shadow:
+    0 0 10px rgba(255,255,255,.98),
+    0 0 20px rgba(56,189,248,.92),
+    0 0 34px rgba(56,189,248,.72),
+    0 3px 12px rgba(0,0,0,.42) !important;
+}
+
+.tarjetaCopiable.copiado .copiadoOverlay{
+  animation:copiadoOverlayPro .82s cubic-bezier(.2,.78,.2,1) forwards !important;
+}
+
+@keyframes copiadoOverlayPro{
+  0%{
+    opacity:0;
+    transform:scale(.70) translateY(12px);
+    letter-spacing:.28em;
+    filter:blur(6px);
+  }
+  18%{
+    opacity:1;
+    transform:scale(1.03) translateY(0);
+    letter-spacing:.12em;
+    filter:blur(0);
+  }
+  68%{
+    opacity:1;
+    transform:scale(1) translateY(0);
+    letter-spacing:.12em;
+    filter:blur(0);
+  }
+  100%{
+    opacity:0;
+    transform:scale(1.08) translateY(-8px);
+    letter-spacing:.18em;
+    filter:blur(2px);
+  }
+}
+
+@media (max-width:700px){
+  #resultados .resultado .copiadoOverlay,
+  #contenido .tarjetaCategoria .copiadoOverlay{
+    font-size:clamp(1.9rem, 10vw, 3rem) !important;
+    letter-spacing:.08em !important;
+  }
+}
+
+
+/* =========================================================
+   FIX DEFINITIVO OVERLAY COPIADO
+   - Usa una clase directa en el overlay para garantizar que se vea.
+   - Dura ~3 segundos y ocupa casi toda la mini tarjeta.
+   ========================================================= */
+
+#resultados .resultado.copiado-activo,
+#contenido .tarjetaCategoria.copiado-activo{
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08) inset,
+    0 0 0 2px rgba(85,214,255,.34),
+    0 16px 30px rgba(4,14,36,.32),
+    0 0 26px rgba(56,189,248,.24) !important;
+}
+
+#resultados .resultado .copiadoOverlay,
+#contenido .tarjetaCategoria .copiadoOverlay{
+  position:absolute !important;
+  inset:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  padding:10px !important;
+  visibility:hidden !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  z-index:50 !important;
+  border-radius:inherit !important;
+  backdrop-filter:blur(2px);
+  background:
+    radial-gradient(circle at center, rgba(95,228,255,.32) 0%, rgba(95,228,255,.18) 28%, rgba(95,228,255,.08) 48%, rgba(95,228,255,0) 72%),
+    linear-gradient(180deg, rgba(4,18,40,.18), rgba(4,18,40,.12)) !important;
+  font-size:clamp(2.9rem, 8.5vw, 4.9rem) !important;
+  font-weight:1000 !important;
+  line-height:1 !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  color:#ffffff !important;
+  text-shadow:
+    0 0 10px rgba(255,255,255,.98),
+    0 0 20px rgba(56,189,248,.96),
+    0 0 34px rgba(56,189,248,.76),
+    0 3px 12px rgba(0,0,0,.42) !important;
+}
+
+#resultados .resultado .copiadoOverlay.copiado-visible,
+#contenido .tarjetaCategoria .copiadoOverlay.copiado-visible{
+  visibility:visible !important;
+  animation:copiadoOverlayVisible 3s cubic-bezier(.2,.78,.2,1) forwards !important;
+}
+
+@keyframes copiadoOverlayVisible{
+  0%{
+    opacity:0;
+    transform:scale(.68) translateY(18px);
+    letter-spacing:.30em;
+    filter:blur(7px);
+  }
+  12%{
+    opacity:1;
+    transform:scale(1.03) translateY(0);
+    letter-spacing:.12em;
+    filter:blur(0);
+  }
+  78%{
+    opacity:1;
+    transform:scale(1) translateY(0);
+    letter-spacing:.12em;
+    filter:blur(0);
+  }
+  100%{
+    opacity:0;
+    transform:scale(1.08) translateY(-12px);
+    letter-spacing:.20em;
+    filter:blur(3px);
+  }
+}
+
+@media (max-width:700px){
+  #resultados .resultado .copiadoOverlay,
+  #contenido .tarjetaCategoria .copiadoOverlay{
+    font-size:clamp(2rem, 11vw, 3.2rem) !important;
+    letter-spacing:.08em !important;
+    padding:8px !important;
+  }
+}
+
+
+/* =========================================================
+   COPIADO — SOLUCIÓN SIN CONFLICTOS DE !important
+   El overlay se hace visible de forma directa y la animación
+   vive en un hijo (.copiadoTexto), por lo que ninguna regla
+   antigua de opacity/transform puede ocultar la palabra.
+   ========================================================= */
+
+#resultados .resultado .copiadoOverlay.copiado-visible,
+#contenido .tarjetaCategoria .copiadoOverlay.copiado-visible{
+  visibility:visible !important;
+  opacity:1 !important;
+  transform:none !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at center, rgba(80,223,255,.30) 0%, rgba(30,174,255,.15) 36%, rgba(4,18,40,.20) 72%),
+    rgba(4,15,35,.20) !important;
+  box-shadow:inset 0 0 34px rgba(74,220,255,.13) !important;
+}
+
+#resultados .resultado.copiado-activo,
+#contenido .tarjetaCategoria.copiado-activo{
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+  animation:none !important;
+}
+
+.copiadoTexto{
+  position:relative;
+  z-index:3;
+  display:block;
+  width:100%;
+  padding:0 8px;
+  text-align:center;
+  white-space:nowrap;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(3rem, 8.7vw, 5.25rem);
+  font-weight:1000;
+  line-height:.92;
+  letter-spacing:.055em;
+  color:#fff;
+  opacity:0;
+  transform:translateY(16px) scale(.72);
+  filter:blur(7px);
+  text-shadow:
+    0 0 8px rgba(255,255,255,1),
+    0 0 18px rgba(103,231,255,.98),
+    0 0 34px rgba(0,187,255,.82),
+    0 4px 14px rgba(0,0,0,.46);
+  will-change:transform,opacity,filter,letter-spacing;
+}
+
+.copiadoTexto.copiado-texto-activo{
+  animation:copiadoTextoProfesional 3s cubic-bezier(.18,.78,.2,1) both !important;
+}
+
+#resultados .resultado .copiadoOverlay.copiado-visible::after,
+#contenido .tarjetaCategoria .copiadoOverlay.copiado-visible::after{
+  content:"";
+  position:absolute;
+  top:-35%;
+  left:-32%;
+  width:28%;
+  height:170%;
+  z-index:2;
+  pointer-events:none;
+  transform:rotate(18deg);
+  background:linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.10) 30%,
+    rgba(255,255,255,.70) 50%,
+    rgba(255,255,255,.10) 70%,
+    rgba(255,255,255,0) 100%);
+  animation:copiadoBrilloProfesional 3s ease-in-out both !important;
+}
+
+@keyframes copiadoTextoProfesional{
+  0%{
+    opacity:0;
+    transform:translateY(16px) scale(.72);
+    filter:blur(7px);
+    letter-spacing:.20em;
+  }
+  10%{
+    opacity:1;
+    transform:translateY(0) scale(1.06);
+    filter:blur(0);
+    letter-spacing:.055em;
+  }
+  16%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+  }
+  78%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+    letter-spacing:.055em;
+  }
+  90%{
+    opacity:1;
+    transform:translateY(-2px) scale(1.04);
+    filter:blur(0);
+  }
+  100%{
+    opacity:0;
+    transform:translateY(-15px) scale(1.12);
+    filter:blur(6px);
+    letter-spacing:.13em;
+  }
+}
+
+@keyframes copiadoBrilloProfesional{
+  0%, 12%{ left:-32%; opacity:0; }
+  20%{ opacity:.8; }
+  43%{ left:112%; opacity:.45; }
+  52%,100%{ left:112%; opacity:0; }
+}
+
+@media (max-width:700px){
+  .copiadoTexto{
+    font-size:clamp(2rem, 11vw, 3.35rem);
+    letter-spacing:.035em;
+  }
+}

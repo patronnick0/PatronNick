@@ -81,15 +81,10 @@ function crearCard(item) {
       <button class="btnFavorito">
         ${esFavorito(item.texto) ? "❤️ Guardado" : "⭐ Favorito"}
       </button>
-
-      <button class="btnCopiar">
-        📋 Copiar
-      </button>
     </div>
   `;
 
   const botonFavorito = card.querySelector(".btnFavorito");
-  const botonCopiar = card.querySelector(".btnCopiar");
 
   botonFavorito.addEventListener("click", () => {
 
@@ -107,8 +102,6 @@ function crearCard(item) {
       renderFavoritos();
     }
   });
-
-  renderCopiarTexto(botonCopiar, item.texto);
 
   return card;
 }
