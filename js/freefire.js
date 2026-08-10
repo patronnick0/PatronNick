@@ -143,6 +143,10 @@ function crearMenuFreeFire() {
 
 function mostrarFreeFire() {
 
+  if (typeof ocultarAvisoNombresNuevos === "function") {
+    ocultarAvisoNombresNuevos();
+  }
+
   topBar.classList.add("show");
 
 

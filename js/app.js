@@ -295,6 +295,7 @@ function generarEstilos(nombre) {
   return resultados;
 }
 
+
 /* === categorias.js === */
 const categorias = {
   invisible: [
@@ -310,6 +311,18 @@ const categorias = {
     "     ",
     "           ",
     "        ",
+    "         ",
+    "         ",
+    "               ",
+    "                ",
+    "          ",
+    "                         ",
+    "               ",
+    "                     ",
+    "              ",
+    "           ", 
+    "          ",
+    "                     ",
   ],
 
   parejas: [
@@ -322,6 +335,19 @@ const categorias = {
     "✿Dɪᴀʙʟᴀ爱                                  ✿Dɪᴀʙʟo爱",
     "⸙ ʏᴏ ᴍᴀᴛᴏ ꨄ︎                                 ⸙ ʏᴏ ʟᴜᴛᴇᴏ ꨄ︎",
     "➳ᴹᴿ᭄ᴺ ᴬ ᴿ ᵁ ᵀ ᴼ⁂                           ➳ᴹᴿ᭄ᴴ ᴵ ᴺ ᴬ ᵀ ᴬ⁂",
+    "ටᴘ┋ㅤToxicoㅤMvp                             ටᴘ┋ㅤToxicaㅤMvp",
+    "ΨㅤBotsitoএ                                                    ΨㅤBotsitaএ",
+    "ReyㅤH4CK                                         ReinaㅤH4CK",
+    "Kingㅤツ                                               Queenㅤツ",
+    "এㅤDios⁹⁹⁹                                            এㅤDiosa⁹⁹⁹",
+    "〆ㅤPatronㅤჯ                                                      〆ㅤPatronaㅤჯ",
+    "•ㅤBebesitaㅤあ                                                   •ㅤBebesitoㅤあ",
+    "777ㅤDiabloㅤ⁂                                   777ㅤDiablaㅤ⁂ ",
+    "Sicarioﾠみ                                             Sicariaﾠみ",
+    "是ㅤLunatico                                           是ㅤLunatica",
+    "༄Nena ࿐                                              ༄Neno ࿐",
+    "もㅤAsesinoㅤzZz                                    もㅤAsesinaㅤzZz",
+    "㋦ㅤPapiღ                                          ㋦ㅤMamiღ",
   ],
 
   pro: [
@@ -343,17 +369,59 @@ const categorias = {
     "⸙모┊ Rɪᴄᴏ꫟",
     "⸙모┊ Kᴏᴡᴀʟsᴋɪ꫟",
     "⸙모┊ Sᴋɪᴘᴘᴇʀ꫟",
+    "𝙈𝙏𝙓ㅤ 𝙋𝙇𝘼𝙔𝙀𝙍²™",
+    "Oɴʟʏㅤz!xuㅤ모 zZz",
+    "⸙𝐁𝐫𝐱𝐳𝐳 𝐙𝐱𝐭",
+    "◤𝑭𝑹𝑬𝑬𝑺𝑻𝒀𝑳𝑬𝑹 ꔪ",
+    "!Z4X_444¿?..",
+    "愛4x Syrxxx ꔪ 모",
+    "愛4x aimbot ꔪ 모",
+    "𝐅𝐫𝐱𝐙𝐳 𝐙𝐱𝐭ㅤ 모",
+    "╰‿╯ 모",
+    "ㅤ!! Ꭾʀɪᴍᴇ 7 eXe 모",
+    "Ꭼꪝʀㅤz!xuㅤ모",
+    "Ⓥ┊Aʀᴇs 모",
+    "Ⓥ┊Ｖｉｐｅｒ 모",
+    "L-ᴢᴀᴄᴋ 모",
+    "Ⓥ┊LOBO 모",
+    "모ㅤMᴀxɪᴍᴏㅤ¿?",
+    "あㅤL-MEX1ㅤ!",
+    "あ L-Nexxㅤメ",
+    "LilㅤLpxxxㅤ⸸",
+    "ᴳᴰ┇twoㅤჯ",
+    "夂ʟ-ɢᴀɴɢㅤ〆",
+    "ᴘᴀɪɴㅤ×͜×",
+    "DㅤMIㅤTIOㅤ†"
   ],
 
   oscuro: [
     "╰‿╯ㅤϟＴＥＲＲＯＲ†",
+    "모ㅤPϟNGONㅤメ",
+    "みㅤZAIKO→㊝",
     "༄ᶦᶰᵈ᭄✿ᴮᴬᴰʙᴏʏツ",
     "亗 𝚁 𝙾 𝙻 𝙴 𝚇  ☯︎",
     "༄●⃝ᶫᵒꪜe☯ᴮᴼᵞ࿐",
     "꧁༒Ǥ₳₦ǤֆƬᏋЯ༒꧂",
-    "ᴰᵃʳᵏ✯ℓoνεяﮩ٨ـﮩﮩ٨ـ♥⃝🖤",
+    "ᴰᵃʳᵏ✯ℓoνεяﮩ٨ـﮩﮩ٨ـ♥⃝",
     "☯ƤℜɆĐ₳₮Øℜ☯",
     "ঔৣ✞𝕯𝖆𝖗𝖐✞™❦",
+    "ㅤ×͜×〲 ☞ 𝙰𝙻𝙾𝙽𝙴 𝙱𝙾𝚈 🅥,",
+    "●⃝ʀs̸᭄☞ᴳᶹʳᶹ᭄●",
+    "ᴬᴸᶜ〲❾❾❾+㊊ϡᴶᴿ",
+    "꧁༺₦Ї₦ℑ₳༻꧂",
+    "★!Ꭾʀɪᴍᴇ«»〆ᶻᴱᴿᴼ☯",
+    "ㅤ⸙ㅤ𝙛𝙧𝙚𝙭𝙮𝙮",
+    "W1n !Shadow愛",
+    "Fx !    ✓ Ꭺᴜʀᴀㅤ!!!ㅤ",
+    "ㅤ⸙ㅤ𝙛𝙧𝙚𝙭𝙮𝙮? 爱𝘇𝗭",
+    "༒ㅤS么KURAㅤ༒",
+    "—͞Xʏ𝖈ʟ🇴‌ɴᴇ ⸙",
+    "ᴹᴿʟ-ʜᴀᴄᴋ⚜︎┊ᵐᵒᵛⁱˡ",
+    "Fx. Respect🗿",
+    "🅥ㅤᴠɪᴋɪɴɢᴏ",
+    "〆ｐａｔｒｏｎㅤ¿?",
+    "Zzzㅤᴍᴏᴅɪㅤ¿?",
+
   ]
 };
 
@@ -398,6 +466,7 @@ function eliminarFavorito(nombre) {
   guardarFavoritos();
   return favoritos.length !== antes;
 }
+
 
 /* === cards.js === */
 function crearTarjetaResultado(item) {
@@ -490,6 +559,7 @@ function crearTarjetaResultado(item) {
   return card;
 }
 
+
 /* === ui.js === */
 function actualizarContadorFavoritos() {
   if (typeof contadorFavoritos === "undefined" || !contadorFavoritos) return;
@@ -536,6 +606,52 @@ function limpiarResultados() {
 }
 
 
+/* =========================================
+   AVISO TEMPORAL: NUEVOS NOMBRES
+   Visible durante 48 horas desde esta actualización.
+========================================= */
+const NUEVOS_NOMBRES_EXPIRA = Date.parse("2026-08-12T21:55:00Z");
+
+function ocultarAvisoNombresNuevos() {
+  const aviso = document.getElementById("newNamesNotice");
+  if (aviso) aviso.style.display = "none";
+}
+
+function actualizarAvisoNombresNuevos() {
+  const aviso = document.getElementById("newNamesNotice");
+  if (!aviso) return;
+
+  const sigueActivo = Date.now() < NUEVOS_NOMBRES_EXPIRA;
+
+  // Siempre vuelve a mostrarse al entrar al inicio mientras siga activo.
+  aviso.style.display = sigueActivo ? "flex" : "none";
+
+  if (sigueActivo && !aviso._expiraTimeout) {
+    const restante = Math.max(0, NUEVOS_NOMBRES_EXPIRA - Date.now());
+    aviso._expiraTimeout = window.setTimeout(
+      ocultarAvisoNombresNuevos,
+      restante
+    );
+  }
+
+  if (aviso.dataset.inicializado === "true") return;
+  aviso.dataset.inicializado = "true";
+
+  const cerrar = aviso.querySelector(".new-names-close");
+  const explorar = aviso.querySelector(".new-names-action");
+
+  cerrar?.addEventListener("click", () => {
+    ocultarAvisoNombresNuevos();
+  });
+
+  explorar?.addEventListener("click", () => {
+    if (typeof mostrarFreeFire === "function") {
+      mostrarFreeFire();
+    }
+  });
+}
+
+
 function mostrarInicio() {
 
   const siteFooter = document.getElementById("siteFooter");
@@ -550,6 +666,9 @@ function mostrarInicio() {
   if (infoHome) {
     infoHome.style.display = "block";
   }
+
+
+  actualizarAvisoNombresNuevos();
 
 
   /*
@@ -1018,24 +1137,68 @@ async function actualizarEstadisticaResultado(nombre) {
 }
 
 
-function crearTarjetaCategoria(nombre) {
+
+function escaparHtml(texto) {
+  return String(texto ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function separarNombrePareja(nombre) {
+  const texto = String(nombre ?? "").trim();
+
+  if (!texto) return [];
+
+  // Formato recomendado para nombres nuevos: "Duo || Dua".
+  let partes = texto.split(/\s*\|\|\s*/).filter(Boolean);
+
+  // Compatibilidad con los nombres antiguos que fueron separados con muchos espacios.
+  if (partes.length < 2) {
+    partes = texto.split(/ {3,}/).map((parte) => parte.trim()).filter(Boolean);
+  }
+
+  if (partes.length < 2) return [texto];
+
+  return [partes[0], partes.slice(1).join(" ")];
+}
+
+function obtenerTextoCopiaPareja(nombre) {
+  const partes = separarNombrePareja(nombre);
+  return partes.length > 1 ? partes.join("\n") : String(nombre ?? "").trim();
+}
+
+function crearTarjetaCategoria(nombre, opciones = {}) {
+
+  const esPareja = Boolean(opciones.esPareja);
+  const partesPareja = esPareja ? separarNombrePareja(nombre) : [];
+
+  const nombreVisual = esPareja && partesPareja.length > 1
+    ? partesPareja
+        .map((parte) => `<span class="pareja-linea">${escaparHtml(parte)}</span>`)
+        .join("")
+    : escaparHtml(nombre);
+
+  const nombreAtributo = escaparHtml(nombre);
 
   return `
     <div
-      class="itemInvisible tarjetaCategoria tarjetaCopiable"
-      data-nombre="${nombre}"
+      class="itemInvisible tarjetaCategoria tarjetaCopiable ${esPareja ? "pareja-card" : ""}"
+      data-nombre="${nombreAtributo}"
     >
 
       <button
         class="favoriteInvisible"
-        data-text="${nombre}"
+        data-text="${nombreAtributo}"
         type="button"
       >
         ${esFavorito(nombre) ? "❤️ Favorito" : "⭐ Favorito"}
       </button>
 
-      <div class="nombreCategoria">
-        ${nombre}
+      <div class="nombreCategoria ${esPareja ? "pareja-nombre" : ""}">
+        ${nombreVisual}
       </div>
 
       <div class="estadisticasNombre">
@@ -1130,6 +1293,9 @@ async function mostrarResultados(nombre) {
   if (infoHome) {
     infoHome.style.display = "none";
   }
+
+
+  ocultarAvisoNombresNuevos();
 
 
   topBar.classList.add("show");
@@ -1234,6 +1400,13 @@ async function mostrarResultados(nombre) {
 
 function renderCategoria(tituloCategoria, nombres) {
 
+  const esCategoriaParejas = /parejas/i.test(String(tituloCategoria ?? ""));
+  const nombresVisibles = esCategoriaParejas
+    ? nombres.filter((nombre) => String(nombre ?? "").trim())
+    : nombres;
+
+  ocultarAvisoNombresNuevos();
+
   topBar.classList.remove("show");
 
 
@@ -1279,10 +1452,10 @@ function renderCategoria(tituloCategoria, nombres) {
       </h2>
 
       <div class="listaInvisible">
-        ${nombres
+        ${nombresVisibles
           .map(
             (nombre) =>
-              crearTarjetaCategoria(nombre)
+              crearTarjetaCategoria(nombre, { esPareja: esCategoriaParejas })
           )
           .join("")}
       </div>
@@ -1326,10 +1499,14 @@ function renderCategoria(tituloCategoria, nombres) {
 
           try {
 
+            const textoParaCopiar = esCategoriaParejas
+              ? obtenerTextoCopiaPareja(nombre)
+              : nombre;
+
             const correcto =
               await copiarTarjetaInteractiva(
                 tarjeta,
-                nombre
+                textoParaCopiar
               );
 
 
@@ -1514,6 +1691,8 @@ function renderCategoria(tituloCategoria, nombres) {
 
 
 function renderFavoritos() {
+
+  ocultarAvisoNombresNuevos();
 
   abrirFavoritos.style.display =
     "none";
@@ -2029,6 +2208,7 @@ function actualizarEstadisticasCategoriaEnSegundoPlano(nombres) {
 // La caché local se hidrata de forma síncrona al cargar el script.
 cargarCacheRankingLocal();
 
+
 /* === freefire.js === */
 function crearMenuFreeFire() {
   contenido.innerHTML = `
@@ -2174,6 +2354,10 @@ function crearMenuFreeFire() {
 
 
 function mostrarFreeFire() {
+
+  if (typeof ocultarAvisoNombresNuevos === "function") {
+    ocultarAvisoNombresNuevos();
+  }
 
   topBar.classList.add("show");
 
