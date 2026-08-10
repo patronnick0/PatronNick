@@ -155,10 +155,16 @@ abrirFavoritos.addEventListener("click", alternarFavoritos);
 mostrarInicio();
 actualizarContadorFavoritos();
 
-// Empieza a preparar las estadísticas apenas carga la web, pero nunca
-// bloquea la interfaz ni la entrada a una categoría.
-setTimeout(() => {
+// Prepara estadísticas en segundo plano cuando el navegador queda libre.
+// Si el usuario entra antes a una categoría, esa vista inicia la misma precarga.
+function prepararRankingEnSegundoPlano() {
   if (typeof iniciarPrecargaRankingCategorias === "function") {
     iniciarPrecargaRankingCategorias();
   }
-}, 40);
+}
+
+if ("requestIdleCallback" in window) {
+  window.requestIdleCallback(prepararRankingEnSegundoPlano, { timeout: 1800 });
+} else {
+  setTimeout(prepararRankingEnSegundoPlano, 900);
+}

@@ -4228,24 +4228,3 @@ body::after{
     transition-duration:.01ms !important;
   }
 }
-
-/* PN PROFILE ICON FIX */
-.brand-mark{
-  width:90px !important;
-  height:90px !important;
-  object-fit:cover !important;
-  border:0 !important;
-  border-radius:24px !important;
-  background:#020617 !important;
-  box-shadow:
-    0 12px 30px rgba(0,5,18,.34),
-    0 0 20px rgba(36,192,255,.26),
-    0 0 42px rgba(37,99,235,.16) !important;
-}
-@media (max-width:700px){
-  .brand-mark{
-    width:74px !important;
-    height:74px !important;
-    border-radius:20px !important;
-  }
-}

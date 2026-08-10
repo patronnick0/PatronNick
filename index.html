@@ -126,17 +126,24 @@
         content="https://patronnick0.github.io/PatronNick/patronnick-share-wa.jpg"
     >
 
-    <!-- FAVICON -->
+    <!-- ICONO PATRONNICK -->
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-pn-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-pn.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<!-- PRELOAD DEL LOGO PRINCIPAL -->
     <link
-        rel="icon"
-        type="image/svg+xml"
-        href="favicon.svg"
+        rel="preload"
+        as="image"
+        href="patronnick-pn-profile.webp"
+        type="image/webp"
+        fetchpriority="high"
     >
 
     <!-- CSS -->
     <link
         rel="stylesheet"
-        href="css/style.css"
+        href="css/style.min.css"
     >
 </head>
 
@@ -172,7 +179,8 @@
 
         <img
             class="brand-mark"
-            src="patronnick-pn-logo.webp"
+            src="patronnick-pn-profile.webp"
+            fetchpriority="high"
             alt="Logo PN de PatronNick"
             width="96"
             height="96"
@@ -517,17 +525,7 @@
 
 <!-- JAVASCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="js/supabase.js"></script>
-<script src="js/fonts.js"></script>
-<script src="js/generator.js"></script>
-<script src="js/categorias.js"></script>
-<script src="js/favoritos.js"></script>
-<script src="js/cards.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/ranking.js"></script>
-<script src="js/freefire.js"></script>
-<script src="js/script.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 

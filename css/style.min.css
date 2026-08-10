@@ -2,9 +2,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-}
-
-:root{
+}:root{
   --bg-start:#2563eb;
   --bg-mid:#0f172a;
   --bg-end:#020617;
@@ -20,9 +18,7 @@
   --amberGlow:#fbbf24;
   --red1:#ef4444;
   --red2:#b91c1c;
-}
-
-body{
+}body{
   font-family:Arial,Helvetica,sans-serif;
   color:var(--text);
   min-height:100vh;
@@ -31,9 +27,7 @@ body{
   align-items:flex-start;
   padding:28px 16px;
   background:radial-gradient(circle at top,var(--bg-start) 0%,var(--bg-mid) 40%,var(--bg-end) 100%);
-}
-
-body::before{
+}body::before{
   content:"";
   position:fixed;
   inset:0;
@@ -41,9 +35,7 @@ body::before{
   background-size:80px 80px;
   opacity:.18;
   pointer-events:none;
-}
-
-.app{
+}.app{
   width:100%;
   max-width:900px;
   display:flex;
@@ -52,15 +44,12 @@ body::before{
   gap:18px;
   position:relative;
   z-index:1;
-}
-
-.hero{
+}.hero{
   width:100%;
   text-align:center;
   padding-top:8px;
   position:relative;
-}
-.tiktok-btn{
+}.tiktok-btn{
   position:absolute;
   left:10px;
   top:8px;
@@ -84,9 +73,7 @@ body::before{
   transition:.25s;
 
   text-decoration:none;
-}
-
-.tiktok-btn svg{
+}.tiktok-btn svg{
   width:30px;
   height:30px;
   fill:#fff;
@@ -94,21 +81,16 @@ body::before{
   filter:
     drop-shadow(3px 0 0 #00f2ea)
     drop-shadow(-3px 0 0 #ff0050);
-}
-
-.tiktok-btn:hover{
+}.tiktok-btn:hover{
   transform:scale(1.08);
   border-color:#fff;
 
   box-shadow:
     0 0 18px rgba(0,242,234,.65),
     0 0 25px rgba(255,0,80,.45);
-}
-
-.tiktok-btn:active{
+}.tiktok-btn:active{
   transform:scale(.94);
-}
-.tiktok-btn{
+}.tiktok-btn{
   position:absolute;
   left:10px;
   top:8px;
@@ -132,9 +114,7 @@ body::before{
   transition:.25s;
 
   text-decoration:none;
-}
-
-.tiktok-btn svg{
+}.tiktok-btn svg{
   width:30px;
   height:30px;
   fill:#fff;
@@ -142,44 +122,30 @@ body::before{
   filter:
     drop-shadow(3px 0 0 #00f2ea)
     drop-shadow(-3px 0 0 #ff0050);
-}
-
-.tiktok-btn:hover{
+}.tiktok-btn:hover{
   transform:scale(1.08);
   border-color:#fff;
 
   box-shadow:
     0 0 18px rgba(0,242,234,.65),
     0 0 25px rgba(255,0,80,.45);
-}
-
-.tiktok-btn:active{
+}.tiktok-btn:active{
   transform:scale(.94);
-}
-
-.logo{
+}.logo{
   font-size:clamp(2.8rem,8vw,4rem);
   font-weight:900;
   text-shadow:0 0 18px var(--blueGlow);
   margin-bottom:10px;
-}
-
-.subtitle{
+}.subtitle{
   color:var(--muted);
   line-height:1.5;
-}
-
-.top-bar{
+}.top-bar{
   width:100%;
   display:none;
   justify-content:flex-start;
-}
-
-.top-bar.show{
+}.top-bar.show{
   display:flex;
-}
-
-.top-btn,
+}.top-btn,
 #btnInicio,
 .btn-top,
 .back-btn{
@@ -197,57 +163,41 @@ body::before{
   cursor:pointer;
   transition:.25s;
   box-shadow:0 0 15px rgba(56,189,248,.15);
-}
-
-.top-btn:hover,
+}.top-btn:hover,
 #btnInicio:hover,
 .btn-top:hover,
 .back-btn:hover{
   border-color:#00d9ff;
   box-shadow:0 0 18px #00d9ff66;
   transform:translateY(-2px);
-}
-
-.favorites-zone{
+}.favorites-zone{
   width:100%;
   max-width:820px;
   display:flex;
   flex-direction:column;
   gap:16px;
-}
-
-#abrirFavoritos{
+}#abrirFavoritos{
   width:auto;
   align-self:flex-end;
   padding:10px 16px;
   border-radius:30px;
   font-size:15px;
-}
-
-#contadorFavoritos{
+}#contadorFavoritos{
   margin-left:6px;
   font-size:15px;
   opacity:.92;
-}
-
-.favorites-panel{
+}.favorites-panel{
   width:100%;
   display:none;
-}
-
-.favorites-empty{
+}.favorites-empty{
   color:var(--muted);
   text-align:center;
   margin:0;
   padding:24px 0;
-}
-
-.generator{
+}.generator{
   width:100%;
   max-width:820px;
-}
-
-#inputNombre{
+}#inputNombre{
   width:100%;
   padding:18px;
   border:none;
@@ -255,9 +205,7 @@ body::before{
   outline:none;
   font-size:18px;
   margin-bottom:15px;
-}
-
-#btnGenerar{
+}#btnGenerar{
   width:100%;
   padding:18px;
   border:none;
@@ -268,21 +216,15 @@ body::before{
   font-weight:700;
   background:linear-gradient(90deg,var(--blue1),var(--blue2));
   transition:.25s;
-}
-
-#btnGenerar:hover{
+}#btnGenerar:hover{
   transform:translateY(-2px);
   box-shadow:0 0 20px var(--blueGlow);
-}
-
-#resultados{
+}#resultados{
   width:100%;
   margin-top:30px;
   display:grid;
   gap:0px;
-}
-
-.resultado{
+}.resultado{
   position:relative;
   background:#162033;
   border:1px solid #27486f;
@@ -293,32 +235,24 @@ body::before{
   transform:translateY(12px) scale(.98);
   animation:aparecer .25s ease forwards;
   overflow:hidden;
-}
-
-.resultado-fuente{
+}.resultado-fuente{
   padding-right:120px;
   font-weight:700;
   margin-bottom:10px;
   font-size:15px;
-}
-
-.resultado-texto{
+}.resultado-texto{
   font-size:22px;
   font-weight:700;
   margin-bottom:14px;
   word-break:break-word;
   white-space:pre-wrap;
-}
-
-.resultado .acciones-card{
+}.resultado .acciones-card{
   display:flex;
   justify-content:flex-start;
   gap:10px;
   margin-top:14px;
   flex-wrap:wrap;
-}
-
-.resultado .btnFavorito{
+}.resultado .btnFavorito{
   position:absolute;
   top:12px;
   right:12px;
@@ -333,22 +267,16 @@ body::before{
   color:var(--amberGlow);
   cursor:pointer;
   transition:.25s;
-}
-
-.resultado .btnFavorito:hover{
+}.resultado .btnFavorito:hover{
   background:rgba(245,158,11,.3);
   border-color:var(--amberGlow);
   transform:translateY(-2px);
   box-shadow:0 0 15px rgba(245,158,11,.35);
-}
-
-.resultado .btnCopiar{
+}.resultado .btnCopiar{
   min-width:130px;
   width:auto;
   flex:none;
-}
-
-.btnFavorito,
+}.btnFavorito,
 .btnCopiar,
 .copyFav,
 .deleteFav,
@@ -364,47 +292,33 @@ body::before{
   justify-content:center;
   gap:7px;
   user-select:none;
-}
-
-.btnCopiar,
+}.btnCopiar,
 .copyFav,
 .copyInvisible{
   background:linear-gradient(135deg,var(--blue1),var(--blue2));
   border:1px solid #38bdf8;
   box-shadow:0 4px 12px rgba(14,165,233,.18);
-}
-
-.btnCopiar:hover,
+}.btnCopiar:hover,
 .copyFav:hover,
 .copyInvisible:hover{
   transform:translateY(-2px);
   background:linear-gradient(135deg,#38bdf8,var(--blue2));
   border-color:#7dd3fc;
   box-shadow:0 6px 18px rgba(56,189,248,.24);
-}
-
-.btnCopiar:active,
+}.btnCopiar:active,
 .copyFav:active,
 .copyInvisible:active{
   transform:translateY(0) scale(.98);
-}
-
-.deleteFav{
+}.deleteFav{
   background:linear-gradient(135deg,var(--red1),var(--red2));
   box-shadow:0 4px 12px rgba(239,68,68,.15);
-}
-
-.deleteFav:hover{
+}.deleteFav:hover{
   transform:translateY(-2px);
   background:linear-gradient(135deg,#f87171,#dc2626);
   box-shadow:0 6px 18px rgba(239,68,68,.3);
-}
-
-.deleteFav:active{
+}.deleteFav:active{
   transform:translateY(0) scale(.98);
-}
-
-.categorias{
+}.categorias{
   width:100%;
   max-width:820px;
   font-size:28px;
@@ -412,17 +326,13 @@ body::before{
   text-shadow:0 0 12px var(--blueGlow);
   margin-top:6px;
   text-align:center;
-}
-
-.games{
+}.games{
   width:100%;
   max-width:820px;
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:18px;
-}
-
-.game-card{
+}.game-card{
   background:rgba(20,30,48,.75);
   border:2px solid var(--border);
   border-radius:20px;
@@ -435,68 +345,46 @@ body::before{
   cursor:pointer;
   transition:.25s;
   backdrop-filter:blur(12px);
-}
-
-.game-card:hover,
+}.game-card:hover,
 .modo-card:hover{
   transform:translateY(-6px);
   border-color:#00e5ff;
   box-shadow:0 0 25px #00e5ff55;
-}
-
-.game-card.active{
+}.game-card.active{
   border-color:#00ffff;
   box-shadow:0 0 25px #00ffff88;
-}
-
-.game-card span{
+}.game-card span{
   font-size:18px;
   font-weight:700;
-}
-
-#contenido{
+}#contenido{
   width:100%;
   max-width:820px;
-}
-
-.pantallaJuego{
+}.pantallaJuego{
   width:100%;
-}
-
-.tituloJuego{
+}.tituloJuego{
   text-align:center;
   font-size:clamp(28px,6vw,36px);
   margin:24px 0 30px;
   text-shadow:0 0 15px var(--blueGlow);
-}
-
-.menu-juego{
+}.menu-juego{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:20px;
-}
-
-.modo-card{
+}.modo-card{
   background:rgba(20,30,48,.75);
   border:2px solid var(--border);
   border-radius:20px;
   padding:25px;
   text-align:center;
   transition:.25s;
-}
-
-.modo-card h3{
+}.modo-card h3{
   font-size:25px;
   margin-bottom:12px;
-}
-
-.modo-card p{
+}.modo-card p{
   color:var(--muted);
   margin-bottom:20px;
   line-height:1.4;
-}
-
-.modo-card button{
+}.modo-card button{
   width:100%;
   padding:14px;
   border:none;
@@ -507,30 +395,22 @@ body::before{
   font-weight:700;
   cursor:pointer;
   transition:.25s;
-}
-
-.modo-card button:hover{
+}.modo-card button:hover{
   transform:scale(1.03);
   box-shadow:0 0 18px var(--blueGlow);
-}
-
-.cantidad-nombres{
+}.cantidad-nombres{
   display:block;
   margin-bottom:14px;
   color:var(--blueGlow);
   font-size:16px;
   font-weight:700;
-}
-
-.listaInvisible{
+}.listaInvisible{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:14px;
   margin-top:20px;
-}
-
-#contenido .tarjetaCategoria{
+}#contenido .tarjetaCategoria{
   width:min(100%,760px);
   margin:0 auto;
   padding:14px 16px 12px;
@@ -548,42 +428,32 @@ body::before{
   border-radius:20px;
   position:relative;
   transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-
-#contenido .tarjetaCategoria:hover{
+}#contenido .tarjetaCategoria:hover{
   border-color:var(--border-hover);
   transform:translateY(-2px);
   box-shadow:0 0 18px rgba(56,189,248,.25);
-}
-
-#contenido .tarjetaCategoriaHeader{
+}#contenido .tarjetaCategoriaHeader{
   grid-area:name;
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
   gap:12px;
   min-width:0;
-}
-
-#contenido .nombreCategoria{
+}#contenido .nombreCategoria{
   display:block;
   font-size:20px;
   line-height:1.25;
   font-weight:700;
   white-space:pre-wrap;
   word-break:break-word;
-}
-
-#contenido .tarjetaCategoriaFooter{
+}#contenido .tarjetaCategoriaFooter{
   grid-area:stats;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
   margin-top:12px;
-}
-
-#contenido .estadisticasNombre{
+}#contenido .estadisticasNombre{
   display:flex;
   align-items:center;
   gap:12px;
@@ -592,9 +462,7 @@ body::before{
   color:var(--muted);
   font-size:14px;
   font-weight:600;
-}
-
-#contenido .copiasNombre,
+}#contenido .copiasNombre,
 #contenido .favoritosNombre{
   display:inline-flex !important;
   align-items:center;
@@ -602,17 +470,12 @@ body::before{
   white-space:nowrap !important;
   font-size:13px !important;
   font-weight:600 !important;
-}
-
-
-#contenido .favoriteInvisible:hover{
+}#contenido .favoriteInvisible:hover{
   transform:translateY(-2px);
   background:rgba(245,158,11,.25);
   border-color:var(--amberGlow);
   box-shadow:0 5px 16px rgba(245,158,11,.25);
-}
-
-#contenido .copyInvisible{
+}#contenido .copyInvisible{
   grid-area:copy;
   justify-self:end;
   align-self:end;
@@ -621,13 +484,9 @@ body::before{
   padding:8px 12px;
   border-radius:10px;
   font-size:13px;
-}
-
-#contenido .itemActions{
+}#contenido .itemActions{
   display:contents;
-}
-
-#panelFavoritos .itemInvisible{
+}#panelFavoritos .itemInvisible{
   width:min(100%,760px);
   margin:0 auto;
   min-height:66px;
@@ -640,46 +499,34 @@ body::before{
   border:2px solid var(--border);
   border-radius:18px;
   transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-
-#panelFavoritos .itemInvisible:hover{
+}#panelFavoritos .itemInvisible:hover{
   border-color:var(--border-hover);
   transform:translateY(-2px);
   box-shadow:0 0 18px rgba(56,189,248,.25);
-}
-
-#panelFavoritos .itemInvisible span{
+}#panelFavoritos .itemInvisible span{
   font-size:18px;
   font-weight:700;
   word-break:break-word;
   white-space:pre-wrap;
-}
-
-#panelFavoritos .itemActions{
+}#panelFavoritos .itemActions{
   display:flex;
   align-items:center;
   justify-content:flex-end;
   gap:10px;
   flex-wrap:wrap;
-}
-
-#panelFavoritos .copyFav,
+}#panelFavoritos .copyFav,
 #panelFavoritos .deleteFav{
   min-width:112px;
   min-height:40px;
   padding:9px 14px;
   border-radius:12px;
   font-size:14px;
-}
-
-@keyframes aparecer{
+}@keyframes aparecer{
   to{
     opacity:1;
     transform:translateY(0) scale(1);
   }
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
   .games,
   .menu-juego{
     grid-template-columns:1fr;
@@ -757,9 +604,7 @@ body::before{
   .resultado .btnCopiar{
     min-width:108px;
   }
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
 
   .tiktok-btn{
     width:48px;
@@ -773,14 +618,7 @@ body::before{
     height:25px;
   }
 
-}
-
-/* =========================================================
-   TARJETAS COMPACTAS: GENERADOR + FREE FIRE
-   ========================================================= */
-
-/* ===== GENERADOR ===== */
-#resultados .resultado{
+}#resultados .resultado{
     width:min(100%,640px) !important;
     margin:0 auto !important;
     position:relative !important;
@@ -790,9 +628,7 @@ body::before{
 
     overflow:visible !important;
     box-sizing:border-box !important;
-}
-
-#resultados .acciones-card{
+}#resultados .acciones-card{
     position:absolute !important;
     top:12px !important;
     right:12px !important;
@@ -804,21 +640,15 @@ body::before{
     gap:8px !important;
     flex-wrap:wrap !important;
     margin:0 !important;
-}
-
-#resultados .btnFavorito,
+}#resultados .btnFavorito,
 #resultados .btnCopiar{
     position:static !important;
     width:auto !important;
     min-width:110px !important;
-}
-
-#resultados .btnFavorito{
+}#resultados .btnFavorito{
     top:auto !important;
     right:auto !important;
-}
-
-#resultados .btnFavorito,
+}#resultados .btnFavorito,
 #resultados .btnCopiar{
     width:110px !important;
     min-width:110px !important;
@@ -827,10 +657,7 @@ body::before{
     padding:7px 10px !important;
     font-size:13px !important;
     border-radius:10px !important;
-}
-
-/* ===== FREE FIRE ===== */
-#contenido .listaInvisible{
+}#contenido .listaInvisible{
     width:min(100%,640px) !important;
     margin:20px auto 0 !important;
 
@@ -838,9 +665,7 @@ body::before{
     flex-direction:column !important;
     gap:10px !important;
     align-items:stretch !important;
-}
-
-#contenido .itemInvisible{
+}#contenido .itemInvisible{
     width:100% !important;
     min-height:92px !important;
     padding:12px 14px 52px 14px !important;
@@ -848,14 +673,10 @@ body::before{
     position:relative !important;
     display:block !important;
     box-sizing:border-box !important;
-}
-
-#contenido .nombreYStats{
+}#contenido .nombreYStats{
     width:100% !important;
     min-width:0 !important;
-}
-
-#contenido .nombreYStats > span{
+}#contenido .nombreYStats > span{
     display:block !important;
     font-size:18px !important;
     font-weight:700 !important;
@@ -863,25 +684,19 @@ body::before{
     margin:0 0 8px 0 !important;
     white-space:pre-wrap !important;
     word-break:break-word !important;
-}
-
-#contenido .estadisticasNombre{
+}#contenido .estadisticasNombre{
     display:flex !important;
     align-items:center !important;
     gap:10px !important;
     font-size:13px !important;
     font-weight:700 !important;
     color:#cbd5e1 !important;
-}
-
-#contenido .itemActions{
+}#contenido .itemActions{
     display:block !important;
     width:0 !important;
     height:0 !important;
     overflow:visible !important;
-}
-
-#contenido .favoriteInvisible{
+}#contenido .favoriteInvisible{
     position:absolute !important;
     top:12px !important;
     right:12px !important;
@@ -897,9 +712,7 @@ body::before{
     font-size:12px !important;
     border-radius:10px !important;
     z-index:10 !important;
-}
-
-#contenido .copyInvisible{
+}#contenido .copyInvisible{
     position:absolute !important;
     right:12px !important;
     bottom:12px !important;
@@ -915,10 +728,7 @@ body::before{
     font-size:13px !important;
     border-radius:10px !important;
     z-index:10 !important;
-}
-
-/* ===== MÓVIL ===== */
-@media (max-width:700px){
+}@media (max-width:700px){
     #resultados .resultado,
     #contenido .itemInvisible{
         width:96% !important;
@@ -953,13 +763,7 @@ body::before{
     #contenido .nombreYStats > span{
         font-size:17px !important;
     }
-}
-
-/* =========================================================
-   NUEVO DISEÑO DE MINI TARJETAS
-   ========================================================= */
-
-.resultado,
+}.resultado,
 #contenido .tarjetaCategoria {
   width: min(100%, 640px) !important;
   margin: 0 auto !important;
@@ -972,19 +776,13 @@ body::before{
   border-radius: 18px !important;
   background: rgba(20,30,48,.82) !important;
   cursor: pointer !important;
-}
-
-.resultado:hover,
+}.resultado:hover,
 #contenido .tarjetaCategoria:hover {
   transform: translateY(-2px) !important;
-}
-
-.resultado {
+}.resultado {
   padding-top: 14px !important;
   padding-bottom: 16px !important;
-}
-
-.resultado-fuente {
+}.resultado-fuente {
   position: absolute !important;
   top: 10px !important;
   left: 14px !important;
@@ -996,9 +794,7 @@ body::before{
   text-overflow: ellipsis !important;
   margin: 0 !important;
   z-index: 2 !important;
-}
-
-.resultado-texto,
+}.resultado-texto,
 #contenido .nombreCategoria {
   position: absolute !important;
   left: 16px !important;
@@ -1013,13 +809,9 @@ body::before{
   white-space: pre-wrap !important;
   word-break: break-word !important;
   z-index: 1 !important;
-}
-
-#contenido .nombreCategoria {
+}#contenido .nombreCategoria {
   top: 50% !important;
-}
-
-.resultado .btnFavorito,
+}.resultado .btnFavorito,
 #contenido .favoriteInvisible {
   position: absolute !important;
   top: 10px !important;
@@ -1030,9 +822,7 @@ body::before{
   border-radius: 999px !important;
   font-size: 12px !important;
   z-index: 3 !important;
-}
-
-.resultado-stats,
+}.resultado-stats,
 #contenido .estadisticasNombre {
   position: absolute !important;
   left: 14px !important;
@@ -1044,21 +834,15 @@ body::before{
   justify-content: space-between !important;
   gap: 12px !important;
   z-index: 2 !important;
-}
-
-.resultado-stats .copiasNombre,
+}.resultado-stats .copiasNombre,
 .resultado-stats .favoritosNombre,
 #contenido .copiasNombre,
 #contenido .favoritosNombre {
   font-size: 13px !important;
   font-weight: 700 !important;
-}
-
-.tarjetaCopiable {
+}.tarjetaCopiable {
   user-select: none !important;
-}
-
-.copiadoOverlay {
+}.copiadoOverlay {
   position: absolute !important;
   inset: 0 !important;
   display: flex !important;
@@ -1076,19 +860,13 @@ body::before{
   transform: scale(.82) !important;
   pointer-events: none !important;
   z-index: 4 !important;
-}
-
-.resultado.copiado .copiadoOverlay,
+}.resultado.copiado .copiadoOverlay,
 #contenido .tarjetaCategoria.copiado .copiadoOverlay {
   animation: copiadoEntrada 1.05s ease-out forwards !important;
-}
-
-.resultado.copiado,
+}.resultado.copiado,
 #contenido .tarjetaCategoria.copiado {
   box-shadow: 0 0 22px rgba(56,189,248,.35) !important;
-}
-
-@keyframes copiadoEntrada {
+}@keyframes copiadoEntrada {
   0% {
     opacity: 0;
     transform: scale(.75);
@@ -1105,9 +883,7 @@ body::before{
     opacity: 0;
     transform: scale(1.06);
   }
-}
-
-@media (max-width:700px) {
+}@media (max-width:700px) {
   .resultado,
   #contenido .tarjetaCategoria {
     width: 96% !important;
@@ -1143,21 +919,9 @@ body::before{
     font-size: clamp(1.7rem, 9vw, 2.6rem) !important;
     letter-spacing: .14em !important;
   }
-}
-
-/* =========================================================
-   CORRECCIÓN FINAL DE LAYOUT — SIN SOLAPAMIENTOS
-   Mantiene el diseño original y reemplaza únicamente la
-   colocación absoluta conflictiva de las mini tarjetas.
-   ========================================================= */
-
-/* Separación consistente entre resultados */
-#resultados{
+}#resultados{
   gap:12px !important;
-}
-
-/* ---------- Resultados del generador ---------- */
-#resultados .resultado{
+}#resultados .resultado{
   width:min(100%,640px) !important;
   min-height:0 !important;
   padding:14px 16px !important;
@@ -1174,9 +938,7 @@ body::before{
   align-items:center !important;
   column-gap:12px !important;
   row-gap:10px !important;
-}
-
-#resultados .resultado-fuente{
+}#resultados .resultado-fuente{
   grid-area:source !important;
   position:static !important;
   inset:auto !important;
@@ -1187,9 +949,7 @@ body::before{
   text-overflow:ellipsis !important;
   white-space:nowrap !important;
   line-height:1.3 !important;
-}
-
-#resultados .resultado .btnFavorito{
+}#resultados .resultado .btnFavorito{
   grid-area:favorite !important;
   position:static !important;
   inset:auto !important;
@@ -1200,9 +960,7 @@ body::before{
   max-width:100% !important;
   margin:0 !important;
   white-space:nowrap !important;
-}
-
-#resultados .resultado-texto{
+}#resultados .resultado-texto{
   grid-area:name !important;
   position:static !important;
   inset:auto !important;
@@ -1220,9 +978,7 @@ body::before{
   white-space:pre-wrap !important;
   overflow-wrap:anywhere !important;
   word-break:normal !important;
-}
-
-#resultados .resultado-stats{
+}#resultados .resultado-stats{
   grid-area:stats !important;
   position:static !important;
   inset:auto !important;
@@ -1232,10 +988,7 @@ body::before{
   align-items:center !important;
   justify-content:space-between !important;
   gap:12px !important;
-}
-
-/* ---------- Tarjetas de categorías / Free Fire ---------- */
-#contenido .tarjetaCategoria{
+}#contenido .tarjetaCategoria{
   width:min(100%,640px) !important;
   min-height:0 !important;
   padding:14px 16px !important;
@@ -1251,9 +1004,7 @@ body::before{
   align-items:center !important;
   column-gap:12px !important;
   row-gap:12px !important;
-}
-
-#contenido .nombreCategoria{
+}#contenido .nombreCategoria{
   grid-area:name !important;
   position:static !important;
   inset:auto !important;
@@ -1267,9 +1018,7 @@ body::before{
   white-space:pre-wrap !important;
   overflow-wrap:anywhere !important;
   word-break:normal !important;
-}
-
-#contenido .favoriteInvisible{
+}#contenido .favoriteInvisible{
   grid-area:favorite !important;
   position:static !important;
   inset:auto !important;
@@ -1280,9 +1029,7 @@ body::before{
   max-width:100% !important;
   margin:0 !important;
   white-space:nowrap !important;
-}
-
-#contenido .estadisticasNombre{
+}#contenido .estadisticasNombre{
   grid-area:stats !important;
   position:static !important;
   inset:auto !important;
@@ -1292,17 +1039,11 @@ body::before{
   align-items:center !important;
   justify-content:space-between !important;
   gap:12px !important;
-}
-
-/* El overlay de “copiado” sí debe seguir flotando sobre la tarjeta. */
-.resultado .copiadoOverlay,
+}.resultado .copiadoOverlay,
 #contenido .tarjetaCategoria .copiadoOverlay{
   position:absolute !important;
   inset:0 !important;
-}
-
-/* ---------- Móvil ---------- */
-@media (max-width:700px){
+}@media (max-width:700px){
   #resultados .resultado,
   #contenido .tarjetaCategoria{
     width:100% !important;
@@ -1326,10 +1067,7 @@ body::before{
     padding:6px 9px !important;
     font-size:11px !important;
   }
-}
-
-/* En pantallas muy estrechas, el favorito pasa a su propia fila. */
-@media (max-width:420px){
+}@media (max-width:420px){
   #resultados .resultado{
     grid-template-columns:1fr !important;
     grid-template-areas:
@@ -1352,21 +1090,9 @@ body::before{
     justify-self:stretch !important;
     width:100% !important;
   }
-}
-
-
-/* =========================================================
-   AJUSTE FINAL PEDIDO POR EL USUARIO
-   - Las mini tarjetas del generador quedan compactas como las de categorías.
-   - El botón favorito de categorías usa el mismo estilo “cool”.
-   - La tarjeta completa copia al tocarse y muestra una animación grande de COPIADO.
-   ========================================================= */
-
-#resultados{
+}#resultados{
   gap: 12px !important;
-}
-
-#resultados .resultado,
+}#resultados .resultado,
 #contenido .tarjetaCategoria{
   width:min(100%, 760px) !important;
   margin:0 auto !important;
@@ -1380,16 +1106,11 @@ body::before{
   position:relative !important;
   cursor:pointer !important;
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease !important;
-}
-
-#resultados .resultado:hover,
+}#resultados .resultado:hover,
 #contenido .tarjetaCategoria:hover{
   transform:translateY(-2px) !important;
   box-shadow:0 0 0 1px rgba(255,255,255,.08) inset, 0 14px 28px rgba(4,14,36,.32), 0 0 18px rgba(56,189,248,.16) !important;
-}
-
-/* ---------- GENERADOR ---------- */
-#resultados .resultado{
+}#resultados .resultado{
   display:grid !important;
   grid-template-columns:minmax(0,1fr) auto !important;
   grid-template-rows:auto auto auto !important;
@@ -1400,9 +1121,7 @@ body::before{
   align-items:center !important;
   row-gap:10px !important;
   column-gap:14px !important;
-}
-
-#resultados .resultado-fuente{
+}#resultados .resultado-fuente{
   grid-area:source !important;
   position:static !important;
   inset:auto !important;
@@ -1414,9 +1133,7 @@ body::before{
   white-space:nowrap !important;
   overflow:hidden !important;
   text-overflow:ellipsis !important;
-}
-
-#resultados .resultado-texto{
+}#resultados .resultado-texto{
   grid-area:name !important;
   position:static !important;
   inset:auto !important;
@@ -1437,9 +1154,7 @@ body::before{
   overflow-wrap:anywhere !important;
   word-break:break-word !important;
   text-shadow:0 2px 8px rgba(0,0,0,.45) !important;
-}
-
-#resultados .resultado-stats,
+}#resultados .resultado-stats,
 #contenido .estadisticasNombre{
   position:static !important;
   inset:auto !important;
@@ -1450,25 +1165,18 @@ body::before{
   justify-content:space-between !important;
   gap:12px !important;
   color:#ecf4ff !important;
-}
-
-#resultados .resultado-stats .copiasNombre,
+}#resultados .resultado-stats .copiasNombre,
 #resultados .resultado-stats .favoritosNombre,
 #contenido .copiasNombre,
 #contenido .favoritosNombre{
   font-size:13px !important;
   font-weight:700 !important;
   opacity:.97 !important;
-}
-
-/* ---------- CATEGORÍAS ---------- */
-#contenido .listaInvisible{
+}#contenido .listaInvisible{
   width:min(100%, 760px) !important;
   margin:0 auto !important;
   gap:12px !important;
-}
-
-#contenido .tarjetaCategoria{
+}#contenido .tarjetaCategoria{
   display:grid !important;
   grid-template-columns:minmax(0,1fr) auto !important;
   grid-template-rows:auto auto !important;
@@ -1478,9 +1186,7 @@ body::before{
   align-items:center !important;
   row-gap:12px !important;
   column-gap:14px !important;
-}
-
-#contenido .nombreCategoria{
+}#contenido .nombreCategoria{
   grid-area:name !important;
   position:static !important;
   inset:auto !important;
@@ -1497,10 +1203,7 @@ body::before{
   overflow-wrap:anywhere !important;
   word-break:break-word !important;
   text-shadow:0 2px 8px rgba(0,0,0,.45) !important;
-}
-
-/* ---------- FAVORITOS “COOL” PARA AMBAS ---------- */
-#resultados .resultado .btnFavorito,
+}#resultados .resultado .btnFavorito,
 #contenido .favoriteInvisible{
   grid-area:favorite !important;
   justify-self:end !important;
@@ -1519,26 +1222,17 @@ body::before{
   font-weight:900 !important;
   letter-spacing:.01em !important;
   box-shadow:0 0 0 2px rgba(72,31,81,.18) inset, 0 6px 16px rgba(0,0,0,.16) !important;
-}
-
-#resultados .resultado .btnFavorito:hover,
+}#resultados .resultado .btnFavorito:hover,
 #contenido .favoriteInvisible:hover{
   transform:translateY(-2px) scale(1.01) !important;
   border-color:#ffd4e9 !important;
   box-shadow:0 0 0 2px rgba(72,31,81,.2) inset, 0 10px 20px rgba(0,0,0,.2), 0 0 16px rgba(255,186,220,.24) !important;
-}
-
-#resultados .resultado .btnFavorito:active,
+}#resultados .resultado .btnFavorito:active,
 #contenido .favoriteInvisible:active{
   transform:translateY(0) scale(.985) !important;
-}
-
-/* ---------- Overlay de copiado ---------- */
-.tarjetaCopiable{
+}.tarjetaCopiable{
   user-select:none !important;
-}
-
-.copiadoOverlay{
+}.copiadoOverlay{
   position:absolute !important;
   inset:0 !important;
   display:flex !important;
@@ -1557,30 +1251,20 @@ body::before{
   transform:scale(.82) !important;
   pointer-events:none !important;
   z-index:9 !important;
-}
-
-.tarjetaCopiable.copiado{
+}.tarjetaCopiable.copiado{
   animation:tarjetaCopiadaPulso .78s ease !important;
-}
-
-.tarjetaCopiable.copiado .copiadoOverlay{
+}.tarjetaCopiable.copiado .copiadoOverlay{
   animation:overlayCopiado .9s ease-in-out forwards !important;
-}
-
-@keyframes tarjetaCopiadaPulso{
+}@keyframes tarjetaCopiadaPulso{
   0%{ transform:scale(1); }
   34%{ transform:scale(1.015); }
   100%{ transform:scale(1); }
-}
-
-@keyframes overlayCopiado{
+}@keyframes overlayCopiado{
   0%{ opacity:0; transform:scale(.75); }
   18%{ opacity:1; transform:scale(1.02); }
   68%{ opacity:1; transform:scale(1); }
   100%{ opacity:0; transform:scale(1.08); }
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
   #resultados .resultado,
   #contenido .tarjetaCategoria{
     width:100% !important;
@@ -1606,9 +1290,7 @@ body::before{
     font-size:clamp(2rem, 10vw, 3.25rem) !important;
     letter-spacing:.05em !important;
   }
-}
-
-@media (max-width:460px){
+}@media (max-width:460px){
   #resultados .resultado,
   #contenido .tarjetaCategoria{
     grid-template-columns:1fr !important;
@@ -1634,17 +1316,7 @@ body::before{
     justify-self:stretch !important;
     width:100% !important;
   }
-}
-
-
-/* =========================================================
-   RETOQUE FINAL 2
-   - Tarjetas del generador más compactas, al estilo de categorías.
-   - Botón favorito más profesional, brillante y con efecto al tocar.
-   ========================================================= */
-
-/* GENERADOR más compacto */
-#resultados .resultado{
+}#resultados .resultado{
   width:min(100%, 740px) !important;
   min-height:78px !important;
   padding:10px 14px !important;
@@ -1655,31 +1327,20 @@ body::before{
     "stats stats" !important;
   row-gap:6px !important;
   column-gap:12px !important;
-}
-
-#resultados .resultado-fuente{
+}#resultados .resultado-fuente{
   font-size:12px !important;
   line-height:1.1 !important;
-}
-
-#resultados .resultado-texto{
+}#resultados .resultado-texto{
   min-height:0 !important;
   font-size:clamp(18px, 3vw, 24px) !important;
   line-height:1 !important;
   padding:0 !important;
-}
-
-#resultados .resultado-stats{
+}#resultados .resultado-stats{
   margin-top:1px !important;
-}
-
-#resultados .resultado-stats .copiasNombre,
+}#resultados .resultado-stats .copiasNombre,
 #resultados .resultado-stats .favoritosNombre{
   font-size:12px !important;
-}
-
-/* Favorito premium */
-#resultados .resultado .btnFavorito,
+}#resultados .resultado .btnFavorito,
 #contenido .favoriteInvisible{
   position:relative !important;
   overflow:hidden !important;
@@ -1696,9 +1357,7 @@ body::before{
     0 8px 18px rgba(8,14,30,.22),
     0 0 0 2px rgba(255, 205, 95, .18) !important;
   text-shadow:0 1px 0 rgba(255,255,255,.65) !important;
-}
-
-#resultados .resultado .btnFavorito::before,
+}#resultados .resultado .btnFavorito::before,
 #contenido .favoriteInvisible::before{
   content:"";
   position:absolute;
@@ -1711,9 +1370,7 @@ body::before{
   opacity:.85;
   z-index:-1;
   transition:transform .55s ease, left .55s ease, opacity .25s ease;
-}
-
-#resultados .resultado .btnFavorito::after,
+}#resultados .resultado .btnFavorito::after,
 #contenido .favoriteInvisible::after{
   content:"";
   position:absolute;
@@ -1722,9 +1379,7 @@ body::before{
   background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));
   pointer-events:none;
   z-index:-1;
-}
-
-#resultados .resultado .btnFavorito:hover,
+}#resultados .resultado .btnFavorito:hover,
 #contenido .favoriteInvisible:hover{
   transform:translateY(-2px) scale(1.02) !important;
   box-shadow:
@@ -1733,21 +1388,15 @@ body::before{
     0 12px 24px rgba(8,14,30,.24),
     0 0 18px rgba(255,221,118,.45),
     0 0 0 2px rgba(255, 206, 99, .22) !important;
-}
-
-#resultados .resultado .btnFavorito:hover::before,
+}#resultados .resultado .btnFavorito:hover::before,
 #contenido .favoriteInvisible:hover::before,
 #resultados .resultado .btnFavorito.fav-clicked::before,
 #contenido .favoriteInvisible.fav-clicked::before{
   left:112%;
-}
-
-#resultados .resultado .btnFavorito:active,
+}#resultados .resultado .btnFavorito:active,
 #contenido .favoriteInvisible:active{
   transform:translateY(0) scale(.98) !important;
-}
-
-#resultados .resultado .btnFavorito.favorito-activo,
+}#resultados .resultado .btnFavorito.favorito-activo,
 #contenido .favoriteInvisible.favorito-activo{
   color:#8a1f3d !important;
   background:
@@ -1759,21 +1408,15 @@ body::before{
     0 10px 22px rgba(8,14,30,.22),
     0 0 22px rgba(255,134,186,.36),
     0 0 0 2px rgba(255,167,202,.18) !important;
-}
-
-#resultados .resultado .btnFavorito.fav-clicked,
+}#resultados .resultado .btnFavorito.fav-clicked,
 #contenido .favoriteInvisible.fav-clicked{
   animation:favTapPulse .5s ease !important;
-}
-
-@keyframes favTapPulse{
+}@keyframes favTapPulse{
   0%{ transform:scale(1); }
   35%{ transform:scale(1.08); }
   70%{ transform:scale(.97); }
   100%{ transform:scale(1); }
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
   #resultados .resultado{
     min-height:74px !important;
     padding:9px 11px !important;
@@ -1790,25 +1433,13 @@ body::before{
     padding:8px 13px !important;
     font-size:12px !important;
   }
-}
-
-
-/* =========================================================
-   HOTFIX COPIADO
-   - Evita que la tarjeta del generador se oculte al copiar.
-   - Mantiene la tarjeta siempre visible.
-   - Overlay "COPIADO" más profesional con entrada y salida.
-   ========================================================= */
-
-#resultados .resultado,
+}#resultados .resultado,
 #contenido .tarjetaCategoria,
 #resultados .resultado.copiado,
 #contenido .tarjetaCategoria.copiado{
   opacity:1 !important;
   visibility:visible !important;
-}
-
-#resultados .resultado.copiado,
+}#resultados .resultado.copiado,
 #contenido .tarjetaCategoria.copiado{
   animation:none !important;
   transform:none !important;
@@ -1817,9 +1448,7 @@ body::before{
     0 0 0 2px rgba(85, 214, 255, .30),
     0 14px 30px rgba(4,14,36,.30),
     0 0 24px rgba(56,189,248,.22) !important;
-}
-
-#resultados .resultado .copiadoOverlay,
+}#resultados .resultado .copiadoOverlay,
 #contenido .tarjetaCategoria .copiadoOverlay{
   backdrop-filter: blur(1.4px);
   background:
@@ -1834,13 +1463,9 @@ body::before{
     0 0 20px rgba(56,189,248,.92),
     0 0 34px rgba(56,189,248,.72),
     0 3px 12px rgba(0,0,0,.42) !important;
-}
-
-.tarjetaCopiable.copiado .copiadoOverlay{
+}.tarjetaCopiable.copiado .copiadoOverlay{
   animation:copiadoOverlayPro .82s cubic-bezier(.2,.78,.2,1) forwards !important;
-}
-
-@keyframes copiadoOverlayPro{
+}@keyframes copiadoOverlayPro{
   0%{
     opacity:0;
     transform:scale(.70) translateY(12px);
@@ -1865,24 +1490,13 @@ body::before{
     letter-spacing:.18em;
     filter:blur(2px);
   }
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
   #resultados .resultado .copiadoOverlay,
   #contenido .tarjetaCategoria .copiadoOverlay{
     font-size:clamp(1.9rem, 10vw, 3rem) !important;
     letter-spacing:.08em !important;
   }
-}
-
-
-/* =========================================================
-   FIX DEFINITIVO OVERLAY COPIADO
-   - Usa una clase directa en el overlay para garantizar que se vea.
-   - Dura ~3 segundos y ocupa casi toda la mini tarjeta.
-   ========================================================= */
-
-#resultados .resultado.copiado-activo,
+}#resultados .resultado.copiado-activo,
 #contenido .tarjetaCategoria.copiado-activo{
   opacity:1 !important;
   visibility:visible !important;
@@ -1892,9 +1506,7 @@ body::before{
     0 0 0 2px rgba(85,214,255,.34),
     0 16px 30px rgba(4,14,36,.32),
     0 0 26px rgba(56,189,248,.24) !important;
-}
-
-#resultados .resultado .copiadoOverlay,
+}#resultados .resultado .copiadoOverlay,
 #contenido .tarjetaCategoria .copiadoOverlay{
   position:absolute !important;
   inset:0 !important;
@@ -1923,15 +1535,11 @@ body::before{
     0 0 20px rgba(56,189,248,.96),
     0 0 34px rgba(56,189,248,.76),
     0 3px 12px rgba(0,0,0,.42) !important;
-}
-
-#resultados .resultado .copiadoOverlay.copiado-visible,
+}#resultados .resultado .copiadoOverlay.copiado-visible,
 #contenido .tarjetaCategoria .copiadoOverlay.copiado-visible{
   visibility:visible !important;
   animation:copiadoOverlayVisible 3s cubic-bezier(.2,.78,.2,1) forwards !important;
-}
-
-@keyframes copiadoOverlayVisible{
+}@keyframes copiadoOverlayVisible{
   0%{
     opacity:0;
     transform:scale(.68) translateY(18px);
@@ -1956,26 +1564,14 @@ body::before{
     letter-spacing:.20em;
     filter:blur(3px);
   }
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
   #resultados .resultado .copiadoOverlay,
   #contenido .tarjetaCategoria .copiadoOverlay{
     font-size:clamp(2rem, 11vw, 3.2rem) !important;
     letter-spacing:.08em !important;
     padding:8px !important;
   }
-}
-
-
-/* =========================================================
-   COPIADO — SOLUCIÓN SIN CONFLICTOS DE !important
-   El overlay se hace visible de forma directa y la animación
-   vive en un hijo (.copiadoTexto), por lo que ninguna regla
-   antigua de opacity/transform puede ocultar la palabra.
-   ========================================================= */
-
-#resultados .resultado .copiadoOverlay.copiado-visible,
+}#resultados .resultado .copiadoOverlay.copiado-visible,
 #contenido .tarjetaCategoria .copiadoOverlay.copiado-visible{
   visibility:visible !important;
   opacity:1 !important;
@@ -1988,17 +1584,13 @@ body::before{
     radial-gradient(circle at center, rgba(80,223,255,.30) 0%, rgba(30,174,255,.15) 36%, rgba(4,18,40,.20) 72%),
     rgba(4,15,35,.20) !important;
   box-shadow:inset 0 0 34px rgba(74,220,255,.13) !important;
-}
-
-#resultados .resultado.copiado-activo,
+}#resultados .resultado.copiado-activo,
 #contenido .tarjetaCategoria.copiado-activo{
   opacity:1 !important;
   visibility:visible !important;
   transform:none !important;
   animation:none !important;
-}
-
-.copiadoTexto{
+}.copiadoTexto{
   position:relative;
   z-index:3;
   display:block;
@@ -2021,13 +1613,9 @@ body::before{
     0 0 34px rgba(0,187,255,.82),
     0 4px 14px rgba(0,0,0,.46);
   will-change:transform,opacity,filter,letter-spacing;
-}
-
-.copiadoTexto.copiado-texto-activo{
+}.copiadoTexto.copiado-texto-activo{
   animation:copiadoTextoProfesional 3s cubic-bezier(.18,.78,.2,1) both !important;
-}
-
-#resultados .resultado .copiadoOverlay.copiado-visible::after,
+}#resultados .resultado .copiadoOverlay.copiado-visible::after,
 #contenido .tarjetaCategoria .copiadoOverlay.copiado-visible::after{
   content:"";
   position:absolute;
@@ -2045,9 +1633,7 @@ body::before{
     rgba(255,255,255,.10) 70%,
     rgba(255,255,255,0) 100%);
   animation:copiadoBrilloProfesional 3s ease-in-out both !important;
-}
-
-@keyframes copiadoTextoProfesional{
+}@keyframes copiadoTextoProfesional{
   0%{
     opacity:0;
     transform:translateY(16px) scale(.72);
@@ -2082,28 +1668,17 @@ body::before{
     filter:blur(6px);
     letter-spacing:.13em;
   }
-}
-
-@keyframes copiadoBrilloProfesional{
+}@keyframes copiadoBrilloProfesional{
   0%, 12%{ left:-32%; opacity:0; }
   20%{ opacity:.8; }
   43%{ left:112%; opacity:.45; }
   52%,100%{ left:112%; opacity:0; }
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
   .copiadoTexto{
     font-size:clamp(2rem, 11vw, 3.35rem);
     letter-spacing:.035em;
   }
-}
-
-/* =========================================================
-   FIX MÓVIL — FAVORITO DE CATEGORÍAS
-   Mantiene el botón compacto arriba a la derecha, igual que
-   las tarjetas del generador. No modifica animaciones ni JS.
-   ========================================================= */
-@media (max-width:460px){
+}@media (max-width:460px){
   #contenido .tarjetaCategoria{
     grid-template-columns:minmax(0,1fr) auto !important;
     grid-template-areas:
@@ -2123,22 +1698,14 @@ body::before{
     padding:8px 13px !important;
     white-space:nowrap !important;
   }
-}
-
-/* =========================================================
-   PÁGINA DE PRIVACIDAD
-   ========================================================= */
-
-.privacy-page{
+}.privacy-page{
     width:100%;
     max-width:900px;
     margin:0 auto;
     padding:25px 16px 60px;
     position:relative;
     z-index:1;
-}
-
-.privacy-back{
+}.privacy-back{
     display:inline-flex;
     align-items:center;
     justify-content:center;
@@ -2162,15 +1729,11 @@ body::before{
         transform .2s ease,
         border-color .2s ease,
         box-shadow .2s ease;
-}
-
-.privacy-back:hover{
+}.privacy-back:hover{
     transform:translateY(-2px);
     border-color:#38bdf8;
     box-shadow:0 0 20px rgba(56,189,248,.35);
-}
-
-.privacy-card{
+}.privacy-card{
     width:100%;
 
     padding:clamp(22px,5vw,42px);
@@ -2190,9 +1753,7 @@ body::before{
         0 0 25px rgba(56,189,248,.10);
 
     backdrop-filter:blur(12px);
-}
-
-.privacy-card h1{
+}.privacy-card h1{
     margin:0 0 8px;
 
     text-align:center;
@@ -2205,18 +1766,14 @@ body::before{
     text-shadow:
         0 0 12px rgba(56,189,248,.8),
         0 0 28px rgba(37,99,235,.35);
-}
-
-.privacy-update{
+}.privacy-update{
     margin-bottom:32px !important;
 
     text-align:center;
 
     color:#94a3b8 !important;
     font-size:14px !important;
-}
-
-.privacy-card h2{
+}.privacy-card h2{
     margin-top:32px;
     margin-bottom:12px;
 
@@ -2225,33 +1782,23 @@ body::before{
     color:#7dd3fc;
 
     text-shadow:0 0 10px rgba(56,189,248,.22);
-}
-
-.privacy-card p{
+}.privacy-card p{
     margin-bottom:14px;
 
     color:#cbd5e1;
 
     font-size:16px;
     line-height:1.75;
-}
-
-.privacy-card strong{
+}.privacy-card strong{
     color:#fff;
-}
-
-.privacy-card a{
+}.privacy-card a{
     color:#38bdf8;
     text-decoration:none;
     font-weight:700;
-}
-
-.privacy-card a:hover{
+}.privacy-card a:hover{
     text-decoration:underline;
     color:#7dd3fc;
-}
-
-@media (max-width:600px){
+}@media (max-width:600px){
 
     .privacy-page{
         padding:18px 12px 45px;
@@ -2274,13 +1821,7 @@ body::before{
     .privacy-back{
         width:100%;
     }
-}
-
-/* =========================================================
-   FOOTER PATRONNICK
-   ========================================================= */
-
-.site-footer{
+}.site-footer{
     width:100%;
     max-width:820px;
 
@@ -2305,36 +1846,26 @@ body::before{
 
     position:relative;
     z-index:1;
-}
-
-.footer-brand{
+}.footer-brand{
     display:flex;
     flex-direction:column;
     gap:5px;
-}
-
-.footer-brand strong{
+}.footer-brand strong{
     font-size:21px;
     color:#fff;
 
     text-shadow:
         0 0 12px rgba(56,189,248,.7);
-}
-
-.footer-brand span{
+}.footer-brand span{
     color:#94a3b8;
     font-size:14px;
-}
-
-.footer-links{
+}.footer-links{
     display:flex;
     justify-content:center;
     align-items:center;
     flex-wrap:wrap;
     gap:10px 18px;
-}
-
-.footer-links a{
+}.footer-links a{
     color:#7dd3fc;
 
     font-size:14px;
@@ -2346,26 +1877,20 @@ body::before{
         color .2s ease,
         text-shadow .2s ease,
         transform .2s ease;
-}
-
-.footer-links a:hover{
+}.footer-links a:hover{
     color:#fff;
 
     text-shadow:
         0 0 10px rgba(56,189,248,.8);
 
     transform:translateY(-1px);
-}
-
-.footer-copy{
+}.footer-copy{
     margin:0;
 
     color:#64748b;
 
     font-size:12px;
-}
-
-@media (max-width:600px){
+}@media (max-width:600px){
 
     .site-footer{
         width:calc(100% - 24px);
@@ -2377,19 +1902,11 @@ body::before{
     .footer-brand strong{
         font-size:19px;
     }
-}
-
-/* =========================================================
-   INFORMACIÓN DEL INICIO + FAQ
-   ========================================================= */
-
-.home-info{
+}.home-info{
     width:100%;
     max-width:820px;
     margin:35px auto 0;
-}
-
-.info-card{
+}.info-card{
     padding:28px;
 
     background:
@@ -2405,9 +1922,7 @@ body::before{
     box-shadow:
         0 15px 40px rgba(0,0,0,.18),
         0 0 25px rgba(56,189,248,.06);
-}
-
-.info-card > h2,
+}.info-card > h2,
 .faq-section > h2{
     text-align:center;
 
@@ -2419,9 +1934,7 @@ body::before{
 
     text-shadow:
         0 0 14px rgba(56,189,248,.55);
-}
-
-.info-card > p{
+}.info-card > p{
     max-width:680px;
 
     margin:0 auto 28px;
@@ -2431,9 +1944,7 @@ body::before{
     color:#cbd5e1;
 
     line-height:1.7;
-}
-
-.steps-grid{
+}.steps-grid{
     display:grid;
 
     grid-template-columns:
@@ -2442,9 +1953,7 @@ body::before{
     gap:14px;
 
     margin-bottom:42px;
-}
-
-.info-step{
+}.info-step{
     padding:20px;
 
     background:rgba(15,30,55,.65);
@@ -2457,9 +1966,7 @@ body::before{
         transform .2s ease,
         border-color .2s ease,
         box-shadow .2s ease;
-}
-
-.info-step:hover{
+}.info-step:hover{
     transform:translateY(-2px);
 
     border-color:rgba(56,189,248,.55);
@@ -2467,9 +1974,7 @@ body::before{
     box-shadow:
         0 8px 22px rgba(0,0,0,.18),
         0 0 14px rgba(56,189,248,.12);
-}
-
-.info-step > span{
+}.info-step > span{
     width:34px;
     height:34px;
 
@@ -2494,30 +1999,22 @@ body::before{
 
     box-shadow:
         0 0 14px rgba(56,189,248,.35);
-}
-
-.info-step h3{
+}.info-step h3{
     margin-bottom:8px;
 
     color:#fff;
 
     font-size:17px;
-}
-
-.info-step p{
+}.info-step p{
     margin:0;
 
     color:#94a3b8;
 
     font-size:14px;
     line-height:1.6;
-}
-
-.faq-section{
+}.faq-section{
     margin-top:10px;
-}
-
-.faq-item{
+}.faq-item{
     margin-bottom:11px;
 
     background:rgba(15,30,55,.62);
@@ -2531,16 +2028,12 @@ body::before{
     transition:
         border-color .2s ease,
         box-shadow .2s ease;
-}
-
-.faq-item[open]{
+}.faq-item[open]{
     border-color:rgba(56,189,248,.48);
 
     box-shadow:
         0 0 16px rgba(56,189,248,.08);
-}
-
-.faq-item summary{
+}.faq-item summary{
     padding:16px 18px;
 
     cursor:pointer;
@@ -2550,9 +2043,7 @@ body::before{
     font-weight:700;
 
     user-select:none;
-}
-
-.faq-item p{
+}.faq-item p{
     padding:
         0 18px 18px;
 
@@ -2561,9 +2052,7 @@ body::before{
     color:#94a3b8;
 
     line-height:1.65;
-}
-
-@media(max-width:600px){
+}@media(max-width:600px){
 
     .home-info{
         margin-top:25px;
@@ -2577,26 +2066,14 @@ body::before{
         grid-template-columns:1fr;
     }
 
-}
-
-/* =========================================================
-   PÁGINAS SEO PATRONNICK
-   ========================================================= */
-
-.seo-page{
+}.seo-page{
     max-width:920px;
-}
-
-.seo-article{
+}.seo-article{
     position:relative;
-}
-
-.seo-header{
+}.seo-header{
     text-align:center;
     margin-bottom:38px;
-}
-
-.seo-icon{
+}.seo-icon{
     display:block;
     margin-bottom:8px;
 
@@ -2604,13 +2081,9 @@ body::before{
 
     filter:
         drop-shadow(0 0 14px rgba(56,189,248,.45));
-}
-
-.seo-header h1{
+}.seo-header h1{
     margin-bottom:15px;
-}
-
-.seo-intro{
+}.seo-intro{
     max-width:700px;
     margin:0 auto !important;
 
@@ -2620,12 +2093,7 @@ body::before{
     line-height:1.8 !important;
 
     color:#cbd5e1 !important;
-}
-
-
-/* TARJETAS DE CONSEJOS */
-
-.seo-grid{
+}.seo-grid{
     display:grid;
 
     grid-template-columns:
@@ -2634,9 +2102,7 @@ body::before{
     gap:14px;
 
     margin:22px 0 10px;
-}
-
-.seo-mini-card{
+}.seo-mini-card{
     padding:20px;
 
     background:
@@ -2654,9 +2120,7 @@ body::before{
         transform .2s ease,
         border-color .2s ease,
         box-shadow .2s ease;
-}
-
-.seo-mini-card:hover{
+}.seo-mini-card:hover{
     transform:translateY(-3px);
 
     border-color:rgba(56,189,248,.58);
@@ -2664,46 +2128,33 @@ body::before{
     box-shadow:
         0 10px 24px rgba(0,0,0,.18),
         0 0 17px rgba(56,189,248,.12);
-}
-
-.seo-mini-card > span{
+}.seo-mini-card > span{
     display:block;
 
     margin-bottom:9px;
 
     font-size:27px;
-}
-
-.seo-mini-card h3{
+}.seo-mini-card h3{
     margin:0 0 7px;
 
     color:#fff;
 
     font-size:17px;
-}
-
-.seo-mini-card p{
+}.seo-mini-card p{
     margin:0;
 
     color:#94a3b8;
 
     font-size:14px;
     line-height:1.6;
-}
-
-
-/* TIPOS */
-
-.seo-types{
+}.seo-types{
     display:flex;
     flex-direction:column;
 
     gap:10px;
 
     margin-top:20px;
-}
-
-.seo-types > div{
+}.seo-types > div{
     display:flex;
 
     align-items:center;
@@ -2718,24 +2169,15 @@ body::before{
     border:1px solid rgba(56,189,248,.14);
 
     border-radius:13px;
-}
-
-.seo-types strong{
+}.seo-types strong{
     color:#7dd3fc;
-}
-
-.seo-types span{
+}.seo-types span{
     color:#94a3b8;
 
     text-align:right;
 
     font-size:14px;
-}
-
-
-/* GENERADOR CTA */
-
-.seo-generator-box{
+}.seo-generator-box{
     margin:40px 0 !important;
 
     padding:28px;
@@ -2758,26 +2200,18 @@ body::before{
     box-shadow:
         0 15px 35px rgba(0,0,0,.2),
         0 0 25px rgba(56,189,248,.08);
-}
-
-.seo-generator-icon{
+}.seo-generator-icon{
     margin-bottom:5px;
 
     font-size:34px;
-}
-
-.seo-generator-box h2{
+}.seo-generator-box h2{
     margin-top:5px;
-}
-
-.seo-generator-box p{
+}.seo-generator-box p{
     max-width:600px;
 
     margin:
         0 auto 22px !important;
-}
-
-.seo-main-button{
+}.seo-main-button{
     display:inline-flex;
 
     align-items:center;
@@ -2809,20 +2243,13 @@ body::before{
     transition:
         transform .2s ease,
         box-shadow .2s ease;
-}
-
-.seo-main-button:hover{
+}.seo-main-button:hover{
     transform:translateY(-2px);
 
     box-shadow:
         0 12px 28px rgba(37,99,235,.32),
         0 0 25px rgba(56,189,248,.32);
-}
-
-
-/* ENLACES RELACIONADOS */
-
-.seo-related{
+}.seo-related{
     margin-top:40px;
 
     padding-top:25px;
@@ -2831,13 +2258,9 @@ body::before{
         1px solid rgba(56,189,248,.18);
 
     text-align:center;
-}
-
-.seo-related h2{
+}.seo-related h2{
     margin-top:0;
-}
-
-.seo-related > div{
+}.seo-related > div{
     display:flex;
 
     flex-wrap:wrap;
@@ -2845,27 +2268,18 @@ body::before{
     justify-content:center;
 
     gap:10px 18px;
-}
-
-.seo-related a{
+}.seo-related a{
     color:#7dd3fc;
 
     font-weight:700;
 
     text-decoration:none;
-}
-
-.seo-related a:hover{
+}.seo-related a:hover{
     color:#fff;
 
     text-shadow:
         0 0 10px rgba(56,189,248,.7);
-}
-
-
-/* MÓVIL */
-
-@media(max-width:600px){
+}@media(max-width:600px){
 
     .seo-grid{
         grid-template-columns:1fr;
@@ -2892,13 +2306,7 @@ body::before{
         min-width:0;
     }
 
-}
-
-/* =========================================================
-   ENLACES SEO DE CATEGORÍAS
-   ========================================================= */
-
-.seo-category-link{
+}.seo-category-link{
     display:inline-flex;
     align-items:center;
     justify-content:center;
@@ -2916,22 +2324,14 @@ body::before{
         color .2s ease,
         transform .2s ease,
         text-shadow .2s ease;
-}
-
-.seo-category-link:hover{
+}.seo-category-link:hover{
     color:#fff;
 
     transform:translateY(-1px);
 
     text-shadow:
         0 0 10px rgba(56,189,248,.75);
-}
-
-/* =========================================================
-   GENERADOR PATRONNICK - ACABADO PREMIUM
-   ========================================================= */
-
-#inputNombre{
+}#inputNombre{
     min-height:62px;
     padding:17px 20px;
 
@@ -2958,18 +2358,12 @@ body::before{
         box-shadow .22s ease,
         transform .22s ease,
         background .22s ease;
-}
-
-#inputNombre::placeholder{
+}#inputNombre::placeholder{
     color:#94a3b8;
     opacity:1;
-}
-
-#inputNombre:hover{
+}#inputNombre:hover{
     border-color:rgba(103,232,249,.72);
-}
-
-#inputNombre:focus{
+}#inputNombre:focus{
     transform:translateY(-1px);
 
     border-color:#67e8f9;
@@ -2986,9 +2380,7 @@ body::before{
         0 12px 30px rgba(2,6,23,.26),
         0 0 0 3px rgba(34,211,238,.12),
         0 0 24px rgba(56,189,248,.18);
-}
-
-#btnGenerar{
+}#btnGenerar{
     position:relative;
     isolation:isolate;
     overflow:hidden;
@@ -3023,9 +2415,7 @@ body::before{
         transform .2s ease,
         box-shadow .2s ease,
         filter .2s ease;
-}
-
-#btnGenerar::before{
+}#btnGenerar::before{
     content:"";
     position:absolute;
     pointer-events:none;
@@ -3044,9 +2434,7 @@ body::before{
 
     transform:rotate(18deg);
     transition:left .55s ease;
-}
-
-#btnGenerar:hover{
+}#btnGenerar:hover{
     transform:translateY(-2px);
     filter:saturate(1.08) brightness(1.04);
 
@@ -3054,23 +2442,15 @@ body::before{
         inset 0 1px 0 rgba(255,255,255,.32),
         0 15px 34px rgba(14,165,233,.27),
         0 0 28px rgba(56,189,248,.3);
-}
-
-#btnGenerar:hover::before{
+}#btnGenerar:hover::before{
     left:115%;
-}
-
-#btnGenerar:active{
+}#btnGenerar:active{
     transform:translateY(0) scale(.99);
-}
-
-#btnGenerar:focus-visible,
+}#btnGenerar:focus-visible,
 #inputNombre:focus-visible{
     outline:2px solid rgba(165,243,252,.9);
     outline-offset:3px;
-}
-
-@media(max-width:600px){
+}@media(max-width:600px){
     #inputNombre{
         min-height:58px;
         padding:15px 17px;
@@ -3084,18 +2464,7 @@ body::before{
         font-size:16px;
         border-radius:16px;
     }
-}
-
-
-/* =========================================================
-   AJUSTE VISUAL FINAL
-   - Logo PatronNick multicolor premium.
-   - Botón Favoritos principal más profesional.
-   - Botones de favorito en tarjetas con look premium.
-   - Tarjetas de categorías (Free Fire / Oscuro / etc.) más compactas.
-   ========================================================= */
-
-.logo{
+}.logo{
   display:inline-block !important;
   font-size:clamp(3rem,8vw,4.4rem) !important;
   font-weight:1000 !important;
@@ -3116,9 +2485,7 @@ body::before{
   text-shadow:none !important;
   filter:drop-shadow(0 2px 0 rgba(255,255,255,.15)) drop-shadow(0 0 14px rgba(56,189,248,.36)) drop-shadow(0 0 26px rgba(96,165,250,.24));
   position:relative;
-}
-
-.logo::after{
+}.logo::after{
   content:"";
   position:absolute;
   inset:0;
@@ -3130,17 +2497,13 @@ body::before{
   mix-blend-mode:screen;
   animation:logoShinePatronNick 5s linear infinite;
   pointer-events:none;
-}
-
-@keyframes logoShinePatronNick{
+}@keyframes logoShinePatronNick{
   0%{ transform:translateX(-38%); opacity:0; }
   10%{ opacity:.15; }
   40%{ opacity:.72; }
   55%{ opacity:.24; }
   100%{ transform:translateX(38%); opacity:0; }
-}
-
-#abrirFavoritos,
+}#abrirFavoritos,
 .btn-top{
   position:relative !important;
   overflow:hidden !important;
@@ -3156,9 +2519,7 @@ body::before{
     inset 0 0 0 1px rgba(56,189,248,.14),
     0 10px 22px rgba(2,6,23,.24),
     0 0 16px rgba(34,211,238,.14) !important;
-}
-
-#abrirFavoritos::before,
+}#abrirFavoritos::before,
 .btn-top::before{
   content:"";
   position:absolute;
@@ -3170,9 +2531,7 @@ body::before{
   background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.08) 32%, rgba(255,255,255,.9) 50%, rgba(255,255,255,.08) 68%, rgba(255,255,255,0) 100%);
   transition:left .65s ease;
   pointer-events:none;
-}
-
-#abrirFavoritos:hover,
+}#abrirFavoritos:hover,
 .btn-top:hover{
   transform:translateY(-2px) !important;
   border-color:rgba(103,232,249,.5) !important;
@@ -3183,20 +2542,13 @@ body::before{
     0 14px 26px rgba(2,6,23,.30),
     0 0 18px rgba(34,211,238,.26),
     0 0 24px rgba(250,204,21,.14) !important;
-}
-
-#abrirFavoritos:hover::before,
+}#abrirFavoritos:hover::before,
 .btn-top:hover::before{
   left:115%;
-}
-
-#contadorFavoritos{
+}#contadorFavoritos{
   color:#fde68a !important;
   font-weight:900 !important;
-}
-
-/* Botón favorito premium en tarjetas */
-#resultados .resultado .btnFavorito,
+}#resultados .resultado .btnFavorito,
 #contenido .favoriteInvisible{
   position:relative !important;
   overflow:hidden !important;
@@ -3213,9 +2565,7 @@ body::before{
     inset 0 0 0 1px rgba(56,189,248,.08),
     0 10px 18px rgba(2,6,23,.22),
     0 0 16px rgba(56,189,248,.14) !important;
-}
-
-#resultados .resultado .btnFavorito::before,
+}#resultados .resultado .btnFavorito::before,
 #contenido .favoriteInvisible::before{
   content:"";
   position:absolute;
@@ -3227,9 +2577,7 @@ body::before{
   background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.10) 35%, rgba(255,255,255,.92) 50%, rgba(255,255,255,.12) 65%, rgba(255,255,255,0) 100%);
   transition:left .60s ease;
   z-index:-1;
-}
-
-#resultados .resultado .btnFavorito::after,
+}#resultados .resultado .btnFavorito::after,
 #contenido .favoriteInvisible::after{
   content:"";
   position:absolute;
@@ -3238,9 +2586,7 @@ body::before{
   background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0));
   pointer-events:none;
   z-index:-1;
-}
-
-#resultados .resultado .btnFavorito:hover,
+}#resultados .resultado .btnFavorito:hover,
 #contenido .favoriteInvisible:hover{
   transform:translateY(-2px) scale(1.02) !important;
   border-color:rgba(103,232,249,.82) !important;
@@ -3250,16 +2596,12 @@ body::before{
     0 12px 22px rgba(2,6,23,.26),
     0 0 22px rgba(34,211,238,.22),
     0 0 30px rgba(56,189,248,.12) !important;
-}
-
-#resultados .resultado .btnFavorito:hover::before,
+}#resultados .resultado .btnFavorito:hover::before,
 #contenido .favoriteInvisible:hover::before,
 #resultados .resultado .btnFavorito.fav-clicked::before,
 #contenido .favoriteInvisible.fav-clicked::before{
   left:116%;
-}
-
-#resultados .resultado .btnFavorito.favorito-activo,
+}#resultados .resultado .btnFavorito.favorito-activo,
 #contenido .favoriteInvisible.favorito-activo{
   border-color:rgba(255,198,218,.82) !important;
   background:linear-gradient(135deg, rgba(255,248,251,.98) 0%, rgba(255,223,236,.97) 48%, rgba(255,192,218,.94) 100%) !important;
@@ -3270,33 +2612,22 @@ body::before{
     inset 0 -2px 8px rgba(190,24,93,.10),
     0 10px 20px rgba(2,6,23,.22),
     0 0 24px rgba(244,114,182,.24) !important;
-}
-
-/* Categorías más compactas como las mini tarjetas del generador */
-#contenido .tarjetaCategoria{
+}#contenido .tarjetaCategoria{
   width:min(100%, 740px) !important;
   min-height:80px !important;
   padding:11px 14px !important;
   row-gap:7px !important;
   column-gap:12px !important;
-}
-
-#contenido .nombreCategoria{
+}#contenido .nombreCategoria{
   font-size:clamp(18px, 3.1vw, 24px) !important;
   line-height:1.02 !important;
   min-height:0 !important;
-}
-
-#contenido .estadisticasNombre{
+}#contenido .estadisticasNombre{
   gap:12px !important;
-}
-
-#contenido .copiasNombre,
+}#contenido .copiasNombre,
 #contenido .favoritosNombre{
   font-size:12px !important;
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
   .logo{
     font-size:clamp(2.6rem, 11vw, 3.5rem) !important;
   }
@@ -3323,18 +2654,7 @@ body::before{
     padding:8px 13px !important;
     font-size:12px !important;
   }
-}
-
-/* =========================================================
-   AJUSTE VISUAL ULTRA FINAL
-   - Logo futurista estilo PN / cromo azul.
-   - Fondo gamer premium más único.
-   - Copias y corazones juntos a la izquierda.
-   - Cards de Free Fire más pro.
-   ========================================================= */
-
-/* Fondo más avanzado y único */
-body{
+}body{
   background:
     radial-gradient(circle at 18% 8%, rgba(34,211,238,.18) 0%, rgba(34,211,238,0) 18%),
     radial-gradient(circle at 84% 10%, rgba(37,99,235,.24) 0%, rgba(37,99,235,0) 20%),
@@ -3344,9 +2664,7 @@ body{
   background-attachment: fixed !important;
   position:relative;
   overflow-x:hidden;
-}
-
-body::before{
+}body::before{
   content:"";
   position:fixed;
   inset:0;
@@ -3358,9 +2676,7 @@ body::before{
   opacity:.18;
   pointer-events:none;
   mask-image:radial-gradient(circle at center, rgba(0,0,0,.9) 0%, rgba(0,0,0,.84) 55%, rgba(0,0,0,.25) 100%);
-}
-
-body::after{
+}body::after{
   content:"";
   position:fixed;
   inset:-10%;
@@ -3373,19 +2689,13 @@ body::after{
   filter:blur(12px);
   pointer-events:none;
   animation:patronAmbientMove 18s ease-in-out infinite alternate;
-}
-
-@keyframes patronAmbientMove{
+}@keyframes patronAmbientMove{
   0%{ transform:translate3d(0,0,0) scale(1); }
   100%{ transform:translate3d(0,-10px,0) scale(1.035); }
-}
-
-.app{
+}.app{
   position:relative;
   z-index:1;
-}
-
-.app::before{
+}.app::before{
   content:"";
   position:fixed;
   inset:auto 50% 6% 50%;
@@ -3396,10 +2706,7 @@ body::after{
   filter:blur(18px);
   pointer-events:none;
   z-index:-1;
-}
-
-/* Logo futurista inspirado en el avatar PN */
-.logo{
+}.logo{
   display:inline-block !important;
   font-size:clamp(3.1rem, 8vw, 4.8rem) !important;
   font-weight:1000 !important;
@@ -3428,9 +2735,7 @@ body::after{
     0 0 28px rgba(37,99,235,.22) !important;
   filter:drop-shadow(0 0 18px rgba(56,189,248,.18));
   position:relative;
-}
-
-.logo::after{
+}.logo::after{
   content:"";
   position:absolute;
   inset:0;
@@ -3449,26 +2754,19 @@ body::after{
   mix-blend-mode:screen;
   animation:logoChromeSweep 4.9s linear infinite;
   pointer-events:none;
-}
-
-@keyframes logoChromeSweep{
+}@keyframes logoChromeSweep{
   0%{ transform:translateX(-30%); opacity:0; }
   12%{ opacity:.12; }
   38%{ opacity:.92; }
   56%{ opacity:.20; }
   100%{ transform:translateX(34%); opacity:0; }
-}
-
-/* Copias y corazones juntos a la izquierda */
-#resultados .resultado-stats,
+}#resultados .resultado-stats,
 #contenido .estadisticasNombre{
   width:auto !important;
   justify-content:flex-start !important;
   align-items:center !important;
   gap:14px !important;
-}
-
-#resultados .resultado-stats .copiasNombre,
+}#resultados .resultado-stats .copiasNombre,
 #resultados .resultado-stats .favoritosNombre,
 #contenido .copiasNombre,
 #contenido .favoritosNombre{
@@ -3476,14 +2774,9 @@ body::after{
   align-items:center !important;
   gap:5px !important;
   padding:0 !important;
-}
-
-/* Menú Free Fire más profesional */
-.menu-juego{
+}.menu-juego{
   gap:20px !important;
-}
-
-.modo-card{
+}.modo-card{
   position:relative !important;
   overflow:hidden !important;
   border-radius:24px !important;
@@ -3496,18 +2789,14 @@ body::after{
     inset 0 0 0 1px rgba(56,189,248,.06),
     0 14px 28px rgba(2,6,23,.22),
     0 0 0 1px rgba(56,189,248,.05) !important;
-}
-
-.modo-card::before{
+}.modo-card::before{
   content:"";
   position:absolute;
   inset:0 0 auto 0;
   height:4px;
   background:linear-gradient(90deg, rgba(34,211,238,0), rgba(34,211,238,.92), rgba(96,165,250,.92), rgba(34,211,238,0));
   opacity:.92;
-}
-
-.modo-card::after{
+}.modo-card::after{
   content:"";
   position:absolute;
   top:-35%;
@@ -3517,9 +2806,7 @@ body::after{
   border-radius:50%;
   background:radial-gradient(circle, rgba(34,211,238,.18) 0%, rgba(34,211,238,.05) 40%, rgba(34,211,238,0) 72%);
   pointer-events:none;
-}
-
-.modo-card:hover{
+}.modo-card:hover{
   transform:translateY(-4px) !important;
   border-color:rgba(103,232,249,.45) !important;
   box-shadow:
@@ -3527,21 +2814,15 @@ body::after{
     inset 0 0 0 1px rgba(34,211,238,.08),
     0 18px 32px rgba(2,6,23,.28),
     0 0 22px rgba(56,189,248,.12) !important;
-}
-
-.modo-card h3{
+}.modo-card h3{
   font-size:clamp(1.55rem, 3vw, 2rem) !important;
   letter-spacing:-0.02em !important;
   margin-bottom:8px !important;
-}
-
-.modo-card p{
+}.modo-card p{
   color:#d9e6ff !important;
   opacity:.9 !important;
   margin-bottom:14px !important;
-}
-
-.cantidad-nombres{
+}.cantidad-nombres{
   display:inline-flex !important;
   align-items:center !important;
   justify-content:center !important;
@@ -3559,9 +2840,7 @@ body::after{
     inset 0 1px 0 rgba(255,255,255,.06),
     0 0 0 1px rgba(56,189,248,.04),
     0 0 16px rgba(34,211,238,.08) !important;
-}
-
-.modo-card button{
+}.modo-card button{
   position:relative !important;
   overflow:hidden !important;
   margin-top:14px !important;
@@ -3578,9 +2857,7 @@ body::after{
     inset 0 1px 0 rgba(255,255,255,.30),
     0 10px 18px rgba(2,6,23,.20),
     0 0 18px rgba(34,211,238,.18) !important;
-}
-
-.modo-card button::before{
+}.modo-card button::before{
   content:"";
   position:absolute;
   top:-60%;
@@ -3590,21 +2867,15 @@ body::after{
   transform:rotate(23deg);
   background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.92), rgba(255,255,255,0));
   transition:left .62s ease;
-}
-
-.modo-card button:hover{
+}.modo-card button:hover{
   transform:translateY(-2px) scale(1.01) !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.32),
     0 14px 22px rgba(2,6,23,.24),
     0 0 22px rgba(34,211,238,.24) !important;
-}
-
-.modo-card button:hover::before{
+}.modo-card button:hover::before{
   left:115%;
-}
-
-.seo-category-link{
+}.seo-category-link{
   display:inline-flex !important;
   margin-top:13px !important;
   font-weight:800 !important;
@@ -3612,15 +2883,10 @@ body::after{
   color:#c7fbff !important;
   opacity:.94 !important;
   text-decoration:none !important;
-}
-
-.seo-category-link:hover{
+}.seo-category-link:hover{
   color:#ffffff !important;
   text-shadow:0 0 10px rgba(34,211,238,.28) !important;
-}
-
-/* Tarjetas de categorías con extra de definición visual */
-#contenido .tarjetaCategoria{
+}#contenido .tarjetaCategoria{
   border-radius:24px !important;
   background:
     linear-gradient(180deg, rgba(10,32,68,.96), rgba(9,27,58,.98)) !important;
@@ -3629,17 +2895,13 @@ body::after{
     inset 0 1px 0 rgba(255,255,255,.06),
     0 12px 20px rgba(2,6,23,.20),
     0 0 0 1px rgba(56,189,248,.04) !important;
-}
-
-#contenido .tarjetaCategoria:hover{
+}#contenido .tarjetaCategoria:hover{
   border-color:rgba(103,232,249,.42) !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.07),
     0 16px 24px rgba(2,6,23,.24),
     0 0 18px rgba(34,211,238,.10) !important;
-}
-
-@media (max-width:700px){
+}@media (max-width:700px){
   .logo{
     font-size:clamp(2.75rem, 12vw, 3.8rem) !important;
   }
@@ -3659,15 +2921,7 @@ body::after{
     font-size:13px !important;
     padding:7px 12px !important;
   }
-}
-
-/* =========================================================
-   PATRONNICK — ULTRA PREMIUM UI 2026
-   Sistema visual: cromo, cristal oscuro, cyan eléctrico y azul PN.
-   Este bloque es intencionalmente el último para unificar toda la web.
-   ========================================================= */
-
-:root{
+}:root{
   --pn-night-0:#020611;
   --pn-night-1:#061225;
   --pn-night-2:#071a36;
@@ -3682,23 +2936,17 @@ body::after{
   --pn-silver:#eef6ff;
   --pn-muted:#a9bdd6;
   --pn-shadow:0 22px 60px rgba(0,6,22,.34);
-}
-
-html{
+}html{
   background:var(--pn-night-0);
   scroll-behavior:smooth;
-}
-
-body{
+}body{
   background:
     radial-gradient(circle at 50% -8%, rgba(61,167,255,.28) 0%, rgba(61,167,255,0) 29%),
     radial-gradient(circle at 8% 24%, rgba(34,211,238,.12) 0%, rgba(34,211,238,0) 24%),
     radial-gradient(circle at 92% 35%, rgba(37,99,235,.14) 0%, rgba(37,99,235,0) 26%),
     linear-gradient(180deg, #07152f 0%, #071a38 26%, #05142d 54%, #030b1c 78%, #020611 100%) !important;
   background-attachment:fixed !important;
-}
-
-body::before{
+}body::before{
   background:
     linear-gradient(rgba(116,220,255,.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(116,220,255,.045) 1px, transparent 1px),
@@ -3706,9 +2954,7 @@ body::before{
   background-size:78px 78px,78px 78px,26px 26px !important;
   opacity:.34 !important;
   mask-image:linear-gradient(to bottom, rgba(0,0,0,.92), rgba(0,0,0,.58) 55%, rgba(0,0,0,.16));
-}
-
-body::after{
+}body::after{
   background:
     radial-gradient(circle at 17% 12%, rgba(65,231,255,.18), transparent 19%),
     radial-gradient(circle at 83% 18%, rgba(49,135,255,.20), transparent 22%),
@@ -3716,14 +2962,9 @@ body::after{
     radial-gradient(circle at 50% 108%, rgba(65,231,255,.12), transparent 24%) !important;
   filter:blur(26px) !important;
   opacity:.90 !important;
-}
-
-.app{
+}.app{
   gap:20px !important;
-}
-
-/* ---------- HERO / MARCA ---------- */
-.hero{
+}.hero{
   width:100% !important;
   padding:30px 24px 27px !important;
   border:1px solid rgba(122,223,255,.18) !important;
@@ -3736,9 +2977,7 @@ body::after{
     0 0 0 1px rgba(56,189,248,.025) !important;
   backdrop-filter:blur(18px) saturate(120%) !important;
   overflow:hidden !important;
-}
-
-.hero::before{
+}.hero::before{
   content:"";
   position:absolute;
   inset:0 0 auto 0;
@@ -3746,9 +2985,7 @@ body::after{
   background:linear-gradient(90deg, transparent, rgba(65,231,255,.88), rgba(49,135,255,.95), transparent);
   opacity:.78;
   pointer-events:none;
-}
-
-.hero::after{
+}.hero::after{
   content:"";
   position:absolute;
   width:420px;
@@ -3758,9 +2995,7 @@ body::after{
   transform:translateX(-50%);
   background:radial-gradient(ellipse, rgba(65,231,255,.15), rgba(65,231,255,0) 68%);
   pointer-events:none;
-}
-
-.brand-mark{
+}.brand-mark{
   width:82px !important;
   height:82px !important;
   display:block !important;
@@ -3776,9 +3011,7 @@ body::after{
   filter:saturate(1.03) contrast(1.03) !important;
   position:relative;
   z-index:2;
-}
-
-.logo{
+}.logo{
   font-family:"Segoe UI",Arial,Helvetica,sans-serif !important;
   font-size:clamp(3rem,8vw,4.65rem) !important;
   font-weight:1000 !important;
@@ -3797,23 +3030,17 @@ body::after{
     0 0 16px rgba(65,231,255,.24),
     0 0 34px rgba(49,135,255,.17) !important;
   filter:drop-shadow(0 9px 12px rgba(0,5,18,.20)) !important;
-}
-
-.logo::after{
+}.logo::after{
   background:linear-gradient(112deg, transparent 0%, rgba(255,255,255,.02) 21%, rgba(255,255,255,.98) 39%, rgba(151,241,255,.46) 48%, rgba(255,255,255,.06) 60%, transparent 74%) !important;
   animation:logoChromeSweep 5.4s linear infinite !important;
-}
-
-.subtitle{
+}.subtitle{
   max-width:760px !important;
   margin:0 auto !important;
   color:#c4d5e9 !important;
   font-size:clamp(14px,2.2vw,17px) !important;
   line-height:1.62 !important;
   text-shadow:0 1px 10px rgba(0,0,0,.18) !important;
-}
-
-.tiktok-btn{
+}.tiktok-btn{
   left:20px !important;
   top:20px !important;
   width:54px !important;
@@ -3825,10 +3052,7 @@ body::after{
     0 10px 22px rgba(0,4,18,.23),
     0 0 16px rgba(0,242,234,.17),
     0 0 20px rgba(255,0,80,.10) !important;
-}
-
-/* ---------- NAVEGACIÓN / BOTONES SECUNDARIOS ---------- */
-.top-btn,
+}.top-btn,
 #btnInicio,
 .back-btn,
 .privacy-back{
@@ -3837,52 +3061,34 @@ body::after{
   color:#eaf8ff !important;
   border-radius:15px !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 22px rgba(0,5,20,.20),0 0 14px rgba(56,189,248,.07) !important;
-}
-
-.top-btn:hover,
+}.top-btn:hover,
 #btnInicio:hover,
 .back-btn:hover,
 .privacy-back:hover{
   border-color:rgba(111,231,255,.62) !important;
   color:#fff !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 13px 26px rgba(0,5,20,.24),0 0 18px rgba(65,231,255,.16) !important;
-}
-
-/* ---------- GENERADOR ---------- */
-.generator{position:relative;}
-
-#inputNombre{
+}.generator{position:relative;}#inputNombre{
   min-height:62px !important;
   border:1px solid rgba(144,230,255,.20) !important;
   border-radius:19px !important;
   background:linear-gradient(180deg, rgba(5,17,37,.94), rgba(7,24,52,.90)) !important;
   color:#f6fbff !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.055),inset 0 0 0 1px rgba(49,135,255,.025),0 13px 28px rgba(0,5,20,.19) !important;
-}
-
-#inputNombre::placeholder{color:#8298b2 !important;}
-
-#inputNombre:focus{
+}#inputNombre::placeholder{color:#8298b2 !important;}#inputNombre:focus{
   border-color:rgba(98,226,255,.66) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 3px rgba(65,231,255,.085),0 14px 30px rgba(0,6,24,.21),0 0 24px rgba(56,189,248,.13) !important;
-}
-
-#btnGenerar{
+}#btnGenerar{
   min-height:58px !important;
   border:1px solid rgba(205,250,255,.18) !important;
   border-radius:18px !important;
   background:linear-gradient(96deg, #19d8dc 0%, #21b9ff 38%, #337fff 70%, #2564df 100%) !important;
   color:#ffffff !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 -4px 12px rgba(2,61,140,.16),0 13px 26px rgba(0,6,26,.24),0 0 22px rgba(34,211,238,.13) !important;
-}
-
-#btnGenerar:hover{
+}#btnGenerar:hover{
   transform:translateY(-2px) scale(1.005) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -4px 12px rgba(2,61,140,.15),0 16px 32px rgba(0,6,26,.27),0 0 30px rgba(34,211,238,.20) !important;
-}
-
-/* ---------- TÍTULOS ---------- */
-.categorias,
+}.categorias,
 .tituloJuego,
 .info-card > h2,
 .faq-section > h2,
@@ -3890,14 +3096,7 @@ body::after{
 .seo-header h1{
   color:var(--pn-silver) !important;
   text-shadow:0 2px 0 rgba(76,112,154,.18),0 0 14px rgba(65,231,255,.16),0 0 28px rgba(49,135,255,.09) !important;
-}
-
-.categorias{margin-top:13px !important;letter-spacing:-.025em !important;}
-
-/* ---------- JUEGOS DEL INICIO ---------- */
-.games{gap:16px !important;}
-
-.game-card{
+}.categorias{margin-top:13px !important;letter-spacing:-.025em !important;}.games{gap:16px !important;}.game-card{
   position:relative !important;
   overflow:hidden !important;
   min-height:118px !important;
@@ -3906,18 +3105,14 @@ body::after{
   border-radius:23px !important;
   background:linear-gradient(180deg, rgba(9,30,63,.88), rgba(5,18,41,.93)) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.055),inset 0 0 0 1px rgba(56,189,248,.025),0 15px 30px rgba(0,7,28,.18) !important;
-}
-
-.game-card::before{
+}.game-card::before{
   content:"";
   position:absolute;
   inset:0 0 auto 0;
   height:2px;
   background:linear-gradient(90deg, transparent, rgba(65,231,255,.68), rgba(49,135,255,.62), transparent);
   opacity:.48;
-}
-
-.game-card::after{
+}.game-card::after{
   content:"";
   position:absolute;
   width:120px;
@@ -3927,39 +3122,23 @@ body::after{
   border-radius:50%;
   background:radial-gradient(circle, rgba(65,231,255,.12), transparent 68%);
   pointer-events:none;
-}
-
-.game-card:hover{
+}.game-card:hover{
   transform:translateY(-4px) !important;
   border-color:rgba(108,232,255,.44) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.075),0 19px 34px rgba(0,7,28,.24),0 0 22px rgba(65,231,255,.09) !important;
-}
-
-.game-card span{color:#f2f8ff !important;letter-spacing:.005em !important;}
-
-/* ---------- FAVORITOS ---------- */
-#abrirFavoritos,
+}.game-card span{color:#f2f8ff !important;letter-spacing:.005em !important;}#abrirFavoritos,
 .btn-top{
   border:1px solid rgba(121,226,255,.26) !important;
   background:linear-gradient(135deg, rgba(5,17,38,.98), rgba(10,42,89,.96)) !important;
   color:#edf9ff !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.065),0 11px 24px rgba(0,5,20,.22),0 0 18px rgba(49,135,255,.09) !important;
-}
-
-#contadorFavoritos{color:#7ceeff !important;}
-
-/* ---------- RESULTADOS / TARJETAS ---------- */
-#resultados{gap:11px !important;}
-
-#resultados .resultado,
+}#contadorFavoritos{color:#7ceeff !important;}#resultados{gap:11px !important;}#resultados .resultado,
 #contenido .tarjetaCategoria,
 #panelFavoritos .itemInvisible{
   border:1px solid rgba(111,228,255,.25) !important;
   background:linear-gradient(180deg, rgba(8,31,67,.95), rgba(6,23,51,.97)) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.055),inset 0 0 0 1px rgba(49,135,255,.02),0 13px 24px rgba(0,6,23,.18) !important;
-}
-
-#resultados .resultado::before,
+}#resultados .resultado::before,
 #contenido .tarjetaCategoria::before{
   content:"";
   position:absolute;
@@ -3968,24 +3147,16 @@ body::after{
   background:linear-gradient(90deg, transparent, rgba(127,238,255,.58), transparent);
   opacity:.42;
   pointer-events:none;
-}
-
-#resultados .resultado:hover,
+}#resultados .resultado:hover,
 #contenido .tarjetaCategoria:hover,
 #panelFavoritos .itemInvisible:hover{
   border-color:rgba(127,238,255,.46) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.075),0 17px 29px rgba(0,6,23,.23),0 0 19px rgba(65,231,255,.09) !important;
-}
-
-.resultado-fuente{filter:saturate(.9) brightness(1.06);}
-
-#resultados .resultado-stats,
+}.resultado-fuente{filter:saturate(.9) brightness(1.06);}#resultados .resultado-stats,
 #contenido .estadisticasNombre{
   justify-content:flex-start !important;
   gap:9px !important;
-}
-
-#resultados .copiasNombre,
+}#resultados .copiasNombre,
 #resultados .favoritosNombre,
 #contenido .copiasNombre,
 #contenido .favoritosNombre{
@@ -3998,111 +3169,63 @@ body::after{
   background:rgba(3,13,31,.50) !important;
   border:1px solid rgba(121,226,255,.09) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.03) !important;
-}
-
-/* ---------- MENÚ FREE FIRE ---------- */
-.menu-juego{gap:18px !important;}
-
-.modo-card{
+}.menu-juego{gap:18px !important;}.modo-card{
   border:1px solid rgba(111,228,255,.22) !important;
   border-radius:25px !important;
   background:linear-gradient(180deg, rgba(8,29,62,.96), rgba(5,19,43,.97)) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 0 0 1px rgba(49,135,255,.02),0 17px 35px rgba(0,6,25,.21) !important;
-}
-
-.modo-card::before{
+}.modo-card::before{
   height:2px !important;
   background:linear-gradient(90deg, transparent, rgba(65,231,255,.78), rgba(49,135,255,.78), transparent) !important;
   opacity:.62 !important;
-}
-
-.modo-card h3{color:#f4f9ff !important;text-shadow:0 0 14px rgba(65,231,255,.10) !important;}
-.modo-card p{color:#b5c7dd !important;}
-
-.cantidad-nombres{
+}.modo-card h3{color:#f4f9ff !important;text-shadow:0 0 14px rgba(65,231,255,.10) !important;}.modo-card p{color:#b5c7dd !important;}.cantidad-nombres{
   color:#8ff5ff !important;
   border:1px solid rgba(111,228,255,.16) !important;
   background:rgba(4,16,37,.62) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.035) !important;
-}
-
-.modo-card button{
+}.modo-card button{
   border:1px solid rgba(221,252,255,.16) !important;
   background:linear-gradient(96deg, #1bd9dc 0%, #20b9ff 40%, #347fff 73%, #2967dd 100%) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -3px 9px rgba(7,70,156,.16),0 11px 21px rgba(0,6,25,.20),0 0 17px rgba(34,211,238,.10) !important;
-}
-
-.seo-category-link{color:#9befff !important;opacity:.88 !important;}
-
-/* ---------- HOME INFO / FAQ ---------- */
-.info-card{
+}.seo-category-link{color:#9befff !important;opacity:.88 !important;}.info-card{
   border:1px solid rgba(111,228,255,.16) !important;
   border-radius:26px !important;
   background:linear-gradient(180deg, rgba(7,25,54,.76), rgba(4,16,37,.84)) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 22px 50px rgba(0,6,24,.18) !important;
   backdrop-filter:blur(16px) saturate(115%) !important;
-}
-
-.info-step{
+}.info-step{
   position:relative !important;
   overflow:hidden !important;
   border:1px solid rgba(111,228,255,.13) !important;
   border-radius:19px !important;
   background:linear-gradient(180deg, rgba(8,27,58,.82), rgba(5,19,43,.88)) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.035) !important;
-}
-
-.info-step::before{
+}.info-step::before{
   content:"";
   position:absolute;
   inset:0 0 auto 0;
   height:1px;
   background:linear-gradient(90deg, transparent, rgba(65,231,255,.40), transparent);
-}
-
-.info-step:hover{
+}.info-step:hover{
   border-color:rgba(111,228,255,.34) !important;
   box-shadow:0 12px 24px rgba(0,6,24,.17),0 0 15px rgba(65,231,255,.06) !important;
-}
-
-.info-step > span{
+}.info-step > span{
   background:linear-gradient(135deg, #30dbea, #2679ed) !important;
   box-shadow:0 7px 14px rgba(0,6,24,.18),0 0 15px rgba(65,231,255,.15) !important;
-}
-
-.info-step p,
-.faq-item p{color:#9eb2cb !important;}
-
-.faq-item{
+}.info-step p,
+.faq-item p{color:#9eb2cb !important;}.faq-item{
   border:1px solid rgba(111,228,255,.13) !important;
   border-radius:16px !important;
   background:linear-gradient(180deg, rgba(7,25,54,.76), rgba(5,19,42,.84)) !important;
-}
-
-.faq-item[open]{
+}.faq-item[open]{
   border-color:rgba(111,228,255,.34) !important;
   box-shadow:0 10px 22px rgba(0,6,24,.13),0 0 14px rgba(65,231,255,.05) !important;
-}
-
-.faq-item summary{color:#eaf6ff !important;}
-
-/* ---------- FOOTER ---------- */
-.site-footer{
+}.faq-item summary{color:#eaf6ff !important;}.site-footer{
   border:1px solid rgba(111,228,255,.11) !important;
   border-radius:24px !important;
   background:linear-gradient(180deg, rgba(5,18,40,.60), rgba(3,12,29,.74)) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 -10px 32px rgba(65,231,255,.025),0 16px 40px rgba(0,5,20,.16) !important;
-}
-
-.footer-brand strong{color:#eff9ff !important;text-shadow:0 0 14px rgba(65,231,255,.16) !important;}
-.footer-brand span{color:#8399b4 !important;}
-.footer-links a{color:#80eaff !important;}
-.footer-copy{color:#5e7693 !important;}
-
-/* ---------- PÁGINAS SEO / PRIVACIDAD / ACERCA / CONTACTO ---------- */
-.privacy-back{backdrop-filter:blur(12px) !important;}
-
-.privacy-card{
+}.footer-brand strong{color:#eff9ff !important;text-shadow:0 0 14px rgba(65,231,255,.16) !important;}.footer-brand span{color:#8399b4 !important;}.footer-links a{color:#80eaff !important;}.footer-copy{color:#5e7693 !important;}.privacy-back{backdrop-filter:blur(12px) !important;}.privacy-card{
   position:relative !important;
   overflow:hidden !important;
   border:1px solid rgba(111,228,255,.17) !important;
@@ -4110,78 +3233,46 @@ body::after{
   background:linear-gradient(180deg, rgba(7,24,52,.88), rgba(4,15,35,.94)) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 28px 68px rgba(0,5,22,.28),0 0 24px rgba(49,135,255,.04) !important;
   backdrop-filter:blur(18px) saturate(115%) !important;
-}
-
-.privacy-card::before{
+}.privacy-card::before{
   content:"";
   position:absolute;
   inset:0 10% auto 10%;
   height:2px;
   background:linear-gradient(90deg, transparent, rgba(65,231,255,.58), rgba(49,135,255,.48), transparent);
   opacity:.55;
-}
-
-.privacy-card h2{color:#91eaff !important;text-shadow:0 0 12px rgba(65,231,255,.08) !important;}
-.privacy-card p{color:#afc1d7 !important;}
-.privacy-card a{color:#83eaff !important;}
-
-.seo-mini-card{
+}.privacy-card h2{color:#91eaff !important;text-shadow:0 0 12px rgba(65,231,255,.08) !important;}.privacy-card p{color:#afc1d7 !important;}.privacy-card a{color:#83eaff !important;}.seo-mini-card{
   border:1px solid rgba(111,228,255,.13) !important;
   border-radius:19px !important;
   background:linear-gradient(180deg, rgba(8,27,58,.80), rgba(5,19,43,.88)) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.035) !important;
-}
-
-.seo-mini-card:hover{
+}.seo-mini-card:hover{
   border-color:rgba(111,228,255,.34) !important;
   box-shadow:0 14px 27px rgba(0,6,24,.16),0 0 15px rgba(65,231,255,.05) !important;
-}
-
-.seo-types > div{
+}.seo-types > div{
   border:1px solid rgba(111,228,255,.12) !important;
   border-radius:15px !important;
   background:rgba(5,18,41,.66) !important;
-}
-
-.seo-types strong{color:#8eeeff !important;}
-.seo-types span{color:#8ea5bf !important;}
-
-.seo-generator-box{
+}.seo-types strong{color:#8eeeff !important;}.seo-types span{color:#8ea5bf !important;}.seo-generator-box{
   border:1px solid rgba(111,228,255,.23) !important;
   background:radial-gradient(circle at top, rgba(65,231,255,.08), transparent 52%),linear-gradient(180deg, rgba(7,28,61,.82), rgba(4,17,40,.90)) !important;
   box-shadow:0 21px 44px rgba(0,6,24,.17),0 0 22px rgba(65,231,255,.045) !important;
-}
-
-.seo-main-button{
+}.seo-main-button{
   border:1px solid rgba(220,252,255,.16) !important;
   background:linear-gradient(96deg, #1bd9dc, #20b8ff 43%, #347fff 74%, #2967df) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 13px 24px rgba(0,6,24,.20),0 0 18px rgba(34,211,238,.10) !important;
-}
-
-.seo-related{border-top-color:rgba(111,228,255,.12) !important;}
-.seo-related a{color:#83eaff !important;}
-
-/* ---------- FAVORITOS GUARDADOS ---------- */
-#panelFavoritos .copyFav,
+}.seo-related{border-top-color:rgba(111,228,255,.12) !important;}.seo-related a{color:#83eaff !important;}#panelFavoritos .copyFav,
 #panelFavoritos .deleteFav{
   border:1px solid rgba(111,228,255,.18) !important;
   border-radius:13px !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 8px 17px rgba(0,6,22,.15) !important;
-}
-
-#panelFavoritos .copyFav{
+}#panelFavoritos .copyFav{
   background:linear-gradient(135deg, rgba(9,44,86,.95), rgba(14,95,167,.92)) !important;
   color:#e9fbff !important;
-}
-
-#panelFavoritos .deleteFav{
+}#panelFavoritos .deleteFav{
   background:linear-gradient(135deg, rgba(82,15,32,.90), rgba(139,26,51,.88)) !important;
   color:#ffe9ef !important;
   border-color:rgba(255,128,158,.18) !important;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width:700px){
+}@media (max-width:700px){
   body{padding:18px 10px !important;}
 
   .hero{
@@ -4218,9 +3309,7 @@ body::after{
 
   .modo-card{border-radius:21px !important;}
   .info-card,.privacy-card{border-radius:22px !important;}
-}
-
-@media (prefers-reduced-motion:reduce){
+}@media (prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:.01ms !important;
     animation-iteration-count:1 !important;
@@ -4228,7 +3317,6 @@ body::after{
     transition-duration:.01ms !important;
   }
 }
-
 /* PN PROFILE ICON FIX */
 .brand-mark{
   width:90px !important;

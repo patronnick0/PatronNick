@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://patronnick0.github.io/PatronNick/sitemap.xml
