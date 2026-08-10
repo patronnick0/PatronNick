@@ -48,26 +48,35 @@ function crearMenuFreeFire() {
   `;
 
   document.getElementById("btnOscuro").addEventListener("click", () => {
-    renderCategoria("☠️ Oscuro", categorias.oscuro);
+    renderCategoria("☠️ Oscuro", obtenerOrdenCategoria("oscuro"));
   });
 
   document.getElementById("btnParejas").addEventListener("click", () => {
-    renderCategoria("❤️ Parejas", categorias.parejas);
+    renderCategoria("❤️ Parejas", obtenerOrdenCategoria("parejas"));
   });
 
   document.getElementById("btnPro").addEventListener("click", () => {
-    renderCategoria("👑 Pro Player", categorias.pro);
+    renderCategoria("👑 Pro Player", obtenerOrdenCategoria("pro"));
   });
 
   document.getElementById("btnInvisible").addEventListener("click", () => {
-    renderCategoria("👻 Invisible", categorias.invisible);
+    renderCategoria("👻 Invisible", obtenerOrdenCategoria("invisible"));
   });
 }
 
 
 function mostrarFreeFire() {
   topBar.classList.add("show");
+  const infoHome = document.getElementById("infoHome");
 
+  if (infoHome) {
+    infoHome.style.display = "none";
+}
+  const siteFooter = document.getElementById("siteFooter");
+
+  if (siteFooter) {
+    siteFooter.style.display = "none";
+}
   // Ocultar pantalla principal
   document.querySelector(".hero").style.display = "none";
   generatorSection.style.display = "none";

@@ -154,3 +154,11 @@ abrirFavoritos.addEventListener("click", alternarFavoritos);
 
 mostrarInicio();
 actualizarContadorFavoritos();
+
+// Empieza a preparar las estadísticas apenas carga la web, pero nunca
+// bloquea la interfaz ni la entrada a una categoría.
+setTimeout(() => {
+  if (typeof iniciarPrecargaRankingCategorias === "function") {
+    iniciarPrecargaRankingCategorias();
+  }
+}, 40);

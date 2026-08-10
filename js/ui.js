@@ -32,21 +32,32 @@ function limpiarResultados() {
 }
 
 function mostrarInicio() {
-  topBar.classList.remove("show");
-  abrirFavoritos.style.display = "";
 
-  document.querySelector(".hero").style.display = "block";
-  document.querySelector(".generator").style.display = "block";
-  document.querySelector(".games").style.display = "grid";
-  document.querySelector(".categorias").style.display = "block";
+    const siteFooter = document.getElementById("siteFooter");
 
-  mostrarZonaFavoritos();
-  limpiarResultados();
-  limpiarContenido();
-  ocultarPanelFavoritos();
-  actualizarContadorFavoritos();
+    if (siteFooter) {
+        siteFooter.style.display = "flex";
+    }
+    const infoHome = document.getElementById("infoHome");
 
-  inputNombre.focus();
+    if (infoHome) {
+    infoHome.style.display = "block";
+    }
+    topBar.classList.remove("show");
+    abrirFavoritos.style.display = "";
+
+    document.querySelector(".hero").style.display = "block";
+    document.querySelector(".generator").style.display = "block";
+    document.querySelector(".games").style.display = "grid";
+    document.querySelector(".categorias").style.display = "block";
+
+    mostrarZonaFavoritos();
+    limpiarResultados();
+    limpiarContenido();
+    ocultarPanelFavoritos();
+    actualizarContadorFavoritos();
+
+    inputNombre.focus();
 }
 
 function obtenerClienteSupabase() {
@@ -224,6 +235,10 @@ async function actualizarEstadisticaNombre(nombre) {
 
   if (copias) copias.textContent = `📋 ${estadisticas.copias}`;
   if (favoritos) favoritos.textContent = `❤️ ${estadisticas.favoritos}`;
+
+  if (typeof actualizarCacheEstadisticasNombre === "function") {
+    actualizarCacheEstadisticasNombre(nombre, estadisticas);
+  }
 }
 
 async function actualizarEstadisticaResultado(nombre) {
@@ -283,10 +298,29 @@ function renderCopiarTexto(boton, texto) {
 }
 
 async function mostrarResultados(nombre) {
+  const siteFooter = document.getElementById("siteFooter");
+
+  if (siteFooter) {
+    siteFooter.style.display = "none";
+  }
+  const infoHome = document.getElementById("infoHome");
+
+  if (infoHome) {
+    infoHome.style.display = "none";
+  }
+
   topBar.classList.add("show");
+
   generatorSection.style.display = "block";
   games.style.display = "none";
   categoriasTitulo.style.display = "none";
+
+  // Ocultar TikTok al mostrar resultados
+  const tiktokBtn = document.querySelector(".tiktok-btn");
+
+  if (tiktokBtn) {
+    tiktokBtn.style.display = "none";
+  }
 
   ocultarZonaFavoritos();
   limpiarContenido();
@@ -318,11 +352,16 @@ async function mostrarResultados(nombre) {
   });
 }
 
-async function renderCategoria(tituloCategoria, nombres) {
+function renderCategoria(tituloCategoria, nombres) {
   topBar.classList.remove("show");
   ocultarPanelFavoritos();
   limpiarResultados();
   contenido.style.display = "block";
+  const infoHome = document.getElementById("infoHome");
+
+  if (infoHome) {
+    infoHome.style.display = "none";
+  }
 
   contenido.innerHTML = `
     <div class="pantallaJuego">
@@ -338,7 +377,11 @@ async function renderCategoria(tituloCategoria, nombres) {
 
   contenido.querySelectorAll(".tarjetaCategoria").forEach((tarjeta) => {
     const nombre = tarjeta.dataset.nombre;
+    const siteFooter = document.getElementById("siteFooter");
 
+    if (siteFooter) {
+      siteFooter.style.display = "none";
+   }  
     tarjeta.addEventListener("click", async (event) => {
       if (event.target.closest(".favoriteInvisible")) return;
       if (tarjeta.dataset.procesando === "true") return;
@@ -399,7 +442,13 @@ async function renderCategoria(tituloCategoria, nombres) {
     });
   });
 
-  await Promise.all(nombres.map((nombre) => actualizarEstadisticaNombre(nombre)));
+  // No bloqueamos la entrada esperando red. Las estadísticas en caché se
+  // muestran inmediatamente y la precarga global las refresca en segundo plano.
+  if (typeof actualizarEstadisticasCategoriaEnSegundoPlano === "function") {
+    actualizarEstadisticasCategoriaEnSegundoPlano(nombres);
+  } else {
+    nombres.forEach((nombre) => actualizarEstadisticaNombre(nombre));
+  }
 
   const botonVolver = document.getElementById("volverMenu");
   if (botonVolver) {
@@ -410,9 +459,17 @@ async function renderCategoria(tituloCategoria, nombres) {
 function renderFavoritos() {
   abrirFavoritos.style.display = "none";
   const guardados = obtenerFavoritos();
+  const siteFooter = document.getElementById("siteFooter");
 
+  if (siteFooter) {
+    siteFooter.style.display = "none";
+  }
   topBar.classList.add("show");
+  const infoHome = document.getElementById("infoHome");
 
+  if (infoHome) {
+    infoHome.style.display = "none";
+  }
   document.getElementById("hero").style.display = "none";
   document.getElementById("generator").style.display = "none";
   document.getElementById("games").style.display = "none";
