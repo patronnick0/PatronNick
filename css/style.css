@@ -2893,3 +2893,36 @@ body::before{
     }
 
 }
+
+/* =========================================================
+   ENLACES SEO DE CATEGORÍAS
+   ========================================================= */
+
+.seo-category-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-top:13px;
+
+    color:#7dd3fc;
+
+    font-size:13px;
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:
+        color .2s ease,
+        transform .2s ease,
+        text-shadow .2s ease;
+}
+
+.seo-category-link:hover{
+    color:#fff;
+
+    transform:translateY(-1px);
+
+    text-shadow:
+        0 0 10px rgba(56,189,248,.75);
+}
