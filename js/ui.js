@@ -204,6 +204,47 @@ function dispararEfectoFavorito(boton) {
 }
 
 
+function mostrarEstadoFavorito(card, agregado) {
+
+  if (!card) return;
+
+  let overlay = card.querySelector(".favoritoOverlay");
+
+  if (!overlay) {
+    overlay = document.createElement("span");
+    overlay.className = "favoritoOverlay";
+    overlay.setAttribute("aria-hidden", "true");
+    overlay.innerHTML = `<span class="favoritoOverlayIcon"></span><span class="favoritoOverlayTexto"></span>`;
+    card.appendChild(overlay);
+  }
+
+  const icono = overlay.querySelector(".favoritoOverlayIcon");
+  const texto = overlay.querySelector(".favoritoOverlayTexto");
+
+  overlay.classList.remove("favorito-visible", "favorito-quitar");
+  card.classList.remove("favorito-feedback");
+
+  if (agregado) {
+    if (icono) icono.textContent = "♥";
+    if (texto) texto.textContent = "GUARDADO";
+  } else {
+    overlay.classList.add("favorito-quitar");
+    if (icono) icono.textContent = "◇";
+    if (texto) texto.textContent = "QUITADO";
+  }
+
+  void overlay.offsetWidth;
+  overlay.classList.add("favorito-visible");
+  card.classList.add("favorito-feedback");
+
+  window.clearTimeout(card._favoritoFeedbackTimeout);
+  card._favoritoFeedbackTimeout = window.setTimeout(() => {
+    overlay.classList.remove("favorito-visible", "favorito-quitar");
+    card.classList.remove("favorito-feedback");
+  }, 1450);
+}
+
+
 function mostrarEstadoCopiado(card) {
 
   if (!card) return;
@@ -571,6 +612,16 @@ async function actualizarEstadisticaResultado(nombre) {
     favoritos.textContent =
       `❤️ ${estadisticas.favoritos}`;
   }
+
+  if (
+    typeof actualizarCacheEstadisticasNombre ===
+    "function"
+  ) {
+    actualizarCacheEstadisticasNombre(
+      nombre,
+      estadisticas
+    );
+  }
 }
 
 
@@ -607,9 +658,307 @@ function obtenerTextoCopiaPareja(nombre) {
   return partes.length > 1 ? partes.join("\n") : String(nombre ?? "").trim();
 }
 
+
+
+/* =========================================================
+   PN NICK PREVIEW — VISTA DE PERFIL PARA CATEGORÍAS FREE FIRE
+   ========================================================= */
+const PN_PREVIEW_UID = "8265081210";
+const PN_PREVIEW_LEVEL = 100;
+
+function obtenerClaveCategoriaPreview(tituloCategoria) {
+  const titulo = String(tituloCategoria ?? "").toLowerCase();
+
+  if (titulo.includes("pareja")) return "parejas";
+  if (titulo.includes("oscuro")) return "oscuro";
+  if (titulo.includes("pro player")) return "pro_player";
+  if (titulo.includes("invisible")) return "invisible";
+
+  return "freefire";
+}
+
+function obtenerEtiquetaCategoriaPreview(clave) {
+  const etiquetas = {
+    oscuro: "OSCURO",
+    parejas: "PAREJAS",
+    pro_player: "PRO PLAYER",
+    invisible: "INVISIBLE"
+  };
+
+  return etiquetas[clave] || "FREE FIRE";
+}
+
+function obtenerModalPreviewNombre() {
+  let modal = document.getElementById("pnNickPreview");
+
+  if (modal) return modal;
+
+  modal = document.createElement("div");
+  modal.id = "pnNickPreview";
+  modal.className = "pn-preview";
+  modal.setAttribute("aria-hidden", "true");
+
+  modal.innerHTML = `
+    <div class="pn-preview-backdrop" data-pn-preview-close></div>
+
+    <section
+      class="pn-preview-shell pn-ff-shell"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pnPreviewTitle"
+    >
+      <button
+        class="pn-preview-close"
+        type="button"
+        data-pn-preview-close
+        aria-label="Cerrar vista previa"
+      >×</button>
+
+      <div class="pn-preview-scanline" aria-hidden="true"></div>
+
+      <header class="pn-preview-header pn-ff-preview-header">
+        <div class="pn-preview-brand">
+          <span class="pn-preview-brand-dot"></span>
+          <div>
+            <strong id="pnPreviewTitle">PN // FREE FIRE PREVIEW</strong>
+            <span>PRUEBA TU NICK ANTES DE COPIARLO</span>
+          </div>
+        </div>
+        <span id="pnPreviewCategory" class="pn-preview-category">FREE FIRE</span>
+      </header>
+
+      <div class="pn-profile-board pn-ff-board">
+        <div class="pn-ff-topbar">
+          <div class="pn-ff-wordmark" aria-label="Free Fire">FREE F<span>1</span>RE</div>
+          <div class="pn-ff-top-decoration" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </div>
+        </div>
+
+        <div class="pn-ff-identity">
+          <div class="pn-ff-avatar-zone">
+            <div class="pn-ff-avatar-frame">
+              <img class="pn-ff-avatar" src="assets/images/profile/pn-avatar.webp" alt="Avatar de perfil">
+            </div>
+            <span class="pn-ff-level">Nvl. ${PN_PREVIEW_LEVEL}</span>
+          </div>
+
+          <div class="pn-ff-name-zone">
+            <div id="pnPreviewNames" class="pn-preview-names pn-ff-names"></div>
+            <div class="pn-ff-mini-icons" aria-hidden="true">
+              <span>▦</span>
+              <span>◷</span>
+              <span>◉</span>
+            </div>
+          </div>
+
+          <div class="pn-ff-likes">
+            <span class="pn-ff-like-icon">♥</span>
+            <strong>9999</strong>
+          </div>
+        </div>
+
+        <div class="pn-ff-idbar">
+          <span>UID:</span>
+          <strong>${PN_PREVIEW_UID}</strong>
+          <span class="pn-ff-id-copy" aria-hidden="true">▤</span>
+        </div>
+
+        <div class="pn-ff-battle-title">
+          <span>⇆</span>
+          <strong>BATTLE ROYALE</strong>
+        </div>
+
+        <div class="pn-ff-battle-grid">
+          <div class="pn-ff-stat pn-ff-stat-rank">
+            <div class="pn-ff-badge-glow"></div>
+            <img src="assets/images/profile/rank.webp" alt="Rango Battle Royale">
+          </div>
+
+          <div class="pn-ff-stat">
+            <div class="pn-ff-badge-glow pn-ff-badge-glow-purple"></div>
+            <img src="assets/images/profile/emblem.webp" alt="Emblema">
+          </div>
+
+          <div class="pn-ff-stat">
+            <div class="pn-ff-badge-glow pn-ff-badge-glow-red"></div>
+            <img src="assets/images/profile/runner.webp" alt="Corredor">
+          </div>
+        </div>
+
+        <div class="pn-ff-bio">Amo Free Fire</div>
+      </div>
+
+      <div class="pn-preview-actions pn-ff-preview-actions">
+        <button class="pn-preview-action pn-preview-copy" type="button">
+          <span>▣</span>
+          Copiar nick
+        </button>
+
+        <button class="pn-preview-action pn-preview-favorite" type="button">
+          <span>♥</span>
+          Guardar
+        </button>
+      </div>
+    </section>
+  `;
+
+  document.body.appendChild(modal);
+
+  modal.querySelectorAll("[data-pn-preview-close]").forEach((elemento) => {
+    elemento.addEventListener("click", cerrarPreviewNombre);
+  });
+
+  modal.querySelector(".pn-preview-copy")?.addEventListener("click", async () => {
+    const texto = modal.dataset.copyText || "";
+    if (!texto) return;
+
+    try {
+      await navigator.clipboard.writeText(texto);
+      const boton = modal.querySelector(".pn-preview-copy");
+      if (!boton) return;
+
+      boton.classList.add("is-success");
+      boton.innerHTML = "<span>✓</span> COPIADO";
+
+      window.clearTimeout(boton._pnPreviewCopyTimeout);
+      boton._pnPreviewCopyTimeout = window.setTimeout(() => {
+        boton.classList.remove("is-success");
+        boton.innerHTML = "<span>▣</span> Copiar nick";
+      }, 1400);
+    } catch (error) {
+      console.error("Error copiando desde la vista previa:", error);
+    }
+  });
+
+  modal.querySelector(".pn-preview-favorite")?.addEventListener("click", async () => {
+    const nombre = modal.dataset.nombreOriginal || "";
+    if (!nombre) return;
+
+    const boton = modal.querySelector(".pn-preview-favorite");
+    if (!boton || boton.dataset.procesando === "true") return;
+
+    boton.dataset.procesando = "true";
+
+    try {
+      const estabaGuardado = esFavorito(nombre);
+      let correcto = false;
+
+      if (estabaGuardado) {
+        correcto = await decrementarFavorito(nombre);
+        if (correcto) eliminarFavorito(nombre);
+      } else {
+        correcto = await registrarFavorito(nombre);
+        if (correcto) agregarFavorito(nombre);
+      }
+
+      if (!correcto) return;
+
+      actualizarContadorFavoritos();
+      actualizarEstadoFavoritoPreview(nombre);
+
+      const tarjeta = Array.from(document.querySelectorAll("#contenido .tarjetaCategoria"))
+        .find((item) => item.dataset.nombre === nombre);
+
+      const botonTarjeta = tarjeta?.querySelector(".favoriteInvisible");
+      const guardadoAhora = esFavorito(nombre);
+
+      if (botonTarjeta) {
+        botonTarjeta.textContent = guardadoAhora ? "❤️ Guardado" : "⭐ Favorito";
+        aplicarEstadoBotonFavorito(botonTarjeta, guardadoAhora);
+      }
+
+      if (tarjeta) mostrarEstadoFavorito(tarjeta, guardadoAhora);
+
+      if (typeof actualizarEstadisticaNombre === "function") {
+        actualizarEstadisticaNombre(nombre);
+      }
+    } catch (error) {
+      console.error("Error actualizando favorito desde vista previa:", error);
+    } finally {
+      boton.dataset.procesando = "false";
+    }
+  });
+
+  if (!window._pnPreviewEscapeActivo) {
+    window._pnPreviewEscapeActivo = true;
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") cerrarPreviewNombre();
+    });
+  }
+
+  return modal;
+}
+
+function actualizarEstadoFavoritoPreview(nombre) {
+  const modal = document.getElementById("pnNickPreview");
+  if (!modal) return;
+
+  const boton = modal.querySelector(".pn-preview-favorite");
+  if (!boton) return;
+
+  const guardado = esFavorito(nombre);
+  boton.classList.toggle("is-saved", guardado);
+  boton.innerHTML = guardado
+    ? "<span>♥</span> Guardado"
+    : "<span>♥</span> Guardar";
+}
+
+function cerrarPreviewNombre() {
+  const modal = document.getElementById("pnNickPreview");
+  if (!modal || !modal.classList.contains("is-open")) return;
+
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("pn-preview-open");
+}
+
+function abrirPreviewNombre(nombre, opciones = {}) {
+  const modal = obtenerModalPreviewNombre();
+  const esPareja = Boolean(opciones.esPareja);
+  const categoria = opciones.categoria || "freefire";
+  const partes = esPareja ? separarNombrePareja(nombre) : [String(nombre ?? "")];
+  const nombres = partes.length > 1 ? partes : [String(nombre ?? "")];
+  const contenedorNombres = modal.querySelector("#pnPreviewNames");
+  const categoriaElemento = modal.querySelector("#pnPreviewCategory");
+
+  modal.dataset.nombreOriginal = String(nombre ?? "");
+  modal.dataset.copyText = esPareja
+    ? obtenerTextoCopiaPareja(nombre)
+    : String(nombre ?? "");
+  modal.dataset.category = categoria;
+  modal.dataset.mode = esPareja && nombres.length > 1 ? "duo" : "solo";
+
+  if (categoriaElemento) {
+    categoriaElemento.textContent = obtenerEtiquetaCategoriaPreview(categoria);
+  }
+
+  if (contenedorNombres) {
+    contenedorNombres.classList.toggle("is-duo", esPareja && nombres.length > 1);
+
+    contenedorNombres.innerHTML = nombres
+      .map((nick, index) => `
+        <div class="pn-ff-player ${index === 1 ? "pn-ff-player-alt" : ""}">
+          ${esPareja && nombres.length > 1 ? `<small>DÚO ${index + 1}</small>` : ""}
+          <strong class="pn-preview-nick pn-ff-nick">${escaparHtml(nick)}</strong>
+        </div>
+      `)
+      .join("");
+  }
+
+  actualizarEstadoFavoritoPreview(nombre);
+
+  modal.classList.remove("is-open");
+  void modal.offsetWidth;
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("pn-preview-open");
+}
+
 function crearTarjetaCategoria(nombre, opciones = {}) {
 
   const esPareja = Boolean(opciones.esPareja);
+  const categoriaPreview = opciones.categoria || "freefire";
   const partesPareja = esPareja ? separarNombrePareja(nombre) : [];
 
   const nombreVisual = esPareja && partesPareja.length > 1
@@ -622,7 +971,7 @@ function crearTarjetaCategoria(nombre, opciones = {}) {
 
   return `
     <div
-      class="itemInvisible tarjetaCategoria tarjetaCopiable ${esPareja ? "pareja-card" : ""}"
+      class="itemInvisible tarjetaCategoria tarjetaCopiable has-preview ${esPareja ? "pareja-card" : ""}"
       data-nombre="${nombreAtributo}"
     >
 
@@ -631,7 +980,7 @@ function crearTarjetaCategoria(nombre, opciones = {}) {
         data-text="${nombreAtributo}"
         type="button"
       >
-        ${esFavorito(nombre) ? "❤️ Favorito" : "⭐ Favorito"}
+        ${esFavorito(nombre) ? "❤️ Guardado" : "⭐ Favorito"}
       </button>
 
       <div class="nombreCategoria ${esPareja ? "pareja-nombre" : ""}">
@@ -649,6 +998,18 @@ function crearTarjetaCategoria(nombre, opciones = {}) {
         </span>
 
       </div>
+
+      <button
+        class="previewNameBtn"
+        type="button"
+        data-text="${nombreAtributo}"
+        data-category="${escaparHtml(categoriaPreview)}"
+        data-pareja="${esPareja ? "true" : "false"}"
+        aria-label="Probar este nombre en la vista previa"
+      >
+        <span class="previewNameBtnIcon" aria-hidden="true">🎮</span>
+        <span>Probar</span>
+      </button>
 
       <span
         class="copiadoOverlay"
@@ -788,8 +1149,14 @@ async function mostrarResultados(nombre) {
   resultados.appendChild(titulo);
 
 
-  const estilos =
+  const estilosGenerados =
     generarEstilos(nombre);
+
+
+  const estilos =
+    typeof obtenerOrdenResultados === "function"
+      ? obtenerOrdenResultados(estilosGenerados)
+      : estilosGenerados;
 
 
   if (!estilos.length) {
@@ -825,18 +1192,26 @@ async function mostrarResultados(nombre) {
 
 
       resultados.appendChild(card);
-
-
-      actualizarEstadisticaResultado(
-        item.texto
-      );
     }
   );
+
+
+  if (
+    typeof actualizarEstadisticasResultadosEnSegundoPlano ===
+    "function"
+  ) {
+    actualizarEstadisticasResultadosEnSegundoPlano(estilos);
+  } else {
+    estilos.forEach((item) =>
+      actualizarEstadisticaResultado(item.texto)
+    );
+  }
 }
 
 
 function renderCategoria(tituloCategoria, nombres) {
 
+  const categoriaPreview = obtenerClaveCategoriaPreview(tituloCategoria);
   const esCategoriaParejas = /parejas/i.test(String(tituloCategoria ?? ""));
   const nombresVisibles = esCategoriaParejas
     ? nombres.filter((nombre) => String(nombre ?? "").trim())
@@ -892,7 +1267,7 @@ function renderCategoria(tituloCategoria, nombres) {
         ${nombresVisibles
           .map(
             (nombre) =>
-              crearTarjetaCategoria(nombre, { esPareja: esCategoriaParejas })
+              crearTarjetaCategoria(nombre, { esPareja: esCategoriaParejas, categoria: categoriaPreview })
           )
           .join("")}
       </div>
@@ -915,7 +1290,7 @@ function renderCategoria(tituloCategoria, nombres) {
 
           if (
             event.target.closest(
-              ".favoriteInvisible"
+              ".favoriteInvisible, .previewNameBtn"
             )
           ) {
             return;
@@ -975,6 +1350,26 @@ function renderCategoria(tituloCategoria, nombres) {
           }
         }
       );
+    });
+
+
+  contenido
+    .querySelectorAll(".previewNameBtn")
+    .forEach((boton) => {
+
+      boton.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const tarjeta = boton.closest(".tarjetaCategoria");
+        const nombre = tarjeta?.dataset.nombre || boton.dataset.text || "";
+        const categoria = boton.dataset.category || categoriaPreview;
+        const esPareja = boton.dataset.pareja === "true";
+
+        abrirPreviewNombre(nombre, {
+          categoria,
+          esPareja
+        });
+      });
     });
 
 
@@ -1039,6 +1434,11 @@ function renderCategoria(tituloCategoria, nombres) {
                   boton,
                   false
                 );
+
+                mostrarEstadoFavorito(
+                  boton.closest(".tarjetaCategoria"),
+                  false
+                );
               }
 
             } else {
@@ -1055,11 +1455,16 @@ function renderCategoria(tituloCategoria, nombres) {
 
 
                 boton.textContent =
-                  "❤️ Favorito";
+                  "❤️ Guardado";
 
 
                 aplicarEstadoBotonFavorito(
                   boton,
+                  true
+                );
+
+                mostrarEstadoFavorito(
+                  boton.closest(".tarjetaCategoria"),
                   true
                 );
               }
@@ -1189,65 +1594,75 @@ function renderFavoritos() {
   if (!guardados.length) {
 
     panelFavoritos.innerHTML = `
-      <div class="pantallaJuego">
+      <div class="pantallaJuego favoritos-screen">
+        <div class="favoritos-heading">
+          <span class="favoritos-heading-icon">☆</span>
+          <div>
+            <h2 class="tituloJuego">Favoritos</h2>
+            <p>Guarda tus mejores nicks y vuelve a copiarlos cuando quieras.</p>
+          </div>
+        </div>
 
-        <p class="favorites-empty">
-          Todavía no tienes favoritos guardados.
-        </p>
-
+        <div class="favorites-empty">
+          <span class="favorites-empty-icon">♡</span>
+          <strong>Aún no has guardado nombres</strong>
+          <span>Marca una tarjeta con Favorito y aparecerá aquí.</span>
+        </div>
       </div>
     `;
 
-
     panelFavoritos.style.display =
       "block";
-
 
     return;
   }
 
 
   panelFavoritos.innerHTML = `
-    <div class="pantallaJuego">
+    <div class="pantallaJuego favoritos-screen">
 
-      <h2 class="tituloJuego">
-        ⭐ Favoritos
-      </h2>
+      <div class="favoritos-heading">
+        <span class="favoritos-heading-icon">★</span>
+        <div>
+          <h2 class="tituloJuego">Favoritos</h2>
+          <p>${guardados.length} ${guardados.length === 1 ? "nick guardado" : "nicks guardados"}</p>
+        </div>
+      </div>
 
-      <div class="listaInvisible">
+      <div class="listaInvisible favoritos-lista">
 
         ${guardados
-          .map(
-            (nombre) => `
-              <div class="itemInvisible">
+          .map((nombre) => {
+            const partes = separarNombrePareja(nombre);
+            const visual = partes.length > 1
+              ? partes.map((parte) => `<span class="favorito-nombre-linea">${escaparHtml(parte)}</span>`).join("")
+              : `<span class="favorito-nombre-linea">${escaparHtml(nombre)}</span>`;
 
-                <span>
-                  ${nombre}
+            return `
+              <div
+                class="itemInvisible favorite-saved-card tarjetaCopiable"
+                data-text="${escaparHtml(nombre)}"
+                role="button"
+                tabindex="0"
+                aria-label="Copiar ${escaparHtml(nombre)}"
+              >
+                <div class="favorito-nombre">${visual}</div>
+
+
+                <button
+                  class="removeFav"
+                  data-text="${escaparHtml(nombre)}"
+                  type="button"
+                  title="Quitar de favoritos"
+                  aria-label="Quitar de favoritos"
+                ></button>
+
+                <span class="copiadoOverlay" aria-hidden="true">
+                  <span class="copiadoTexto">COPIADO</span>
                 </span>
-
-                <div class="itemActions">
-
-                  <button
-                    class="copyFav"
-                    data-text="${nombre}"
-                    type="button"
-                  >
-                    📋 Copiar
-                  </button>
-
-                  <button
-                    class="deleteFav"
-                    data-text="${nombre}"
-                    type="button"
-                  >
-                    🗑️ Quitar
-                  </button>
-
-                </div>
-
               </div>
-            `
-          )
+            `;
+          })
           .join("")}
 
       </div>
@@ -1260,43 +1675,91 @@ function renderFavoritos() {
     "block";
 
 
-  panelFavoritos
-    .querySelectorAll(".copyFav")
-    .forEach((boton) => {
+  const copiarFavorito = async (tarjeta) => {
+    if (!tarjeta || tarjeta.dataset.procesando === "true") return;
 
-      renderCopiarTexto(
-        boton,
-        boton.dataset.text
+    const nombre = tarjeta.dataset.text || "";
+    const textoParaCopiar = obtenerTextoCopiaPareja(nombre);
+
+    tarjeta.dataset.procesando = "true";
+
+    try {
+      const correcto = await copiarTarjetaInteractiva(
+        tarjeta,
+        textoParaCopiar
       );
+
+      if (!correcto) return;
+
+      const copiaRegistrada = await registrarCopia(nombre);
+
+      if (copiaRegistrada && typeof actualizarCacheEstadisticasNombre === "function") {
+        const stats = await obtenerEstadisticas(nombre);
+        actualizarCacheEstadisticasNombre(nombre, stats);
+      }
+    } catch (error) {
+      console.error("Error copiando favorito:", error);
+    } finally {
+      tarjeta.dataset.procesando = "false";
+    }
+  };
+
+
+  panelFavoritos
+    .querySelectorAll(".favorite-saved-card")
+    .forEach((tarjeta) => {
+      tarjeta.addEventListener("click", (event) => {
+        if (event.target.closest(".removeFav")) return;
+        copiarFavorito(tarjeta);
+      });
+
+      tarjeta.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        if (event.target.closest(".removeFav")) return;
+        event.preventDefault();
+        copiarFavorito(tarjeta);
+      });
     });
 
 
   panelFavoritos
-    .querySelectorAll(".deleteFav")
+    .querySelectorAll(".removeFav")
     .forEach((boton) => {
 
       boton.addEventListener(
         "click",
-        async () => {
+        async (event) => {
+
+          event.stopPropagation();
+
+          if (boton.dataset.procesando === "true") return;
+          boton.dataset.procesando = "true";
 
           const nombre =
             boton.dataset.text;
 
+          const tarjeta = boton.closest(".favorite-saved-card");
 
-          const correcto =
-            await decrementarFavorito(
-              nombre
-            );
+          try {
+            const correcto =
+              await decrementarFavorito(
+                nombre
+              );
 
+            if (!correcto) return;
 
-          if (!correcto) return;
+            eliminarFavorito(nombre);
+            actualizarContadorFavoritos();
 
-
-          eliminarFavorito(nombre);
-
-          actualizarContadorFavoritos();
-
-          renderFavoritos();
+            if (tarjeta) {
+              tarjeta.classList.add("favorito-removing");
+              window.setTimeout(renderFavoritos, 330);
+            } else {
+              renderFavoritos();
+            }
+          } finally {
+            boton.dataset.procesando = "false";
+          }
         }
       );
     });

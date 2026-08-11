@@ -8,249 +8,424 @@ const supabaseClient = window.supabase.createClient(
 );
 
 /* === fonts.js === */
-window.fuentes = [
+(() => {
+  const MAY = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const MIN = "abcdefghijklmnopqrstuvwxyz";
 
-{
-    nombre: "Mathematical Bold",
-    abc: {
-        A:"𝐀",B:"𝐁",C:"𝐂",D:"𝐃",E:"𝐄",F:"𝐅",G:"𝐆",H:"𝐇",I:"𝐈",J:"𝐉",K:"𝐊",L:"𝐋",M:"𝐌",
-        N:"𝐍",O:"𝐎",P:"𝐏",Q:"𝐐",R:"𝐑",S:"𝐒",T:"𝐓",U:"𝐔",V:"𝐕",W:"𝐖",X:"𝐗",Y:"𝐘",Z:"𝐙",
-        a:"𝐚",b:"𝐛",c:"𝐜",d:"𝐝",e:"𝐞",f:"𝐟",g:"𝐠",h:"𝐡",i:"𝐢",j:"𝐣",k:"𝐤",l:"𝐥",m:"𝐦",
-        n:"𝐧",o:"𝐨",p:"𝐩",q:"𝐪",r:"𝐫",s:"𝐬",t:"𝐭",u:"𝐮",v:"𝐯",w:"𝐰",x:"𝐱",y:"𝐲",z:"𝐳"
-    }
-},
+  function crearMapa(mayus, minus) {
+    const salida = {};
+    const m1 = Array.from(mayus);
+    const m2 = Array.from(minus);
 
-{
-    nombre: "Double Struck",
-    abc: {
-        A:"𝔸",B:"𝔹",C:"ℂ",D:"𝔻",E:"𝔼",F:"𝔽",G:"𝔾",H:"ℍ",I:"𝕀",J:"𝕁",K:"𝕂",L:"𝕃",M:"𝕄",
-        N:"ℕ",O:"𝕆",P:"ℙ",Q:"ℚ",R:"ℝ",S:"𝕊",T:"𝕋",U:"𝕌",V:"𝕍",W:"𝕎",X:"𝕏",Y:"𝕐",Z:"ℤ",
-        a:"𝕒",b:"𝕓",c:"𝕔",d:"𝕕",e:"𝕖",f:"𝕗",g:"𝕘",h:"𝕙",i:"𝕚",j:"𝕛",k:"𝕜",l:"𝕝",m:"𝕞",
-        n:"𝕟",o:"𝕠",p:"𝕡",q:"𝕢",r:"𝕣",s:"𝕤",t:"𝕥",u:"𝕦",v:"𝕧",w:"𝕨",x:"𝕩",y:"𝕪",z:"𝕫"
-    }
-},
+    Array.from(MAY).forEach((letra, i) => {
+      salida[letra] = m1[i] ?? letra;
+    });
 
-{
-    nombre: "Italic",
-    abc: {
-        A:"𝐴",B:"𝐵",C:"𝐶",D:"𝐷",E:"𝐸",F:"𝐹",G:"𝐺",H:"𝐻",I:"𝐼",J:"𝐽",K:"𝐾",L:"𝐿",M:"𝑀",
-        N:"𝑁",O:"𝑂",P:"𝑃",Q:"𝑄",R:"𝑅",S:"𝑆",T:"𝑇",U:"𝑈",V:"𝑉",W:"𝑊",X:"𝑋",Y:"𝑌",Z:"𝑍",
-        a:"𝑎",b:"𝑏",c:"𝑐",d:"𝑑",e:"𝑒",f:"𝑓",g:"𝑔",h:"ℎ",i:"𝑖",j:"𝑗",k:"𝑘",l:"𝑙",m:"𝑚",
-        n:"𝑛",o:"𝑜",p:"𝑝",q:"𝑞",r:"𝑟",s:"𝑠",t:"𝑡",u:"𝑢",v:"𝑣",w:"𝑤",x:"𝑥",y:"𝑦",z:"𝑧"
-    }
-},
+    Array.from(MIN).forEach((letra, i) => {
+      salida[letra] = m2[i] ?? letra;
+    });
 
-{
-    nombre: "Bold Italic",
-    abc: {
-        A:"𝑨",B:"𝑩",C:"𝑪",D:"𝑫",E:"𝑬",F:"𝑭",G:"𝑮",H:"𝑯",I:"𝑰",J:"𝑱",K:"𝑲",L:"𝑳",M:"𝑴",
-        N:"𝑵",O:"𝑶",P:"𝑷",Q:"𝑸",R:"𝑹",S:"𝑺",T:"𝑻",U:"𝑼",V:"𝑽",W:"𝑾",X:"𝑿",Y:"𝒀",Z:"𝒁",
-        a:"𝒂",b:"𝒃",c:"𝒄",d:"𝒅",e:"𝒆",f:"𝒇",g:"𝒈",h:"𝒉",i:"𝒊",j:"𝒋",k:"𝒌",l:"𝒍",m:"𝒎",
-        n:"𝒏",o:"𝒐",p:"𝒑",q:"𝒒",r:"𝒓",s:"𝒔",t:"𝒕",u:"𝒖",v:"𝒗",w:"𝒘",x:"𝒙",y:"𝒚",z:"𝒛"
-    }
-},
+    return salida;
+  }
 
-{
-    nombre: "Monospace",
-    abc: {
-        A:"𝙰",B:"𝙱",C:"𝙲",D:"𝙳",E:"𝙴",F:"𝙵",G:"𝙶",H:"𝙷",I:"𝙸",J:"𝙹",K:"𝙺",L:"𝙻",M:"𝙼",
-        N:"𝙽",O:"𝙾",P:"𝙿",Q:"𝚀",R:"𝚁",S:"𝚂",T:"𝚃",U:"𝚄",V:"𝚅",W:"𝚆",X:"𝚇",Y:"𝚈",Z:"𝚉",
-        a:"𝚊",b:"𝚋",c:"𝚌",d:"𝚍",e:"𝚎",f:"𝚏",g:"𝚐",h:"𝚑",i:"𝚒",j:"𝚓",k:"𝚔",l:"𝚕",m:"𝚖",
-        n:"𝚗",o:"𝚘",p:"𝚙",q:"𝚚",r:"𝚛",s:"𝚜",t:"𝚝",u:"𝚞",v:"𝚟",w:"𝚠",x:"𝚡",y:"𝚢",z:"𝚣"
-    }
-}
+  function crearMapaMismo(caracteres) {
+    const salida = {};
+    const lista = Array.from(caracteres);
 
-,
-{
-    nombre: "Fullwidth",
-    abc: {
-        A:"Ａ",B:"Ｂ",C:"Ｃ",D:"Ｄ",E:"Ｅ",F:"Ｆ",G:"Ｇ",H:"Ｈ",I:"Ｉ",J:"Ｊ",K:"Ｋ",L:"Ｌ",M:"Ｍ",
-        N:"Ｎ",O:"Ｏ",P:"Ｐ",Q:"Ｑ",R:"Ｒ",S:"Ｓ",T:"Ｔ",U:"Ｕ",V:"Ｖ",W:"Ｗ",X:"Ｘ",Y:"Ｙ",Z:"Ｚ",
-        a:"ａ",b:"ｂ",c:"ｃ",d:"ｄ",e:"ｅ",f:"ｆ",g:"ｇ",h:"ｈ",i:"ｉ",j:"ｊ",k:"ｋ",l:"ｌ",m:"ｍ",
-        n:"ｎ",o:"ｏ",p:"ｐ",q:"ｑ",r:"ｒ",s:"ｓ",t:"ｔ",u:"ｕ",v:"ｖ",w:"ｗ",x:"ｘ",y:"ｙ",z:"ｚ"
-    }
-},
-{
-    nombre: "Circled",
-    abc: {
-        A:"Ⓐ",B:"Ⓑ",C:"Ⓒ",D:"Ⓓ",E:"Ⓔ",F:"Ⓕ",G:"Ⓖ",H:"Ⓗ",I:"Ⓘ",J:"Ⓙ",K:"Ⓚ",L:"Ⓛ",M:"Ⓜ",
-        N:"Ⓝ",O:"Ⓞ",P:"Ⓟ",Q:"Ⓠ",R:"Ⓡ",S:"Ⓢ",T:"Ⓣ",U:"Ⓤ",V:"Ⓥ",W:"Ⓦ",X:"Ⓧ",Y:"Ⓨ",Z:"Ⓩ",
-        a:"ⓐ",b:"ⓑ",c:"ⓒ",d:"ⓓ",e:"ⓔ",f:"ⓕ",g:"ⓖ",h:"ⓗ",i:"ⓘ",j:"ⓙ",k:"ⓚ",l:"ⓛ",m:"ⓜ",
-        n:"ⓝ",o:"ⓞ",p:"ⓟ",q:"ⓠ",r:"ⓡ",s:"ⓢ",t:"ⓣ",u:"ⓤ",v:"ⓥ",w:"ⓦ",x:"ⓧ",y:"ⓨ",z:"ⓩ"
-    }
-},
-{
-    nombre: "Squared",
-    abc: {
-        A:"🄰",B:"🄱",C:"🄲",D:"🄳",E:"🄴",F:"🄵",G:"🄶",H:"🄷",I:"🄸",J:"🄹",K:"🄺",L:"🄻",M:"🄼",
-        N:"🄽",O:"🄾",P:"🄿",Q:"🅀",R:"🅁",S:"🅂",T:"🅃",U:"🅄",V:"🅅",W:"🅆",X:"🅇",Y:"🅈",Z:"🅉",
-        a:"🄰",b:"🄱",c:"🄲",d:"🄳",e:"🄴",f:"🄵",g:"🄶",h:"🄷",i:"🄸",j:"🄹",k:"🄺",l:"🄻",m:"🄼",
-        n:"🄽",o:"🄾",p:"🄿",q:"🅀",r:"🅁",s:"🅂",t:"🅃",u:"🅄",v:"🅅",w:"🅆",x:"🅇",y:"🅈",z:"🅉"
-    }
-},
-{
-    nombre: "Script",
-    abc: {
-        A:"𝓐",B:"𝓑",C:"𝓒",D:"𝓓",E:"𝓔",F:"𝓕",G:"𝓖",H:"𝓗",I:"𝓘",J:"𝓙",K:"𝓚",L:"𝓛",M:"𝓜",
-        N:"𝓝",O:"𝓞",P:"𝓟",Q:"𝓠",R:"𝓡",S:"𝓢",T:"𝓣",U:"𝓤",V:"𝓥",W:"𝓦",X:"𝓧",Y:"𝓨",Z:"𝓩",
-        a:"𝓪",b:"𝓫",c:"𝓬",d:"𝓭",e:"𝓮",f:"𝓯",g:"𝓰",h:"𝓱",i:"𝓲",j:"𝓳",k:"𝓴",l:"𝓵",m:"𝓶",
-        n:"𝓷",o:"𝓸",p:"𝓹",q:"𝓺",r:"𝓻",s:"𝓼",t:"𝓽",u:"𝓾",v:"𝓿",w:"𝔀",x:"𝔁",y:"𝔂",z:"𝔃"
-    }
-},
-{
-    nombre: "Bold Fraktur",
-    abc: {
-        A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",
-        N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅",
-        a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",
-        n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟"
-    }
-}
+    Array.from(MAY).forEach((letra, i) => {
+      salida[letra] = lista[i] ?? letra;
+    });
 
-,
-{
-    nombre: "Sans Bold",
-    abc: {
-        A:"𝗔",B:"𝗕",C:"𝗖",D:"𝗗",E:"𝗘",F:"𝗙",G:"𝗚",H:"𝗛",I:"𝗜",J:"𝗝",K:"𝗞",L:"𝗟",M:"𝗠",
-        N:"𝗡",O:"𝗢",P:"𝗣",Q:"𝗤",R:"𝗥",S:"𝗦",T:"𝗧",U:"𝗨",V:"𝗩",W:"𝗪",X:"𝗫",Y:"𝗬",Z:"𝗭",
-        a:"𝗮",b:"𝗯",c:"𝗰",d:"𝗱",e:"𝗲",f:"𝗳",g:"𝗴",h:"𝗵",i:"𝗶",j:"𝗷",k:"𝗸",l:"𝗹",m:"𝗺",
-        n:"𝗻",o:"𝗼",p:"𝗽",q:"𝗾",r:"𝗿",s:"𝘀",t:"𝘁",u:"𝘂",v:"𝘃",w:"𝘄",x:"𝘅",y:"𝘆",z:"𝘇"
-    }
-},
-{
-    nombre: "Sans Italic",
-    abc: {
-        A:"𝘈",B:"𝘉",C:"𝘊",D:"𝘋",E:"𝘌",F:"𝘍",G:"𝘎",H:"𝘏",I:"𝘐",J:"𝘑",K:"𝘒",L:"𝘓",M:"𝘔",
-        N:"𝘕",O:"𝘖",P:"𝘗",Q:"𝘘",R:"𝘙",S:"𝘚",T:"𝘛",U:"𝘜",V:"𝘝",W:"𝘞",X:"𝘟",Y:"𝘠",Z:"𝘡",
-        a:"𝘢",b:"𝘣",c:"𝘤",d:"𝘥",e:"𝘦",f:"𝘧",g:"𝘨",h:"𝘩",i:"𝘪",j:"𝘫",k:"𝘬",l:"𝘭",m:"𝘮",
-        n:"𝘯",o:"𝘰",p:"𝘱",q:"𝘲",r:"𝘳",s:"𝘴",t:"𝘵",u:"𝘶",v:"𝘷",w:"𝘸",x:"𝘹",y:"𝘺",z:"𝘻"
-    }
-},
-{
-    nombre: "Sans Bold Italic",
-    abc: {
-        A:"𝘼",B:"𝘽",C:"𝘾",D:"𝘿",E:"𝙀",F:"𝙁",G:"𝙂",H:"𝙃",I:"𝙄",J:"𝙅",K:"𝙆",L:"𝙇",M:"𝙈",
-        N:"𝙉",O:"𝙊",P:"𝙋",Q:"𝙌",R:"𝙍",S:"𝙎",T:"𝙏",U:"𝙐",V:"𝙑",W:"𝙒",X:"𝙓",Y:"𝙔",Z:"𝙕",
-        a:"𝙖",b:"𝙗",c:"𝙘",d:"𝙙",e:"𝙚",f:"𝙛",g:"𝙜",h:"𝙝",i:"𝙞",j:"𝙟",k:"𝙠",l:"𝙡",m:"𝙢",
-        n:"𝙣",o:"𝙤",p:"𝙥",q:"𝙦",r:"𝙧",s:"𝙨",t:"𝙩",u:"𝙪",v:"𝙫",w:"𝙬",x:"𝙭",y:"𝙮",z:"𝙯"
-    }
-},
-{
-    nombre: "Fraktur",
-    abc: {
-        A:"𝔄",B:"𝔅",C:"ℭ",D:"𝔇",E:"𝔈",F:"𝔉",G:"𝔊",H:"ℌ",I:"ℑ",J:"𝔍",K:"𝔎",L:"𝔏",M:"𝔐",
-        N:"𝔑",O:"𝔒",P:"𝔓",Q:"𝔔",R:"ℜ",S:"𝔖",T:"𝔗",U:"𝔘",V:"𝔙",W:"𝔚",X:"𝔛",Y:"𝔜",Z:"ℨ",
-        a:"𝔞",b:"𝔟",c:"𝔠",d:"𝔡",e:"𝔢",f:"𝔣",g:"𝔤",h:"𝔥",i:"𝔦",j:"𝔧",k:"𝔨",l:"𝔩",m:"𝔪",
-        n:"𝔫",o:"𝔬",p:"𝔭",q:"𝔮",r:"𝔯",s:"𝔰",t:"𝔱",u:"𝔲",v:"𝔳",w:"𝔴",x:"𝔵",y:"𝔶",z:"𝔷"
-    }
-},
-{
-    nombre: "Sans Serif",
-    abc: {
-        A:"𝖠",B:"𝖡",C:"𝖢",D:"𝖣",E:"𝖤",F:"𝖥",G:"𝖦",H:"𝖧",I:"𝖨",J:"𝖩",K:"𝖪",L:"𝖫",M:"𝖬",
-        N:"𝖭",O:"𝖮",P:"𝖯",Q:"𝖰",R:"𝖱",S:"𝖲",T:"𝖳",U:"𝖴",V:"𝖵",W:"𝖶",X:"𝖷",Y:"𝖸",Z:"𝖹",
-        a:"𝖺",b:"𝖻",c:"𝖼",d:"𝖽",e:"𝖾",f:"𝖿",g:"𝗀",h:"𝗁",i:"𝗂",j:"𝗃",k:"𝗄",l:"𝗅",m:"𝗆",
-        n:"𝗇",o:"𝗈",p:"𝗉",q:"𝗊",r:"𝗋",s:"𝗌",t:"𝗍",u:"𝗎",v:"𝗏",w:"𝗐",x:"𝗑",y:"𝗒",z:"𝗓"
-    }
-}
+    Array.from(MIN).forEach((letra, i) => {
+      salida[letra] = lista[i] ?? letra;
+    });
 
-,
-{
-    nombre: "Script Bold",
-    abc: {
-        A:"𝓐",B:"𝓑",C:"𝓒",D:"𝓓",E:"𝓔",F:"𝓕",G:"𝓖",H:"𝓗",I:"𝓘",J:"𝓙",K:"𝓚",L:"𝓛",M:"𝓜",
-        N:"𝓝",O:"𝓞",P:"𝓟",Q:"𝓠",R:"𝓡",S:"𝓢",T:"𝓣",U:"𝓤",V:"𝓥",W:"𝓦",X:"𝓧",Y:"𝓨",Z:"𝓩",
-        a:"𝓪",b:"𝓫",c:"𝓬",d:"𝓭",e:"𝓮",f:"𝓯",g:"𝓰",h:"𝓱",i:"𝓲",j:"𝓳",k:"𝓴",l:"𝓵",m:"𝓶",
-        n:"𝓷",o:"𝓸",p:"𝓹",q:"𝓺",r:"𝓻",s:"𝓼",t:"𝓽",u:"𝓾",v:"𝓿",w:"𝔀",x:"𝔁",y:"𝔂",z:"𝔃"
-    }
-},
-{
-    nombre: "Blackboard",
-    abc: {
-        A:"𝔸",B:"𝔹",C:"ℂ",D:"𝔻",E:"𝔼",F:"𝔽",G:"𝔾",H:"ℍ",I:"𝕀",J:"𝕁",K:"𝕂",L:"𝕃",M:"𝕄",
-        N:"ℕ",O:"𝕆",P:"ℙ",Q:"ℚ",R:"ℝ",S:"𝕊",T:"𝕋",U:"𝕌",V:"𝕍",W:"𝕎",X:"𝕏",Y:"𝕐",Z:"ℤ",
-        a:"𝕒",b:"𝕓",c:"𝕔",d:"𝕕",e:"𝕖",f:"𝕗",g:"𝕘",h:"𝕙",i:"𝕚",j:"𝕛",k:"𝕜",l:"𝕝",m:"𝕞",
-        n:"𝕟",o:"𝕠",p:"𝕡",q:"𝕢",r:"𝕣",s:"𝕤",t:"𝕥",u:"𝕦",v:"𝕧",w:"𝕨",x:"𝕩",y:"𝕪",z:"𝕫"
-    }
-},
-{
-    nombre: "Tiny Caps",
-    abc: {
-        A:"ᴀ",B:"ʙ",C:"ᴄ",D:"ᴅ",E:"ᴇ",F:"ғ",G:"ɢ",H:"ʜ",I:"ɪ",J:"ᴊ",K:"ᴋ",L:"ʟ",M:"ᴍ",
-        N:"ɴ",O:"ᴏ",P:"ᴘ",Q:"ǫ",R:"ʀ",S:"s",T:"ᴛ",U:"ᴜ",V:"ᴠ",W:"ᴡ",X:"x",Y:"ʏ",Z:"ᴢ",
-        a:"ᴀ",b:"ʙ",c:"ᴄ",d:"ᴅ",e:"ᴇ",f:"ғ",g:"ɢ",h:"ʜ",i:"ɪ",j:"ᴊ",k:"ᴋ",l:"ʟ",m:"ᴍ",
-        n:"ɴ",o:"ᴏ",p:"ᴘ",q:"ǫ",r:"ʀ",s:"s",t:"ᴛ",u:"ᴜ",v:"ᴠ",w:"ᴡ",x:"x",y:"ʏ",z:"ᴢ"
-    }
-},
-{
-    nombre: "Superscript",
-    abc: {
-        A:"ᴬ",B:"ᴮ",C:"ᶜ",D:"ᴰ",E:"ᴱ",F:"ᶠ",G:"ᴳ",H:"ᴴ",I:"ᴵ",J:"ᴶ",K:"ᴷ",L:"ᴸ",M:"ᴹ",
-        N:"ᴺ",O:"ᴼ",P:"ᴾ",Q:"Q",R:"ᴿ",S:"ˢ",T:"ᵀ",U:"ᵁ",V:"ⱽ",W:"ᵂ",X:"ˣ",Y:"ʸ",Z:"ᶻ",
-        a:"ᵃ",b:"ᵇ",c:"ᶜ",d:"ᵈ",e:"ᵉ",f:"ᶠ",g:"ᵍ",h:"ʰ",i:"ᶦ",j:"ʲ",k:"ᵏ",l:"ˡ",m:"ᵐ",
-        n:"ⁿ",o:"ᵒ",p:"ᵖ",q:"q",r:"ʳ",s:"ˢ",t:"ᵗ",u:"ᵘ",v:"ᵛ",w:"ʷ",x:"ˣ",y:"ʸ",z:"ᶻ"
-    }
-},
-{
-    nombre: "Subscript",
-    abc: {
-        A:"A",B:"B",C:"C",D:"D",E:"E",F:"F",G:"G",H:"H",I:"I",J:"J",K:"K",L:"L",M:"M",
-        N:"N",O:"O",P:"P",Q:"Q",R:"R",S:"S",T:"T",U:"U",V:"V",W:"W",X:"X",Y:"Y",Z:"Z",
-        a:"ₐ",b:"b",c:"c",d:"d",e:"ₑ",f:"f",g:"g",h:"ₕ",i:"ᵢ",j:"ⱼ",k:"ₖ",l:"ₗ",m:"ₘ",
-        n:"ₙ",o:"ₒ",p:"ₚ",q:"q",r:"ᵣ",s:"ₛ",t:"ₜ",u:"ᵤ",v:"ᵥ",w:"w",x:"ₓ",y:"y",z:"z"
-    }
-}
+    return salida;
+  }
 
-,
-{
-    nombre: "Strike",
-    abc: {
-        A:"A̶",B:"B̶",C:"C̶",D:"D̶",E:"E̶",F:"F̶",G:"G̶",H:"H̶",I:"I̶",J:"J̶",K:"K̶",L:"L̶",M:"M̶",
-        N:"N̶",O:"O̶",P:"P̶",Q:"Q̶",R:"R̶",S:"S̶",T:"T̶",U:"U̶",V:"V̶",W:"W̶",X:"X̶",Y:"Y̶",Z:"Z̶",
-        a:"a̶",b:"b̶",c:"c̶",d:"d̶",e:"e̶",f:"f̶",g:"g̶",h:"h̶",i:"i̶",j:"j̶",k:"k̶",l:"l̶",m:"m̶",
-        n:"n̶",o:"o̶",p:"p̶",q:"q̶",r:"r̶",s:"s̶",t:"t̶",u:"u̶",v:"v̶",w:"w̶",x:"x̶",y:"y̶",z:"z̶"
-    }
-},
-{
-    nombre: "Underline",
-    abc: {
-        A:"A̲",B:"B̲",C:"C̲",D:"D̲",E:"E̲",F:"F̲",G:"G̲",H:"H̲",I:"I̲",J:"J̲",K:"K̲",L:"L̲",M:"M̲",
-        N:"N̲",O:"O̲",P:"P̲",Q:"Q̲",R:"R̲",S:"S̲",T:"T̲",U:"U̲",V:"V̲",W:"W̲",X:"X̲",Y:"Y̲",Z:"Z̲",
-        a:"a̲",b:"b̲",c:"c̲",d:"d̲",e:"e̲",f:"f̲",g:"g̲",h:"h̲",i:"i̲",j:"j̲",k:"k̲",l:"l̲",m:"m̲",
-        n:"n̲",o:"o̲",p:"p̲",q:"q̲",r:"r̲",s:"s̲",t:"t̲",u:"u̲",v:"v̲",w:"w̲",x:"x̲",y:"y̲",z:"z̲"
-    }
-},
-{
-    nombre: "Overline",
-    abc: {
-        A:"A̅",B:"B̅",C:"C̅",D:"D̅",E:"E̅",F:"F̅",G:"G̅",H:"H̅",I:"I̅",J:"J̅",K:"K̅",L:"L̅",M:"M̅",
-        N:"N̅",O:"O̅",P:"P̅",Q:"Q̅",R:"R̅",S:"S̅",T:"T̅",U:"U̅",V:"V̅",W:"W̅",X:"X̅",Y:"Y̅",Z:"Z̅",
-        a:"a̅",b:"b̅",c:"c̅",d:"d̅",e:"e̅",f:"f̅",g:"g̅",h:"h̅",i:"i̅",j:"j̅",k:"k̅",l:"l̅",m:"m̅",
-        n:"n̅",o:"o̅",p:"p̅",q:"q̅",r:"r̅",s:"s̅",t:"t̅",u:"u̅",v:"v̅",w:"w̅",x:"x̅",y:"y̅",z:"z̅"
-    }
-},
-{
-    nombre: "Double Underline",
-    abc: {
-        A:"A̳",B:"B̳",C:"C̳",D:"D̳",E:"E̳",F:"F̳",G:"G̳",H:"H̳",I:"I̳",J:"J̳",K:"K̳",L:"L̳",M:"M̳",
-        N:"N̳",O:"O̳",P:"P̳",Q:"Q̳",R:"R̳",S:"S̳",T:"T̳",U:"U̳",V:"V̳",W:"W̳",X:"X̳",Y:"Y̳",Z:"Z̳",
-        a:"a̳",b:"b̳",c:"c̳",d:"d̳",e:"e̳",f:"f̳",g:"g̳",h:"h̳",i:"i̳",j:"j̳",k:"k̳",l:"l̳",m:"m̳",
-        n:"n̳",o:"o̳",p:"p̳",q:"q̳",r:"r̳",s:"s̳",t:"t̳",u:"u̳",v:"v̳",w:"w̳",x:"x̳",y:"y̳",z:"z̳"
-    }
-},
-{
-    nombre: "Dotted",
-    abc: {
-        A:"Ȧ",B:"Ḃ",C:"Ċ",D:"Ḋ",E:"Ė",F:"Ḟ",G:"Ġ",H:"Ḣ",I:"İ",J:"J̇",K:"K̇",L:"L̇",M:"Ṁ",
-        N:"Ṅ",O:"Ȯ",P:"Ṗ",Q:"Q̇",R:"Ṙ",S:"Ṡ",T:"Ṫ",U:"U̇",V:"V̇",W:"Ẇ",X:"Ẋ",Y:"Ẏ",Z:"Ż",
-        a:"ȧ",b:"ḃ",c:"ċ",d:"ḋ",e:"ė",f:"ḟ",g:"ġ",h:"ḣ",i:"i̇",j:"j̇",k:"k̇",l:"l̇",m:"ṁ",
-        n:"ṅ",o:"ȯ",p:"ṗ",q:"q̇",r:"ṙ",s:"ṡ",t:"ṫ",u:"u̇",v:"v̇",w:"ẇ",x:"ẋ",y:"ẏ",z:"ż"
-    }
-}
+  function crearEfecto(marca) {
+    return Object.fromEntries(
+      Array.from(MAY + MIN).map(letra => [letra, letra + marca])
+    );
+  }
 
+  function crearEfectoMultiple(...marcas) {
+    const efecto = marcas.join("");
+    return Object.fromEntries(
+      Array.from(MAY + MIN).map(letra => [letra, letra + efecto])
+    );
+  }
 
+  const subscript = {
+    A:"A",B:"B",C:"C",D:"D",E:"E",F:"F",G:"G",H:"H",I:"I",J:"J",K:"K",L:"L",M:"M",
+    N:"N",O:"O",P:"P",Q:"Q",R:"R",S:"S",T:"T",U:"U",V:"V",W:"W",X:"X",Y:"Y",Z:"Z",
+    a:"ₐ",b:"b",c:"c",d:"d",e:"ₑ",f:"f",g:"g",h:"ₕ",i:"ᵢ",j:"ⱼ",k:"ₖ",l:"ₗ",m:"ₘ",
+    n:"ₙ",o:"ₒ",p:"ₚ",q:"q",r:"ᵣ",s:"ₛ",t:"ₜ",u:"ᵤ",v:"ᵥ",w:"w",x:"ₓ",y:"y",z:"z"
+  };
 
-];
+  window.fuentes = [
+
+    {
+      nombre: "Mathematical Bold",
+      abc: crearMapa(
+        "𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙",
+        "𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳"
+      )
+    },
+
+    {
+      nombre: "Double Struck",
+      abc: crearMapa(
+        "𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ",
+        "𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫"
+      )
+    },
+
+    {
+      nombre: "Italic",
+      abc: crearMapa(
+        "𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍",
+        "𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧"
+      )
+    },
+
+    {
+      nombre: "Bold Italic",
+      abc: crearMapa(
+        "𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁",
+        "𝒂𝒃𝒄𝒅𝒆𝒇𝒈𝒉𝒊𝒋𝒌𝒍𝒎𝒏𝒐𝒑𝒒𝒓𝒔𝒕𝒖𝒗𝒘𝒙𝒚𝒛"
+      )
+    },
+
+    {
+      nombre: "Monospace",
+      abc: crearMapa(
+        "𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉",
+        "𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣"
+      )
+    },
+
+    {
+      nombre: "Fullwidth",
+      abc: crearMapa(
+        "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ",
+        "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ"
+      )
+    },
+
+    {
+      nombre: "Circled",
+      abc: crearMapa(
+        "ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ",
+        "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ"
+      )
+    },
+
+    {
+      nombre: "Squared",
+      abc: crearMapaMismo(
+        "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉"
+      )
+    },
+
+    {
+      nombre: "Script Elegant",
+      abc: crearMapa(
+        "𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵",
+        "𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏"
+      )
+    },
+
+    {
+      nombre: "Script Bold",
+      abc: crearMapa(
+        "𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩",
+        "𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃"
+      )
+    },
+
+    {
+      nombre: "Bold Fraktur",
+      abc: crearMapa(
+        "𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅",
+        "𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟"
+      )
+    },
+
+    {
+      nombre: "Sans Bold",
+      abc: crearMapa(
+        "𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭",
+        "𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇"
+      )
+    },
+
+    {
+      nombre: "Sans Italic",
+      abc: crearMapa(
+        "𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡",
+        "𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻"
+      )
+    },
+
+    {
+      nombre: "Sans Bold Italic",
+      abc: crearMapa(
+        "𝘼𝘽𝘾𝘿𝙀𝙁𝙂𝙃𝙄𝙅𝙆𝙇𝙈𝙉𝙊𝙋𝙌𝙍𝙎𝙏𝙐𝙑𝙒𝙓𝙔𝙕",
+        "𝙖𝙗𝙘𝙙𝙚𝙛𝙜𝙝𝙞𝙟𝙠𝙡𝙢𝙣𝙤𝙥𝙦𝙧𝙨𝙩𝙪𝙫𝙬𝙭𝙮𝙯"
+      )
+    },
+
+    {
+      nombre: "Fraktur",
+      abc: crearMapa(
+        "𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ",
+        "𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷"
+      )
+    },
+
+    {
+      nombre: "Sans Serif",
+      abc: crearMapa(
+        "𝖠𝖡𝖢𝖣𝖤𝖥𝖦𝖧𝖨𝖩𝖪𝖫𝖬𝖭𝖮𝖯𝖰𝖱𝖲𝖳𝖴𝖵𝖶𝖷𝖸𝖹",
+        "𝖺𝖻𝖼𝖽𝖾𝖿𝗀𝗁𝗂𝗃𝗄𝗅𝗆𝗇𝗈𝗉𝗊𝗋𝗌𝗍𝗎𝗏𝗐𝗑𝗒𝗓"
+      )
+    },
+
+    {
+      nombre: "Tiny Caps",
+      abc: crearMapa(
+        "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
+        "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"
+      )
+    },
+
+    {
+      nombre: "Superscript",
+      abc: crearMapa(
+        "ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾQᴿˢᵀᵁⱽᵂˣʸᶻ",
+        "ᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐⁿᵒᵖqʳˢᵗᵘᵛʷˣʸᶻ"
+      )
+    },
+
+    {
+      nombre: "Subscript",
+      abc: subscript
+    },
+
+    {
+      nombre: "Negative Circled",
+      abc: crearMapaMismo(
+        "🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩"
+      )
+    },
+
+    {
+      nombre: "Negative Squared",
+      abc: crearMapaMismo(
+        "🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉"
+      )
+    },
+
+    {
+      nombre: "Parenthesized",
+      abc: crearMapaMismo(
+        "⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵"
+      )
+    },
+
+    {
+      nombre: "Strike",
+      abc: crearEfecto("\u0336")
+    },
+
+    {
+      nombre: "Underline",
+      abc: crearEfecto("\u0332")
+    },
+
+    {
+      nombre: "Overline",
+      abc: crearEfecto("\u0305")
+    },
+
+    {
+      nombre: "Double Underline",
+      abc: crearEfecto("\u0333")
+    },
+
+    {
+      nombre: "Dotted",
+      abc: crearEfecto("\u0307")
+    },
+
+    {
+      nombre: "Slash",
+      abc: crearEfecto("\u0337")
+    },
+
+    {
+      nombre: "Slash Heavy",
+      abc: crearEfecto("\u0338")
+    },
+
+    {
+      nombre: "Wave",
+      abc: crearEfecto("\u0334")
+    },
+
+    {
+      nombre: "Double Overline",
+      abc: crearEfecto("\u033F")
+    },
+
+    {
+      nombre: "Dot Below",
+      abc: crearEfecto("\u0323")
+    },
+
+    {
+      nombre: "Ring",
+      abc: crearEfecto("\u030A")
+    },
+
+    {
+      nombre: "Double Dots",
+      abc: crearEfecto("\u0308")
+    },
+
+    {
+      nombre: "Tilde",
+      abc: crearEfecto("\u0303")
+    },
+
+    {
+      nombre: "Acute",
+      abc: crearEfecto("\u0301")
+    },
+
+    {
+      nombre: "Grave",
+      abc: crearEfecto("\u0300")
+    },
+
+    {
+      nombre: "Macron",
+      abc: crearEfecto("\u0304")
+    },
+
+    {
+      nombre: "Caron",
+      abc: crearEfecto("\u030C")
+    },
+
+    {
+      nombre: "Breve",
+      abc: crearEfecto("\u0306")
+    },
+
+    {
+      nombre: "Cyber X",
+      abc: crearEfecto("\u033D")
+    },
+
+    {
+      nombre: "Ghost X",
+      abc: crearEfecto("\u0353")
+    },
+
+    {
+      nombre: "Vector",
+      abc: crearEfecto("\u20D7")
+    },
+
+    {
+      nombre: "Vector Left",
+      abc: crearEfecto("\u20D6")
+    },
+
+    {
+      nombre: "Triple Dots",
+      abc: crearEfecto("\u20DB")
+    },
+
+    {
+      nombre: "Quad Dots",
+      abc: crearEfecto("\u20DC")
+    },
+
+    {
+      nombre: "Tilde Below",
+      abc: crearEfecto("\u0330")
+    },
+
+    {
+      nombre: "Macron Below",
+      abc: crearEfecto("\u0331")
+    },
+
+    {
+      nombre: "Ring Below",
+      abc: crearEfecto("\u0325")
+    },
+
+    {
+      nombre: "Dots Below",
+      abc: crearEfecto("\u0324")
+    },
+
+    {
+      nombre: "Cedilla",
+      abc: crearEfecto("\u0327")
+    },
+
+    {
+      nombre: "Ogonek",
+      abc: crearEfecto("\u0328")
+    },
+
+    {
+      nombre: "Vertical Tech",
+      abc: crearEfecto("\u030D")
+    },
+
+    {
+      nombre: "Double Vertical",
+      abc: crearEfecto("\u030E")
+    },
+
+    {
+      nombre: "Hook Above",
+      abc: crearEfecto("\u0309")
+    },
+
+    {
+      nombre: "Neon Pulse",
+      abc: crearEfectoMultiple("\u0303", "\u0323")
+    },
+
+    {
+      nombre: "Cyber Slash",
+      abc: crearEfectoMultiple("\u0338", "\u0307")
+    },
+
+    {
+      nombre: "Phantom",
+      abc: crearEfectoMultiple("\u0305", "\u0323")
+    },
+
+    {
+      nombre: "Electric",
+      abc: crearEfectoMultiple("\u0301", "\u0332")
+    },
+
+    {
+      nombre: "Quantum",
+      abc: crearEfectoMultiple("\u0334", "\u0307")
+    }
+
+  ];
+})();
 
 /* === generator.js === */
 function obtenerListaFuentes() {
@@ -484,7 +659,7 @@ function crearTarjetaResultado(item) {
     </div>
 
     <button class="btnFavorito" type="button">
-      ${esFavorito(item.texto) ? "❤️ Favorito" : "⭐ Favorito"}
+      ${esFavorito(item.texto) ? "❤️ Guardado" : "⭐ Favorito"}
     </button>
 
     <div class="resultado-texto">
@@ -516,13 +691,15 @@ function crearTarjetaResultado(item) {
           eliminarFavorito(item.texto);
           botonFavorito.textContent = "⭐ Favorito";
           aplicarEstadoBotonFavorito(botonFavorito, false);
+          mostrarEstadoFavorito(card, false);
         }
       } else {
         const correcto = await registrarFavorito(item.texto);
         if (correcto) {
           agregarFavorito(item.texto);
-          botonFavorito.textContent = "❤️ Favorito";
+          botonFavorito.textContent = "❤️ Guardado";
           aplicarEstadoBotonFavorito(botonFavorito, true);
+          mostrarEstadoFavorito(card, true);
         }
       }
 
@@ -764,6 +941,47 @@ function dispararEfectoFavorito(boton) {
     boton.classList.remove("fav-clicked");
 
   }, 520);
+}
+
+
+function mostrarEstadoFavorito(card, agregado) {
+
+  if (!card) return;
+
+  let overlay = card.querySelector(".favoritoOverlay");
+
+  if (!overlay) {
+    overlay = document.createElement("span");
+    overlay.className = "favoritoOverlay";
+    overlay.setAttribute("aria-hidden", "true");
+    overlay.innerHTML = `<span class="favoritoOverlayIcon"></span><span class="favoritoOverlayTexto"></span>`;
+    card.appendChild(overlay);
+  }
+
+  const icono = overlay.querySelector(".favoritoOverlayIcon");
+  const texto = overlay.querySelector(".favoritoOverlayTexto");
+
+  overlay.classList.remove("favorito-visible", "favorito-quitar");
+  card.classList.remove("favorito-feedback");
+
+  if (agregado) {
+    if (icono) icono.textContent = "♥";
+    if (texto) texto.textContent = "GUARDADO";
+  } else {
+    overlay.classList.add("favorito-quitar");
+    if (icono) icono.textContent = "◇";
+    if (texto) texto.textContent = "QUITADO";
+  }
+
+  void overlay.offsetWidth;
+  overlay.classList.add("favorito-visible");
+  card.classList.add("favorito-feedback");
+
+  window.clearTimeout(card._favoritoFeedbackTimeout);
+  card._favoritoFeedbackTimeout = window.setTimeout(() => {
+    overlay.classList.remove("favorito-visible", "favorito-quitar");
+    card.classList.remove("favorito-feedback");
+  }, 1450);
 }
 
 
@@ -1134,6 +1352,16 @@ async function actualizarEstadisticaResultado(nombre) {
     favoritos.textContent =
       `❤️ ${estadisticas.favoritos}`;
   }
+
+  if (
+    typeof actualizarCacheEstadisticasNombre ===
+    "function"
+  ) {
+    actualizarCacheEstadisticasNombre(
+      nombre,
+      estadisticas
+    );
+  }
 }
 
 
@@ -1170,9 +1398,307 @@ function obtenerTextoCopiaPareja(nombre) {
   return partes.length > 1 ? partes.join("\n") : String(nombre ?? "").trim();
 }
 
+
+
+/* =========================================================
+   PN NICK PREVIEW — VISTA DE PERFIL PARA CATEGORÍAS FREE FIRE
+   ========================================================= */
+const PN_PREVIEW_UID = "8265081210";
+const PN_PREVIEW_LEVEL = 100;
+
+function obtenerClaveCategoriaPreview(tituloCategoria) {
+  const titulo = String(tituloCategoria ?? "").toLowerCase();
+
+  if (titulo.includes("pareja")) return "parejas";
+  if (titulo.includes("oscuro")) return "oscuro";
+  if (titulo.includes("pro player")) return "pro_player";
+  if (titulo.includes("invisible")) return "invisible";
+
+  return "freefire";
+}
+
+function obtenerEtiquetaCategoriaPreview(clave) {
+  const etiquetas = {
+    oscuro: "OSCURO",
+    parejas: "PAREJAS",
+    pro_player: "PRO PLAYER",
+    invisible: "INVISIBLE"
+  };
+
+  return etiquetas[clave] || "FREE FIRE";
+}
+
+function obtenerModalPreviewNombre() {
+  let modal = document.getElementById("pnNickPreview");
+
+  if (modal) return modal;
+
+  modal = document.createElement("div");
+  modal.id = "pnNickPreview";
+  modal.className = "pn-preview";
+  modal.setAttribute("aria-hidden", "true");
+
+  modal.innerHTML = `
+    <div class="pn-preview-backdrop" data-pn-preview-close></div>
+
+    <section
+      class="pn-preview-shell pn-ff-shell"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pnPreviewTitle"
+    >
+      <button
+        class="pn-preview-close"
+        type="button"
+        data-pn-preview-close
+        aria-label="Cerrar vista previa"
+      >×</button>
+
+      <div class="pn-preview-scanline" aria-hidden="true"></div>
+
+      <header class="pn-preview-header pn-ff-preview-header">
+        <div class="pn-preview-brand">
+          <span class="pn-preview-brand-dot"></span>
+          <div>
+            <strong id="pnPreviewTitle">PN // FREE FIRE PREVIEW</strong>
+            <span>PRUEBA TU NICK ANTES DE COPIARLO</span>
+          </div>
+        </div>
+        <span id="pnPreviewCategory" class="pn-preview-category">FREE FIRE</span>
+      </header>
+
+      <div class="pn-profile-board pn-ff-board">
+        <div class="pn-ff-topbar">
+          <div class="pn-ff-wordmark" aria-label="Free Fire">FREE F<span>1</span>RE</div>
+          <div class="pn-ff-top-decoration" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </div>
+        </div>
+
+        <div class="pn-ff-identity">
+          <div class="pn-ff-avatar-zone">
+            <div class="pn-ff-avatar-frame">
+              <img class="pn-ff-avatar" src="assets/images/profile/pn-avatar.webp" alt="Avatar de perfil">
+            </div>
+            <span class="pn-ff-level">Nvl. ${PN_PREVIEW_LEVEL}</span>
+          </div>
+
+          <div class="pn-ff-name-zone">
+            <div id="pnPreviewNames" class="pn-preview-names pn-ff-names"></div>
+            <div class="pn-ff-mini-icons" aria-hidden="true">
+              <span>▦</span>
+              <span>◷</span>
+              <span>◉</span>
+            </div>
+          </div>
+
+          <div class="pn-ff-likes">
+            <span class="pn-ff-like-icon">♥</span>
+            <strong>9999</strong>
+          </div>
+        </div>
+
+        <div class="pn-ff-idbar">
+          <span>UID:</span>
+          <strong>${PN_PREVIEW_UID}</strong>
+          <span class="pn-ff-id-copy" aria-hidden="true">▤</span>
+        </div>
+
+        <div class="pn-ff-battle-title">
+          <span>⇆</span>
+          <strong>BATTLE ROYALE</strong>
+        </div>
+
+        <div class="pn-ff-battle-grid">
+          <div class="pn-ff-stat pn-ff-stat-rank">
+            <div class="pn-ff-badge-glow"></div>
+            <img src="assets/images/profile/rank.webp" alt="Rango Battle Royale">
+          </div>
+
+          <div class="pn-ff-stat">
+            <div class="pn-ff-badge-glow pn-ff-badge-glow-purple"></div>
+            <img src="assets/images/profile/emblem.webp" alt="Emblema">
+          </div>
+
+          <div class="pn-ff-stat">
+            <div class="pn-ff-badge-glow pn-ff-badge-glow-red"></div>
+            <img src="assets/images/profile/runner.webp" alt="Corredor">
+          </div>
+        </div>
+
+        <div class="pn-ff-bio">Amo Free Fire</div>
+      </div>
+
+      <div class="pn-preview-actions pn-ff-preview-actions">
+        <button class="pn-preview-action pn-preview-copy" type="button">
+          <span>▣</span>
+          Copiar nick
+        </button>
+
+        <button class="pn-preview-action pn-preview-favorite" type="button">
+          <span>♥</span>
+          Guardar
+        </button>
+      </div>
+    </section>
+  `;
+
+  document.body.appendChild(modal);
+
+  modal.querySelectorAll("[data-pn-preview-close]").forEach((elemento) => {
+    elemento.addEventListener("click", cerrarPreviewNombre);
+  });
+
+  modal.querySelector(".pn-preview-copy")?.addEventListener("click", async () => {
+    const texto = modal.dataset.copyText || "";
+    if (!texto) return;
+
+    try {
+      await navigator.clipboard.writeText(texto);
+      const boton = modal.querySelector(".pn-preview-copy");
+      if (!boton) return;
+
+      boton.classList.add("is-success");
+      boton.innerHTML = "<span>✓</span> COPIADO";
+
+      window.clearTimeout(boton._pnPreviewCopyTimeout);
+      boton._pnPreviewCopyTimeout = window.setTimeout(() => {
+        boton.classList.remove("is-success");
+        boton.innerHTML = "<span>▣</span> Copiar nick";
+      }, 1400);
+    } catch (error) {
+      console.error("Error copiando desde la vista previa:", error);
+    }
+  });
+
+  modal.querySelector(".pn-preview-favorite")?.addEventListener("click", async () => {
+    const nombre = modal.dataset.nombreOriginal || "";
+    if (!nombre) return;
+
+    const boton = modal.querySelector(".pn-preview-favorite");
+    if (!boton || boton.dataset.procesando === "true") return;
+
+    boton.dataset.procesando = "true";
+
+    try {
+      const estabaGuardado = esFavorito(nombre);
+      let correcto = false;
+
+      if (estabaGuardado) {
+        correcto = await decrementarFavorito(nombre);
+        if (correcto) eliminarFavorito(nombre);
+      } else {
+        correcto = await registrarFavorito(nombre);
+        if (correcto) agregarFavorito(nombre);
+      }
+
+      if (!correcto) return;
+
+      actualizarContadorFavoritos();
+      actualizarEstadoFavoritoPreview(nombre);
+
+      const tarjeta = Array.from(document.querySelectorAll("#contenido .tarjetaCategoria"))
+        .find((item) => item.dataset.nombre === nombre);
+
+      const botonTarjeta = tarjeta?.querySelector(".favoriteInvisible");
+      const guardadoAhora = esFavorito(nombre);
+
+      if (botonTarjeta) {
+        botonTarjeta.textContent = guardadoAhora ? "❤️ Guardado" : "⭐ Favorito";
+        aplicarEstadoBotonFavorito(botonTarjeta, guardadoAhora);
+      }
+
+      if (tarjeta) mostrarEstadoFavorito(tarjeta, guardadoAhora);
+
+      if (typeof actualizarEstadisticaNombre === "function") {
+        actualizarEstadisticaNombre(nombre);
+      }
+    } catch (error) {
+      console.error("Error actualizando favorito desde vista previa:", error);
+    } finally {
+      boton.dataset.procesando = "false";
+    }
+  });
+
+  if (!window._pnPreviewEscapeActivo) {
+    window._pnPreviewEscapeActivo = true;
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") cerrarPreviewNombre();
+    });
+  }
+
+  return modal;
+}
+
+function actualizarEstadoFavoritoPreview(nombre) {
+  const modal = document.getElementById("pnNickPreview");
+  if (!modal) return;
+
+  const boton = modal.querySelector(".pn-preview-favorite");
+  if (!boton) return;
+
+  const guardado = esFavorito(nombre);
+  boton.classList.toggle("is-saved", guardado);
+  boton.innerHTML = guardado
+    ? "<span>♥</span> Guardado"
+    : "<span>♥</span> Guardar";
+}
+
+function cerrarPreviewNombre() {
+  const modal = document.getElementById("pnNickPreview");
+  if (!modal || !modal.classList.contains("is-open")) return;
+
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("pn-preview-open");
+}
+
+function abrirPreviewNombre(nombre, opciones = {}) {
+  const modal = obtenerModalPreviewNombre();
+  const esPareja = Boolean(opciones.esPareja);
+  const categoria = opciones.categoria || "freefire";
+  const partes = esPareja ? separarNombrePareja(nombre) : [String(nombre ?? "")];
+  const nombres = partes.length > 1 ? partes : [String(nombre ?? "")];
+  const contenedorNombres = modal.querySelector("#pnPreviewNames");
+  const categoriaElemento = modal.querySelector("#pnPreviewCategory");
+
+  modal.dataset.nombreOriginal = String(nombre ?? "");
+  modal.dataset.copyText = esPareja
+    ? obtenerTextoCopiaPareja(nombre)
+    : String(nombre ?? "");
+  modal.dataset.category = categoria;
+  modal.dataset.mode = esPareja && nombres.length > 1 ? "duo" : "solo";
+
+  if (categoriaElemento) {
+    categoriaElemento.textContent = obtenerEtiquetaCategoriaPreview(categoria);
+  }
+
+  if (contenedorNombres) {
+    contenedorNombres.classList.toggle("is-duo", esPareja && nombres.length > 1);
+
+    contenedorNombres.innerHTML = nombres
+      .map((nick, index) => `
+        <div class="pn-ff-player ${index === 1 ? "pn-ff-player-alt" : ""}">
+          ${esPareja && nombres.length > 1 ? `<small>DÚO ${index + 1}</small>` : ""}
+          <strong class="pn-preview-nick pn-ff-nick">${escaparHtml(nick)}</strong>
+        </div>
+      `)
+      .join("");
+  }
+
+  actualizarEstadoFavoritoPreview(nombre);
+
+  modal.classList.remove("is-open");
+  void modal.offsetWidth;
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("pn-preview-open");
+}
+
 function crearTarjetaCategoria(nombre, opciones = {}) {
 
   const esPareja = Boolean(opciones.esPareja);
+  const categoriaPreview = opciones.categoria || "freefire";
   const partesPareja = esPareja ? separarNombrePareja(nombre) : [];
 
   const nombreVisual = esPareja && partesPareja.length > 1
@@ -1185,7 +1711,7 @@ function crearTarjetaCategoria(nombre, opciones = {}) {
 
   return `
     <div
-      class="itemInvisible tarjetaCategoria tarjetaCopiable ${esPareja ? "pareja-card" : ""}"
+      class="itemInvisible tarjetaCategoria tarjetaCopiable has-preview ${esPareja ? "pareja-card" : ""}"
       data-nombre="${nombreAtributo}"
     >
 
@@ -1194,7 +1720,7 @@ function crearTarjetaCategoria(nombre, opciones = {}) {
         data-text="${nombreAtributo}"
         type="button"
       >
-        ${esFavorito(nombre) ? "❤️ Favorito" : "⭐ Favorito"}
+        ${esFavorito(nombre) ? "❤️ Guardado" : "⭐ Favorito"}
       </button>
 
       <div class="nombreCategoria ${esPareja ? "pareja-nombre" : ""}">
@@ -1212,6 +1738,18 @@ function crearTarjetaCategoria(nombre, opciones = {}) {
         </span>
 
       </div>
+
+      <button
+        class="previewNameBtn"
+        type="button"
+        data-text="${nombreAtributo}"
+        data-category="${escaparHtml(categoriaPreview)}"
+        data-pareja="${esPareja ? "true" : "false"}"
+        aria-label="Probar este nombre en la vista previa"
+      >
+        <span class="previewNameBtnIcon" aria-hidden="true">🎮</span>
+        <span>Probar</span>
+      </button>
 
       <span
         class="copiadoOverlay"
@@ -1351,8 +1889,14 @@ async function mostrarResultados(nombre) {
   resultados.appendChild(titulo);
 
 
-  const estilos =
+  const estilosGenerados =
     generarEstilos(nombre);
+
+
+  const estilos =
+    typeof obtenerOrdenResultados === "function"
+      ? obtenerOrdenResultados(estilosGenerados)
+      : estilosGenerados;
 
 
   if (!estilos.length) {
@@ -1388,18 +1932,26 @@ async function mostrarResultados(nombre) {
 
 
       resultados.appendChild(card);
-
-
-      actualizarEstadisticaResultado(
-        item.texto
-      );
     }
   );
+
+
+  if (
+    typeof actualizarEstadisticasResultadosEnSegundoPlano ===
+    "function"
+  ) {
+    actualizarEstadisticasResultadosEnSegundoPlano(estilos);
+  } else {
+    estilos.forEach((item) =>
+      actualizarEstadisticaResultado(item.texto)
+    );
+  }
 }
 
 
 function renderCategoria(tituloCategoria, nombres) {
 
+  const categoriaPreview = obtenerClaveCategoriaPreview(tituloCategoria);
   const esCategoriaParejas = /parejas/i.test(String(tituloCategoria ?? ""));
   const nombresVisibles = esCategoriaParejas
     ? nombres.filter((nombre) => String(nombre ?? "").trim())
@@ -1455,7 +2007,7 @@ function renderCategoria(tituloCategoria, nombres) {
         ${nombresVisibles
           .map(
             (nombre) =>
-              crearTarjetaCategoria(nombre, { esPareja: esCategoriaParejas })
+              crearTarjetaCategoria(nombre, { esPareja: esCategoriaParejas, categoria: categoriaPreview })
           )
           .join("")}
       </div>
@@ -1478,7 +2030,7 @@ function renderCategoria(tituloCategoria, nombres) {
 
           if (
             event.target.closest(
-              ".favoriteInvisible"
+              ".favoriteInvisible, .previewNameBtn"
             )
           ) {
             return;
@@ -1538,6 +2090,26 @@ function renderCategoria(tituloCategoria, nombres) {
           }
         }
       );
+    });
+
+
+  contenido
+    .querySelectorAll(".previewNameBtn")
+    .forEach((boton) => {
+
+      boton.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const tarjeta = boton.closest(".tarjetaCategoria");
+        const nombre = tarjeta?.dataset.nombre || boton.dataset.text || "";
+        const categoria = boton.dataset.category || categoriaPreview;
+        const esPareja = boton.dataset.pareja === "true";
+
+        abrirPreviewNombre(nombre, {
+          categoria,
+          esPareja
+        });
+      });
     });
 
 
@@ -1602,6 +2174,11 @@ function renderCategoria(tituloCategoria, nombres) {
                   boton,
                   false
                 );
+
+                mostrarEstadoFavorito(
+                  boton.closest(".tarjetaCategoria"),
+                  false
+                );
               }
 
             } else {
@@ -1618,11 +2195,16 @@ function renderCategoria(tituloCategoria, nombres) {
 
 
                 boton.textContent =
-                  "❤️ Favorito";
+                  "❤️ Guardado";
 
 
                 aplicarEstadoBotonFavorito(
                   boton,
+                  true
+                );
+
+                mostrarEstadoFavorito(
+                  boton.closest(".tarjetaCategoria"),
                   true
                 );
               }
@@ -1752,65 +2334,75 @@ function renderFavoritos() {
   if (!guardados.length) {
 
     panelFavoritos.innerHTML = `
-      <div class="pantallaJuego">
+      <div class="pantallaJuego favoritos-screen">
+        <div class="favoritos-heading">
+          <span class="favoritos-heading-icon">☆</span>
+          <div>
+            <h2 class="tituloJuego">Favoritos</h2>
+            <p>Guarda tus mejores nicks y vuelve a copiarlos cuando quieras.</p>
+          </div>
+        </div>
 
-        <p class="favorites-empty">
-          Todavía no tienes favoritos guardados.
-        </p>
-
+        <div class="favorites-empty">
+          <span class="favorites-empty-icon">♡</span>
+          <strong>Aún no has guardado nombres</strong>
+          <span>Marca una tarjeta con Favorito y aparecerá aquí.</span>
+        </div>
       </div>
     `;
 
-
     panelFavoritos.style.display =
       "block";
-
 
     return;
   }
 
 
   panelFavoritos.innerHTML = `
-    <div class="pantallaJuego">
+    <div class="pantallaJuego favoritos-screen">
 
-      <h2 class="tituloJuego">
-        ⭐ Favoritos
-      </h2>
+      <div class="favoritos-heading">
+        <span class="favoritos-heading-icon">★</span>
+        <div>
+          <h2 class="tituloJuego">Favoritos</h2>
+          <p>${guardados.length} ${guardados.length === 1 ? "nick guardado" : "nicks guardados"}</p>
+        </div>
+      </div>
 
-      <div class="listaInvisible">
+      <div class="listaInvisible favoritos-lista">
 
         ${guardados
-          .map(
-            (nombre) => `
-              <div class="itemInvisible">
+          .map((nombre) => {
+            const partes = separarNombrePareja(nombre);
+            const visual = partes.length > 1
+              ? partes.map((parte) => `<span class="favorito-nombre-linea">${escaparHtml(parte)}</span>`).join("")
+              : `<span class="favorito-nombre-linea">${escaparHtml(nombre)}</span>`;
 
-                <span>
-                  ${nombre}
+            return `
+              <div
+                class="itemInvisible favorite-saved-card tarjetaCopiable"
+                data-text="${escaparHtml(nombre)}"
+                role="button"
+                tabindex="0"
+                aria-label="Copiar ${escaparHtml(nombre)}"
+              >
+                <div class="favorito-nombre">${visual}</div>
+
+
+                <button
+                  class="removeFav"
+                  data-text="${escaparHtml(nombre)}"
+                  type="button"
+                  title="Quitar de favoritos"
+                  aria-label="Quitar de favoritos"
+                ></button>
+
+                <span class="copiadoOverlay" aria-hidden="true">
+                  <span class="copiadoTexto">COPIADO</span>
                 </span>
-
-                <div class="itemActions">
-
-                  <button
-                    class="copyFav"
-                    data-text="${nombre}"
-                    type="button"
-                  >
-                    📋 Copiar
-                  </button>
-
-                  <button
-                    class="deleteFav"
-                    data-text="${nombre}"
-                    type="button"
-                  >
-                    🗑️ Quitar
-                  </button>
-
-                </div>
-
               </div>
-            `
-          )
+            `;
+          })
           .join("")}
 
       </div>
@@ -1823,43 +2415,91 @@ function renderFavoritos() {
     "block";
 
 
-  panelFavoritos
-    .querySelectorAll(".copyFav")
-    .forEach((boton) => {
+  const copiarFavorito = async (tarjeta) => {
+    if (!tarjeta || tarjeta.dataset.procesando === "true") return;
 
-      renderCopiarTexto(
-        boton,
-        boton.dataset.text
+    const nombre = tarjeta.dataset.text || "";
+    const textoParaCopiar = obtenerTextoCopiaPareja(nombre);
+
+    tarjeta.dataset.procesando = "true";
+
+    try {
+      const correcto = await copiarTarjetaInteractiva(
+        tarjeta,
+        textoParaCopiar
       );
+
+      if (!correcto) return;
+
+      const copiaRegistrada = await registrarCopia(nombre);
+
+      if (copiaRegistrada && typeof actualizarCacheEstadisticasNombre === "function") {
+        const stats = await obtenerEstadisticas(nombre);
+        actualizarCacheEstadisticasNombre(nombre, stats);
+      }
+    } catch (error) {
+      console.error("Error copiando favorito:", error);
+    } finally {
+      tarjeta.dataset.procesando = "false";
+    }
+  };
+
+
+  panelFavoritos
+    .querySelectorAll(".favorite-saved-card")
+    .forEach((tarjeta) => {
+      tarjeta.addEventListener("click", (event) => {
+        if (event.target.closest(".removeFav")) return;
+        copiarFavorito(tarjeta);
+      });
+
+      tarjeta.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        if (event.target.closest(".removeFav")) return;
+        event.preventDefault();
+        copiarFavorito(tarjeta);
+      });
     });
 
 
   panelFavoritos
-    .querySelectorAll(".deleteFav")
+    .querySelectorAll(".removeFav")
     .forEach((boton) => {
 
       boton.addEventListener(
         "click",
-        async () => {
+        async (event) => {
+
+          event.stopPropagation();
+
+          if (boton.dataset.procesando === "true") return;
+          boton.dataset.procesando = "true";
 
           const nombre =
             boton.dataset.text;
 
+          const tarjeta = boton.closest(".favorite-saved-card");
 
-          const correcto =
-            await decrementarFavorito(
-              nombre
-            );
+          try {
+            const correcto =
+              await decrementarFavorito(
+                nombre
+              );
 
+            if (!correcto) return;
 
-          if (!correcto) return;
+            eliminarFavorito(nombre);
+            actualizarContadorFavoritos();
 
-
-          eliminarFavorito(nombre);
-
-          actualizarContadorFavoritos();
-
-          renderFavoritos();
+            if (tarjeta) {
+              tarjeta.classList.add("favorito-removing");
+              window.setTimeout(renderFavoritos, 330);
+            } else {
+              renderFavoritos();
+            }
+          } finally {
+            boton.dataset.procesando = "false";
+          }
         }
       );
     });
@@ -2077,6 +2717,27 @@ function obtenerOrdenCategoria(claveCategoria) {
   return orden;
 }
 
+
+function obtenerOrdenResultados(estilos) {
+  if (!Array.isArray(estilos)) return [];
+
+  const validos = estilos.filter(
+    (item) => item && typeof item.texto === "string" && item.texto.length
+  );
+
+  const porTexto = new Map(validos.map((item) => [item.texto, item]));
+  const orden = ordenarConSorteoPonderado(
+    validos.map((item) => item.texto),
+    "generador"
+  );
+
+  registrarOrdenReciente("generador", orden);
+
+  return orden
+    .map((texto) => porTexto.get(texto))
+    .filter(Boolean);
+}
+
 function obtenerTodosLosNombresCategorias() {
   if (typeof categorias === "undefined" || !categorias) return [];
 
@@ -2167,6 +2828,46 @@ function pintarEstadisticasCategoriaDesdeCache(nombres) {
   });
 }
 
+
+function pintarEstadisticasResultadosDesdeCache(estilos) {
+  if (typeof resultados === "undefined" || !resultados) return;
+
+  (estilos || []).forEach((item) => {
+    const nombre = item?.texto;
+    if (typeof nombre !== "string") return;
+
+    const tarjeta = obtenerElementoResultadoPorNombre(nombre);
+    if (!tarjeta) return;
+
+    const stats = obtenerEstadisticasRanking(nombre);
+    const copias = tarjeta.querySelector(".copiasNombre");
+    const favoritos = tarjeta.querySelector(".favoritosNombre");
+
+    if (copias) copias.textContent = `📋 ${stats.copias}`;
+    if (favoritos) favoritos.textContent = `❤️ ${stats.favoritos}`;
+  });
+}
+
+function actualizarEstadisticasResultadosEnSegundoPlano(estilos) {
+  const nombres = (estilos || [])
+    .map((item) => item?.texto)
+    .filter((nombre) => typeof nombre === "string" && nombre.length);
+
+  if (!nombres.length) return;
+
+  // Render inmediato con caché: nunca bloquea la aparición de las tarjetas.
+  pintarEstadisticasResultadosDesdeCache(estilos);
+
+  consultarEstadisticasRanking(nombres)
+    .then((mapa) => {
+      fusionarEstadisticasRanking(mapa);
+      pintarEstadisticasResultadosDesdeCache(estilos);
+    })
+    .catch((error) => {
+      console.warn("No se pudieron actualizar las estadísticas del generador:", error);
+    });
+}
+
 function iniciarPrecargaRankingCategorias() {
   if (estadoRankingCategorias.precargaPromesa) {
     return estadoRankingCategorias.precargaPromesa;
@@ -2214,13 +2915,19 @@ function crearMenuFreeFire() {
   contenido.innerHTML = `
     <div class="pantallaJuego">
 
-      <h2 class="tituloJuego">🔥 Free Fire</h2>
+      <h2 class="tituloJuego ff-menu-title">
+        <span class="ff-menu-title-icon ff-menu-title-icon--fire" aria-hidden="true">🔥</span>
+        <span>Free Fire</span>
+      </h2>
 
       <div class="menu-juego">
 
         <!-- OSCURO -->
         <div class="modo-card">
-          <h3>☠️ Oscuro</h3>
+          <h3 class="ff-mode-title">
+            <img class="ff-mode-icon-img" src="assets/images/categories/dark.webp" alt="" aria-hidden="true">
+            <span>Oscuro</span>
+          </h3>
 
           <p>Estilo dark.</p>
 
@@ -2243,7 +2950,10 @@ function crearMenuFreeFire() {
 
         <!-- PAREJAS -->
         <div class="modo-card">
-          <h3>💞 Parejas</h3>
+          <h3 class="ff-mode-title">
+            <img class="ff-mode-icon-img" src="assets/images/categories/pairs.webp" alt="" aria-hidden="true">
+            <span>Parejas</span>
+          </h3>
 
           <p>Nombres para dúos.</p>
 
@@ -2266,7 +2976,10 @@ function crearMenuFreeFire() {
 
         <!-- PRO PLAYER -->
         <div class="modo-card">
-          <h3>👑 Pro Player</h3>
+          <h3 class="ff-mode-title">
+            <img class="ff-mode-icon-img ff-mode-icon-img--pro" src="assets/images/categories/pro.webp" alt="" aria-hidden="true">
+            <span>Pro Player</span>
+          </h3>
 
           <p>Estilo competitivo.</p>
 
@@ -2289,7 +3002,10 @@ function crearMenuFreeFire() {
 
         <!-- INVISIBLE -->
         <div class="modo-card">
-          <h3>👻 Invisible</h3>
+          <h3 class="ff-mode-title">
+            <img class="ff-mode-icon-img" src="assets/images/categories/invisible.webp" alt="" aria-hidden="true">
+            <span>Invisible</span>
+          </h3>
 
           <p>Crea nombres invisibles.</p>
 
@@ -2318,7 +3034,7 @@ function crearMenuFreeFire() {
   // OSCURO
   document.getElementById("btnOscuro").addEventListener("click", () => {
     renderCategoria(
-      "☠️ Oscuro",
+      '<span class="ff-category-page-title"><img src="assets/images/categories/dark.webp" alt="" aria-hidden="true"><span>Oscuro</span></span>',
       obtenerOrdenCategoria("oscuro")
     );
   });
@@ -2327,7 +3043,7 @@ function crearMenuFreeFire() {
   // PAREJAS
   document.getElementById("btnParejas").addEventListener("click", () => {
     renderCategoria(
-      "❤️ Parejas",
+      '<span class="ff-category-page-title"><img src="assets/images/categories/pairs.webp" alt="" aria-hidden="true"><span>Parejas</span></span>',
       obtenerOrdenCategoria("parejas")
     );
   });
@@ -2336,7 +3052,7 @@ function crearMenuFreeFire() {
   // PRO PLAYER
   document.getElementById("btnPro").addEventListener("click", () => {
     renderCategoria(
-      "👑 Pro Player",
+      '<span class="ff-category-page-title"><img src="assets/images/categories/pro.webp" alt="" aria-hidden="true"><span>Pro Player</span></span>',
       obtenerOrdenCategoria("pro")
     );
   });
@@ -2345,7 +3061,7 @@ function crearMenuFreeFire() {
   // INVISIBLE
   document.getElementById("btnInvisible").addEventListener("click", () => {
     renderCategoria(
-      "👻 Invisible",
+      '<span class="ff-category-page-title"><img src="assets/images/categories/invisible.webp" alt="" aria-hidden="true"><span>Invisible</span></span>',
       obtenerOrdenCategoria("invisible")
     );
   });

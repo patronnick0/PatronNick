@@ -192,6 +192,27 @@ function obtenerOrdenCategoria(claveCategoria) {
   return orden;
 }
 
+
+function obtenerOrdenResultados(estilos) {
+  if (!Array.isArray(estilos)) return [];
+
+  const validos = estilos.filter(
+    (item) => item && typeof item.texto === "string" && item.texto.length
+  );
+
+  const porTexto = new Map(validos.map((item) => [item.texto, item]));
+  const orden = ordenarConSorteoPonderado(
+    validos.map((item) => item.texto),
+    "generador"
+  );
+
+  registrarOrdenReciente("generador", orden);
+
+  return orden
+    .map((texto) => porTexto.get(texto))
+    .filter(Boolean);
+}
+
 function obtenerTodosLosNombresCategorias() {
   if (typeof categorias === "undefined" || !categorias) return [];
 
@@ -280,6 +301,46 @@ function pintarEstadisticasCategoriaDesdeCache(nombres) {
     if (copias) copias.textContent = `📋 ${stats.copias}`;
     if (favoritos) favoritos.textContent = `❤️ ${stats.favoritos}`;
   });
+}
+
+
+function pintarEstadisticasResultadosDesdeCache(estilos) {
+  if (typeof resultados === "undefined" || !resultados) return;
+
+  (estilos || []).forEach((item) => {
+    const nombre = item?.texto;
+    if (typeof nombre !== "string") return;
+
+    const tarjeta = obtenerElementoResultadoPorNombre(nombre);
+    if (!tarjeta) return;
+
+    const stats = obtenerEstadisticasRanking(nombre);
+    const copias = tarjeta.querySelector(".copiasNombre");
+    const favoritos = tarjeta.querySelector(".favoritosNombre");
+
+    if (copias) copias.textContent = `📋 ${stats.copias}`;
+    if (favoritos) favoritos.textContent = `❤️ ${stats.favoritos}`;
+  });
+}
+
+function actualizarEstadisticasResultadosEnSegundoPlano(estilos) {
+  const nombres = (estilos || [])
+    .map((item) => item?.texto)
+    .filter((nombre) => typeof nombre === "string" && nombre.length);
+
+  if (!nombres.length) return;
+
+  // Render inmediato con caché: nunca bloquea la aparición de las tarjetas.
+  pintarEstadisticasResultadosDesdeCache(estilos);
+
+  consultarEstadisticasRanking(nombres)
+    .then((mapa) => {
+      fusionarEstadisticasRanking(mapa);
+      pintarEstadisticasResultadosDesdeCache(estilos);
+    })
+    .catch((error) => {
+      console.warn("No se pudieron actualizar las estadísticas del generador:", error);
+    });
 }
 
 function iniciarPrecargaRankingCategorias() {

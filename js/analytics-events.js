@@ -28,7 +28,7 @@
 
     const gameCard = target.closest(".game-card");
     if (gameCard) {
-      const label = cleanText(gameCard.querySelector("span")?.textContent || gameCard.textContent);
+      const label = cleanText(gameCard.querySelector(".game-label")?.textContent || gameCard.textContent);
       track("select_game", { game: label || "unknown" });
       return;
     }
@@ -50,9 +50,37 @@
       return;
     }
 
+    if (target.closest(".removeFav")) {
+      track("remove_favorite");
+      return;
+    }
+
+    const previewButton = target.closest(".previewNameBtn");
+    if (previewButton) {
+      track("preview_name", {
+        category: previewButton.dataset.category || "freefire",
+        mode: previewButton.dataset.pareja === "true" ? "duo" : "solo"
+      });
+      return;
+    }
+
+    if (target.closest(".pn-preview-copy")) {
+      track("preview_copy");
+      return;
+    }
+
+    if (target.closest(".pn-preview-favorite")) {
+      track("preview_favorite");
+      return;
+    }
+
     const copyCard = target.closest(".tarjetaCopiable");
     if (copyCard) {
-      const context = copyCard.classList.contains("resultado") ? "generator" : "freefire_category";
+      const context = copyCard.classList.contains("resultado")
+        ? "generator"
+        : copyCard.classList.contains("favorite-saved-card")
+          ? "favorites"
+          : "freefire_category";
       track("copy_name", { context: context });
     }
   }, { passive: true });

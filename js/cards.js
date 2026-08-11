@@ -13,7 +13,7 @@ function crearTarjetaResultado(item) {
     </div>
 
     <button class="btnFavorito" type="button">
-      ${esFavorito(item.texto) ? "❤️ Favorito" : "⭐ Favorito"}
+      ${esFavorito(item.texto) ? "❤️ Guardado" : "⭐ Favorito"}
     </button>
 
     <div class="resultado-texto">
@@ -45,13 +45,15 @@ function crearTarjetaResultado(item) {
           eliminarFavorito(item.texto);
           botonFavorito.textContent = "⭐ Favorito";
           aplicarEstadoBotonFavorito(botonFavorito, false);
+          mostrarEstadoFavorito(card, false);
         }
       } else {
         const correcto = await registrarFavorito(item.texto);
         if (correcto) {
           agregarFavorito(item.texto);
-          botonFavorito.textContent = "❤️ Favorito";
+          botonFavorito.textContent = "❤️ Guardado";
           aplicarEstadoBotonFavorito(botonFavorito, true);
+          mostrarEstadoFavorito(card, true);
         }
       }
 

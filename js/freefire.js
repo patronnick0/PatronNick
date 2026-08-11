@@ -2,13 +2,19 @@ function crearMenuFreeFire() {
   contenido.innerHTML = `
     <div class="pantallaJuego">
 
-      <h2 class="tituloJuego">🔥 Free Fire</h2>
+      <h2 class="tituloJuego ff-menu-title">
+        <span class="ff-menu-title-icon ff-menu-title-icon--fire" aria-hidden="true">🔥</span>
+        <span>Free Fire</span>
+      </h2>
 
       <div class="menu-juego">
 
         <!-- OSCURO -->
         <div class="modo-card">
-          <h3>☠️ Oscuro</h3>
+          <h3 class="ff-mode-title">
+            <img class="ff-mode-icon-img" src="assets/images/categories/dark.webp" alt="" aria-hidden="true">
+            <span>Oscuro</span>
+          </h3>
 
           <p>Estilo dark.</p>
 
@@ -31,7 +37,10 @@ function crearMenuFreeFire() {
 
         <!-- PAREJAS -->
         <div class="modo-card">
-          <h3>💞 Parejas</h3>
+          <h3 class="ff-mode-title">
+            <img class="ff-mode-icon-img" src="assets/images/categories/pairs.webp" alt="" aria-hidden="true">
+            <span>Parejas</span>
+          </h3>
 
           <p>Nombres para dúos.</p>
 
@@ -54,7 +63,10 @@ function crearMenuFreeFire() {
 
         <!-- PRO PLAYER -->
         <div class="modo-card">
-          <h3>👑 Pro Player</h3>
+          <h3 class="ff-mode-title">
+            <img class="ff-mode-icon-img ff-mode-icon-img--pro" src="assets/images/categories/pro.webp" alt="" aria-hidden="true">
+            <span>Pro Player</span>
+          </h3>
 
           <p>Estilo competitivo.</p>
 
@@ -77,7 +89,10 @@ function crearMenuFreeFire() {
 
         <!-- INVISIBLE -->
         <div class="modo-card">
-          <h3>👻 Invisible</h3>
+          <h3 class="ff-mode-title">
+            <img class="ff-mode-icon-img" src="assets/images/categories/invisible.webp" alt="" aria-hidden="true">
+            <span>Invisible</span>
+          </h3>
 
           <p>Crea nombres invisibles.</p>
 
@@ -106,7 +121,7 @@ function crearMenuFreeFire() {
   // OSCURO
   document.getElementById("btnOscuro").addEventListener("click", () => {
     renderCategoria(
-      "☠️ Oscuro",
+      '<span class="ff-category-page-title"><img src="assets/images/categories/dark.webp" alt="" aria-hidden="true"><span>Oscuro</span></span>',
       obtenerOrdenCategoria("oscuro")
     );
   });
@@ -115,7 +130,7 @@ function crearMenuFreeFire() {
   // PAREJAS
   document.getElementById("btnParejas").addEventListener("click", () => {
     renderCategoria(
-      "❤️ Parejas",
+      '<span class="ff-category-page-title"><img src="assets/images/categories/pairs.webp" alt="" aria-hidden="true"><span>Parejas</span></span>',
       obtenerOrdenCategoria("parejas")
     );
   });
@@ -124,7 +139,7 @@ function crearMenuFreeFire() {
   // PRO PLAYER
   document.getElementById("btnPro").addEventListener("click", () => {
     renderCategoria(
-      "👑 Pro Player",
+      '<span class="ff-category-page-title"><img src="assets/images/categories/pro.webp" alt="" aria-hidden="true"><span>Pro Player</span></span>',
       obtenerOrdenCategoria("pro")
     );
   });
@@ -133,7 +148,7 @@ function crearMenuFreeFire() {
   // INVISIBLE
   document.getElementById("btnInvisible").addEventListener("click", () => {
     renderCategoria(
-      "👻 Invisible",
+      '<span class="ff-category-page-title"><img src="assets/images/categories/invisible.webp" alt="" aria-hidden="true"><span>Invisible</span></span>',
       obtenerOrdenCategoria("invisible")
     );
   });
